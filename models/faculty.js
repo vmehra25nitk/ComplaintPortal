@@ -2,6 +2,8 @@ const Sequelize = require('sequelize');
 
 const sequelize = require('../util/database');
 
+const Complaint = require('../models/complaint');
+
 const Faculty = sequelize.define('faculty', {
     type: {
         type: Sequelize.STRING,
@@ -14,6 +16,14 @@ const Faculty = sequelize.define('faculty', {
     department: {
         type: Sequelize.STRING,
         allowNull: false
+    },
+    cid: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        references: {
+            model: Complaint,
+            key: 'cid'
+        }
     }
 
 });

@@ -54,7 +54,7 @@ exports.updateStudent = (req, res) => {
             student[0].mobile = mobile;
             return student[0].save();
         })
-        .then( result => {
+        .then(result => {
             console.log('Updated Student');
             res.send(result);
         })
@@ -68,15 +68,15 @@ exports.updateStudent = (req, res) => {
 exports.deleteStudentById = (req, res) => {
     const sid = req.body.sid;
     Student.findByPk(sid)
-    .then(student => {
-        return student.destroy();
-    })
-    .then(result => {
-        res.send('Deleted success');
-    })
-    .catch(err => {
-        console.log(err);
-    })
+        .then(student => {
+            return student.destroy();
+        })
+        .then(result => {
+            res.send('Deleted success');
+        })
+        .catch(err => {
+            console.log(err);
+        })
 }
 
 
