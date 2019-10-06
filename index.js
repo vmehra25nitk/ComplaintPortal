@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 const path = require('path');
 
 const express = require('express');
@@ -10,6 +12,7 @@ const app = express();
 const studentRoutes = require('./routes/student');
 const complaintRoutes = require('./routes/complaint');
 const labRouter = require('./routes/lab');
+const authStudentRoutes = require('./routes/authStudent');
 
 
 const Complaint = require('./models/complaint');
@@ -20,11 +23,22 @@ const Lab = require('./models/lab');
 app.use(bodyParser.urlencoded({
     extended: false
 }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static("public"));
+app.set('view engine', 'ejs');
 
 app.use(studentRoutes);
 app.use(complaintRoutes);
 app.use(labRouter);
+app.use(authStudentRoutes);
+
+app.get("/", function (req, res) {
+    res.render("mainLogin", {
+        pageTitle: "Home"
+    })
+    .catch(err => {
+        console.log(err);
+    })
+});
 
 
 Complaint.belongsTo(Student, {

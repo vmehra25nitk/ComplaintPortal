@@ -1,0 +1,71 @@
+<%- include('./partials/header'); -%>
+
+
+
+
+<link rel="stylesheet" href="css/signIn.css">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<script>
+    var check = function () {
+        if (document.getElementById('password').value ==
+            document.getElementById('confirmPassword').value) {
+            document.getElementById('message').style.color = 'green';
+            document.getElementById('message').innerHTML = '🟢';
+            document.getElementById('submit').disabled = false;
+        } else {
+            document.getElementById('message').style.color = 'red';
+            document.getElementById('message').innerHTML = '🔴';
+            document.getElementById('submit').disabled = true;
+        }
+    }
+</script>
+
+
+</head>
+
+<body>
+
+
+
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <!-- Tabs Titles -->
+
+            <!-- Icon
+            <div class="fadeIn first">
+              <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+            </div> -->
+
+            <!-- Login Form -->
+            <br>
+            <form name="signUpForm" method="POST" action="/studentSignUp">
+                <input type="text" id="sid" class="fadeIn second" name="sid" placeholder="Student Id" required>
+                <input type="text" id="firstName" class="fadeIn second" name="firstName" placeholder="First Name"
+                    required>
+                <input type="text" id="lastName" class="fadeIn second" name="lastName" placeholder="Last Name" required>
+                <input type="tel" pattern="[0-9]{10}" id="mobile" class="fadeIn second" name="mobile"
+                    placeholder="Mobile Number" required>
+                <input type="text" id="room" class="fadeIn second" name="room" placeholder="Room Number" required>
+                <input type="text" id="branch" class="fadeIn second" name="branch" placeholder="Branch" required>
+                <input type="text" id="hostel" class="fadeIn second" name="hostel" placeholder="Hostel" required>
+                <input type="email" id="email" class="fadeIn second" name="email" placeholder="Email" required>
+                <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password"
+                    onkeyup='check();' required>
+                <input type="password" id="confirmPassword" class="fadeIn third" name="confirmPassword"
+                    placeholder="Confirm Password" onkeyup='check();' required>
+                <span id='message'></span>
+                <input type="submit" class="fadeIn fourth" value="Create Account" id="submit">
+            </form>
+
+            <!-- Remind Password -->
+            <div id="formFooter">
+                <a class="underlineHover" href="/studentSignIn">Already have an account?</a>
+            </div>
+
+        </div>
+    </div>
+    <%- include('./partials/footer') -%>

@@ -26,7 +26,7 @@ exports.addStudent = (req, res) => {
         })
         .catch(err => {
             res.send(err);
-        })
+        });
 };
 
 exports.updateStudent = (req, res) => {
@@ -62,7 +62,7 @@ exports.updateStudent = (req, res) => {
             res.send(err);
         });
 
-}
+};
 
 
 exports.deleteStudentById = (req, res) => {
@@ -76,8 +76,8 @@ exports.deleteStudentById = (req, res) => {
         })
         .catch(err => {
             console.log(err);
-        })
-}
+        });
+};
 
 
 
