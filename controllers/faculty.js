@@ -20,13 +20,30 @@ const Complaint = require('../models/complaint');
             console.log("ERROR:---------- "+err);
         });
     });
-
-
-
-
 }
 
 // READ
+
+exports.readFacultyComplaint = (req, res) => {
+    const sid = req.body.sid;
+    Complaint.findAll({
+            where: {
+                studentSid: sid
+            },
+            include:[{
+                model: Faculty,
+                attributes: ['name','type','department'],
+                required : true
+            }]
+        })
+        .then(result => {
+            res.send(result);
+        })
+        .catch(err => {
+            res.send(err);
+        });
+};
+
 
 // UPDATE
 

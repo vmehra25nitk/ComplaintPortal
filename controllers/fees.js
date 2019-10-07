@@ -28,6 +28,27 @@ const Complaint = require('../models/complaint');
 
 // READ
 
+exports.readFeesComplaint = (req, res) => {
+    const sid = req.body.sid;
+    Complaint.findAll({
+            where: {
+                studentSid: sid
+            },
+            include:[{
+                model: Fees,
+                attributes: ['type'],
+                required : true
+            }]
+        })
+        .then(result => {
+            res.send(result);
+        })
+        .catch(err => {
+            res.send(err);
+        });
+};
+
+
 // UPDATE
 
 // DELETE

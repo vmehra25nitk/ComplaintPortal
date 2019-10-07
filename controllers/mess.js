@@ -20,13 +20,30 @@ const Complaint = require('../models/complaint');
             console.log(err);
         });
     });
-
-
-
-
 }
 
 // READ
+
+exports.readMessComplaint = (req, res) => {
+    const sid = req.body.sid;
+    Complaint.findAll({
+            where: {
+                studentSid: sid
+            },
+            include:[{
+                model: Mess,
+                attributes: ['type'],
+                required : true
+            }]
+        })
+        .then(result => {
+            res.send(result);
+        })
+        .catch(err => {
+            res.send(err);
+        });
+};
+
 
 // UPDATE
 

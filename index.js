@@ -13,7 +13,12 @@ const studentRoutes = require('./routes/student');
 const complaintRoutes = require('./routes/complaint');
 const authStudentRoutes = require('./routes/authStudent');
 
-
+const labRoutes = require('./routes/lab');
+const facultyRoutes = require('./routes/faculty');
+const messRoutes = require('./routes/mess');
+const feesRoutes = require('./routes/fees');
+const hostelRoutes = require('./routes/hostel');
+const libraryRoutes = require('./routes/library');
 
 
 app.use(bodyParser.urlencoded({
@@ -25,6 +30,12 @@ app.set('view engine', 'ejs');
 app.use(studentRoutes);
 app.use(complaintRoutes);
 app.use(authStudentRoutes);
+app.use(labRoutes);
+app.use(facultyRoutes);
+app.use(messRoutes);
+app.use(feesRoutes);
+app.use(hostelRoutes);
+app.use(libraryRoutes);
 
 app.get("/", function (req, res) {
     res.render("mainLogin", {
@@ -38,9 +49,9 @@ app.get("/", function (req, res) {
 
 
 
-sequelize.sync({force:true})
+sequelize.sync()//{force:true})
     .then(() => {
-        app.listen(3000, function () {
+        app.listen(3001, function () {
             console.log("Server started at port 3000");
         });
     })

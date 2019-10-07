@@ -2,10 +2,10 @@ const path = require('path');
 
 const express = require('express');
 
-const labController = require('../controllers/lab');
+const messController = require('../controllers/mess');
 
 const router = express.Router();
 
-router.post('/readLab', labController.readLabComplaint);
+router.post('/readMess', messController.readMessComplaint);
 
 module.exports = router;

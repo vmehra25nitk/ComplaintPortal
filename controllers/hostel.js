@@ -25,6 +25,26 @@ const Complaint = require('../models/complaint');
 
 // READ
 
+exports.readHostelComplaint = (req, res) => {
+    const sid = req.body.sid;
+    Complaint.findAll({
+            where: {
+                studentSid: sid
+            },
+            include:[{
+                model: Hostel,
+                attributes: ['type'],
+                required : true
+            }]
+        })
+        .then(result => {
+            res.send(result);
+        })
+        .catch(err => {
+            res.send(err);
+        });
+};
+
 // UPDATE
 
 // DELETE

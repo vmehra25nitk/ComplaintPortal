@@ -1,5 +1,5 @@
 const Complaint = require('../models/complaint');
-const Detector = require('./complaintTypeDetect/detector');
+const ComplaintCreateDetector = require('./complaintTypeDetect/createComplaintDetector');
 
 // CREATE 
 
@@ -30,7 +30,7 @@ exports.createComplaint = function (req, res)  {
                 console.log(req.body.category);
 
                 var status = false;
-                status = Detector.detect(req);
+                status = ComplaintCreateDetector.detect(req);
                 console.log("status = ",status);
                 if(status)
                 res.send('Added Successfuly\n'+result);

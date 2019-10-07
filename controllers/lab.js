@@ -33,6 +33,28 @@ exports.createLabComplaint =   function (cid, name, department, type) {
 
 // READ
 
+exports.readLabComplaint = (req, res) => {
+    const sid = req.body.sid;
+    Complaint.findAll({
+            where: {
+                studentSid: sid
+            },
+            include:[{
+                model: Lab,
+                attributes: ['name','type','department'],
+                required : true
+            }]
+        })
+        .then(result => {
+            //console.log('HAHAHAHA');
+            res.send(result);
+        })
+        .catch(err => {
+            res.send(err);
+        });
+};
+
+
 // UPDATE
 
 // DELETE
