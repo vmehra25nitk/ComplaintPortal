@@ -24,5 +24,3 @@ router.post('/studentResetPassword', authStudentController.postResetStudentPassw
 
 
 module.exports = router;
-
-// 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
