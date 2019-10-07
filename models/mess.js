@@ -13,15 +13,17 @@ const Mess = sequelize.define('mess', {
         type: Sequelize.STRING,
         allowNull: false
     },
-    cid: {
+    complaintCid: {
         type: Sequelize.STRING,
         allowNull: false,
+        primaryKey: true,
         references: {
             model: Complaint,
             key: 'cid'
         }
     }
 });
+
 
 
 module.exports = Mess;

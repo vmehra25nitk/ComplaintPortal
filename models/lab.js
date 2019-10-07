@@ -17,9 +17,9 @@ const Lab = sequelize.define('lab', {
         type: Sequelize.STRING,
         allowNull: false
     },
-    cid: {
+    complaintCid: {
         type: Sequelize.STRING,
-        allowNull: false,
+        primaryKey: true,
         references: {
             model: Complaint,
             key: 'cid'

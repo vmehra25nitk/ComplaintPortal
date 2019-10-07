@@ -9,8 +9,9 @@ const Library = sequelize.define('library', {
         type: Sequelize.STRING,
         allowNull: false
     },
-    cid: {
+    complaintCid: {
         type: Sequelize.STRING,
+        primaryKey: true,
         allowNull: false,
         references: {
             model: Complaint,
@@ -18,6 +19,7 @@ const Library = sequelize.define('library', {
         }
     }
 });
+
 
 
 module.exports = Library;

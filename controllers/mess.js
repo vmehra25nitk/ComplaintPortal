@@ -1,17 +1,17 @@
-const Library = require('../models/library');
+const Mess = require('../models/mess');
 const Complaint = require('../models/complaint');
 
 
 // CREATE
 
- exports.createLibraryComplaint = (type,cid)=>{
+ exports.createMessComplaint = (type,cid)=>{
 
-    Library.create({type:type, complaintCid:cid})
+    Mess.create({type:type, complaintCid:cid})
     .then(result=>{
-        console.log("Library added\n"+result);
+        console.log("Mess added\n"+result);
     })
     .catch(err=>{
-        console.log("Library Adding Failed\n"+err)
+        console.log("Mess Adding Failed\n"+err)
         Complaint.findByPK(cid)
         .then(complaint=>{
             return complaint.destroy();

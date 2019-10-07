@@ -17,8 +17,9 @@ const Faculty = sequelize.define('faculty', {
         type: Sequelize.STRING,
         allowNull: false
     },
-    cid: {
+    complaintCid: {
         type: Sequelize.STRING,
+        primaryKey: true,
         allowNull: false,
         references: {
             model: Complaint,
@@ -27,6 +28,8 @@ const Faculty = sequelize.define('faculty', {
     }
 
 });
+
+
 
 
 module.exports = Faculty;

@@ -10,8 +10,9 @@ const Fees = sequelize.define('fees', {
         type: Sequelize.STRING,
         allowNull: false
     },
-    cid: {
+    complaintCid: {
         type: Sequelize.STRING,
+        primaryKey: true,
         allowNull: false,
         references: {
             model: Complaint,
@@ -20,5 +21,10 @@ const Fees = sequelize.define('fees', {
     }
 });
 
+
+
+
+
+//
 
 module.exports = Fees;

@@ -1,11 +1,10 @@
 const Complaint = require('../models/complaint');
-
-const labController = require('../controllers/lab');
-
+const Detector = require('./complaintTypeDetect/detector');
 
 // CREATE 
 
-exports.createComplaint = (req, res) => {
+
+exports.createComplaint = function (req, res)  {
     const cid = req.body.cid;
     const status = req.body.status;
     const startDate = req.body.startDate;
@@ -14,6 +13,8 @@ exports.createComplaint = (req, res) => {
     const description = req.body.description;
     const solvedBy = req.body.solvedBy;
     const studentSid = req.body.studentSid;
+    const request = req.body;
+
 
     Complaint.create({
             cid: cid,
@@ -26,23 +27,15 @@ exports.createComplaint = (req, res) => {
             studentSid: studentSid
         })
         .then(result => {
-            if (category.localeCompare("faculty") == 0) {
+                console.log(req.body.category);
 
-            } else if (category.localeCompare("fees") == 0) {
+                var status = false;
+                status = Detector.detect(req);
+                console.log("status = ",status);
+                if(status)
+                res.send('Added Successfuly\n'+result);
 
-            } else if (category.localeCompare("hostel") == 0) {
-
-            } else if (category.localeCompare("lab") == 0) {
-                const name = req.body.name;
-                const department = req.body.department;
-                const type = req.body.type;
-                labController.createLabComplaint(cid, name, department, type);
-                res.send(result);
-            } else if (category.localeCompare("library") == 0) {
-
-            } else if (category.localeCompare("mess") == 0) {
-
-            } else {
+                else {
                 Complaint.findByPk(cid)
                     .then(complaint => {
                         if (complaint.studentSid == studentSid) {
@@ -57,10 +50,7 @@ exports.createComplaint = (req, res) => {
                     .catch(err => {
                         res.send(err);
                     })
-            }
-
-
-
+                }
         })
         .catch(err => {
             res.send(err);

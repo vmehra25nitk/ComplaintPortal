@@ -9,8 +9,9 @@ const Hostel = sequelize.define('hostel', {
         type: Sequelize.STRING,
         allowNull: false
     },
-    cid: {
+    complaintCid: {
         type: Sequelize.STRING,
+        primaryKey: true,
         allowNull: false,
         references: {
             model: Complaint,
