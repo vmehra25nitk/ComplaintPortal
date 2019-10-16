@@ -1,5 +1,7 @@
 const Lab = require('../models/lab');
 const Complaint = require('../models/complaint');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 // CREATE 
 

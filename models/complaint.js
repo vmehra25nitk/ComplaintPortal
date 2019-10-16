@@ -23,7 +23,8 @@ const Complaint = sequelize.define('complaint', {
         primaryKey: true
     },
     status: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.ENUM,
+        values: ['faculty','fees','hostel','lab','library','mess'],
         allowNull: false
     },
     startDate: {
@@ -35,15 +36,16 @@ const Complaint = sequelize.define('complaint', {
         allowNull: true
     },
     category: {
-        type: Sequelize.STRING,
+        type: Sequelize.ENUM,
+        values: ['gen','per'],
         allowNull: false
     },
     description: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(200),
         allowNull: false
     },
     solvedBy: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(50),
         allowNull: true
     },
     studentSid: {

@@ -6,7 +6,7 @@ const Mess = require ('../mess');
 const Fees = require('../fees');
 
 
-
+//CHANGE TYPE FOR ALL THE CATEGORIES AND NAME FOR HOSTEL
 exports.detect =  function (req)
 {
    // console.log("I am here", typeof req.body.category);
@@ -35,7 +35,8 @@ exports.detect =  function (req)
             return true;
         case 'hostel':
             {
-                Hostel.createHostelComplaint(type,cid);
+                var Hname = req.body.name
+                Hostel.createHostelComplaint(type,cid,name);
             }
             return true;
         case 'library':

@@ -14,7 +14,8 @@ const Lab = sequelize.define('lab', {
         allowNull: false
     },
     department: {
-        type: Sequelize.STRING,
+        type: Sequelize.ENUM,
+        values: ['cse','it','ece','eee','min','mec','met','civ','che'],
         allowNull: false
     },
     complaintCid: {

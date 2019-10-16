@@ -21,6 +21,7 @@ const messRoutes = require('./routes/mess');
 const feesRoutes = require('./routes/fees');
 const hostelRoutes = require('./routes/hostel');
 const libraryRoutes = require('./routes/library');
+const testRoutes = require('./routes/test');
 
 
 app.use(bodyParser.urlencoded({
@@ -45,6 +46,7 @@ app.use(messRoutes);
 app.use(feesRoutes);
 app.use(hostelRoutes);
 app.use(libraryRoutes);
+app.use(testRoutes);
 
 
 app.get("/", function (req, res) {

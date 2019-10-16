@@ -9,6 +9,11 @@ const Hostel = sequelize.define('hostel', {
         type: Sequelize.STRING,
         allowNull: false
     },
+    name:{
+        type: Sequelize.ENUM,
+        values:['1','2','3','4','5','6','7','8','mt1','mt2','mt3'],
+        allowNull: false
+    },
     complaintCid: {
         type: Sequelize.STRING,
         primaryKey: true,

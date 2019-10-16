@@ -10,11 +10,12 @@ const Faculty = sequelize.define('faculty', {
         allowNull: false
     },
     name: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(50),
         allowNull: false
     },
     department: {
-        type: Sequelize.STRING,
+        type: Sequelize.ENUM,
+         values: ['cse','it','ece','eee','min','mec','met','civ','che'],
         allowNull: false
     },
     complaintCid: {
