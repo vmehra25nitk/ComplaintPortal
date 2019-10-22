@@ -66,6 +66,12 @@ function selectFromDropDown(num)
   var disp = document.getElementById("DropdownDisplay")
 
   disp.innerHTML = types[num];
+
+  const oth = document.getElementsByName('HostelOther');
+  if(num==3)
+  oth[0].style.visibility = 'visible';
+  else
+  oth[0].style.visibility = 'hidden';
 }
 
 
