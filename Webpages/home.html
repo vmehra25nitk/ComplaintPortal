@@ -6,12 +6,15 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+<link rel="stylesheet" href=home.css>
+
 
 <!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
 <script src="home.js"></script>
-<style>
-html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
-</style>
+
+<!-- <style>
+
+</style> -->
 <body class="w3-light-grey">
 
 <!-- Top container -->
@@ -277,30 +280,6 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <!-- End page content -->
 </div>
 
-<script>
-// Get the Sidebar
-var mySidebar = document.getElementById("mySidebar");
-
-// Get the DIV with overlay effect
-var overlayBg = document.getElementById("myOverlay");
-
-// Toggle between showing and hiding the sidebar, and add overlay effect
-function w3_open() {
-  if (mySidebar.style.display === 'block') {
-    mySidebar.style.display = 'none';
-    overlayBg.style.display = "none";
-  } else {
-    mySidebar.style.display = 'block';
-    overlayBg.style.display = "block";
-  }
-}
-
-// Close the sidebar with the close button
-function w3_close() {
-  mySidebar.style.display = "none";
-  overlayBg.style.display = "none";
-}
-</script>
 
 
 <!-- Contact Modal -->
@@ -324,35 +303,49 @@ function w3_close() {
         <!-- <div class="w3-display-middle" style="width:65%"> -->
             <div class="w3-bar w3-black">
                 <span onclick="document.getElementById('contact').style.display='none'" class="w3-button w3-display-topright">x</span>
-              <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Flight');"><i class="fas fa-campground"></i>  Hostel</button>
-              <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Hotel');"><i class="fa fa-bed"></i>  Fees</button>
-              <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Car');"><i class="fa fa-car"></i>  Mess</button>
+              <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Hostel');"><i class="fas fa-campground"></i>  Hostel</button>
+              <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Fees');"><i class="fa fa-bed"></i>  Fees</button>
+              <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Mess');"><i class="fa fa-car"></i>  Mess</button>
             </div>
         
             <!-- Tabs -->
-            <div id="Flight" class="w3-container w3-white w3-padding-16 myLink">
-              <h3>Travel the world with us</h3>
-              <div class="w3-row-padding" style="margin:0 -16px;">
-                <div class="w3-half">
-                  <label>From</label>
-                  <input class="w3-input w3-border" type="text" placeholder="Departing from">
-                </div>
-                <div class="w3-half">
-                  <label>To</label>
-                  <input class="w3-input w3-border" type="text" placeholder="Arriving at">
-                </div>
+            <div id="Hostel" class="w3-container w3-white w3-padding-16 myLink">
+
+              <div style="display: flex;">
+              <label class="container" style="margin-right: 3cm">Personal
+                <input type="radio" checked="checked" name="radio">
+                <span class="checkmark"></span>
+              </label>
+              <label class="container">General
+                <input type="radio" name="radio">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+
+
+            <div class="dropdown">
+              <p id="DropdownDisplay" onclick="myDropDownFunction()" class="dropbtn" type="text" >none selected</p>
+              <div id="myDropdown" class="dropdown-content">
+                <a  onclick="selectFromDropDown(0)">Electrical</a>
+                <a  onclick="selectFromDropDown(1)">Water</a>
+                <a  onclick="selectFromDropDown(2)" >Network</a>
               </div>
-              <p><button class="w3-button w3-dark-grey">Search and find dates</button></p>
+            </div>
+
+
+
+
+
             </div>
         
-            <div id="Hotel" class="w3-container w3-white w3-padding-16 myLink">
+            <div id="Fees" class="w3-container w3-white w3-padding-16 myLink">
               <h3>Find the best hotels</h3>
               <p>Book a hotel with us and get the best fares and promotions.</p>
               <p>We know hotels - we know comfort.</p>
               <p><button class="w3-button w3-dark-grey">Search Hotels</button></p>
             </div>
         
-            <div id="Car" class="w3-container w3-white w3-padding-16 myLink">
+            <div id="Mess" class="w3-container w3-white w3-padding-16 myLink">
               <h3>Best car rental in the world!</h3>
               <p><span class="w3-tag w3-deep-orange">DISCOUNT!</span> Special offer if you book today: 25% off anywhere in the world with CarServiceRentalRUs</p>
               <input class="w3-input w3-border" type="text" placeholder="Pick-up point">
