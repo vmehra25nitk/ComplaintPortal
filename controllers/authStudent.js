@@ -1,6 +1,7 @@
 /*jshint esversion: 6 */
 
 const Student = require('../models/authStudent');
+const Complaint = require('../models/complaint');
 
 const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
@@ -169,3 +170,22 @@ exports.postResetStudentPassword = (req, res) => {
         }
     })
 };  
+
+
+
+exports.getStudentPendingComplaint = (req, res) => {
+    const sid = req.body.sid;
+    Student.findByPk(sid)
+    .then(() => {
+        Complaint.findAll({
+            include: [
+                {
+                    studentSid: sid
+                }
+            ]
+        })
+        .then({
+
+        });
+    });
+}
