@@ -6,6 +6,21 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+
+<!-- BootStrap -->
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" /> -->
+
+
+<!-- Bootstrap Over -->
+
 <link rel="stylesheet" href=home.css>
 
 
@@ -108,18 +123,23 @@
 
   <div class="w3-panel">
     <div class="w3-row-padding" style="margin:0 -16px">
-      <div class="w3-third">
-        <h5>Regions</h5>
-        <img src="/w3images/region.jpg" style="width:100%" alt="Google Regional Map">
-      </div>
-      <div class="w3-twothird">
+      
+      <div >
         <h5>Feeds</h5>
-        <table class="w3-table w3-striped w3-white">
+        <table class="w3-table  w3-striped w3-white">
           <tr>
             <td><i class="fa fa-user w3-text-blue w3-large"></i></td>
             <td>New record, over 90 views.</td>
             <td><i>10 mins</i></td>
+            <td>
+              <button type="button" for="collapseme" data-toggle="collapse" href="#collapseme" aria-expanded="true" aria-controls="collapseme" class="btn btn-primary" >
+                Click to expand
+              </button>
+            </td>
           </tr>
+
+          <tr id="collapseme" class="collapse w3-animate-zoom"><td colspan="4"><div>Should be collapsed</div></td></tr>
+          <!-- <tr id="collapseme" class="collapse out w3-animate-zoom"><td colspan="4"><div>Should be collapsed</div></td></tr> -->
           <tr>
             <td><i class="fa fa-bell w3-text-red w3-large"></i></td>
             <td>Database error.</td>
@@ -286,85 +306,255 @@
 <div id="contact" class="w3-modal">
     <header class="w3-display-container w3-content w3-hide-small" style="max-width:1500px">
     <div class="w3-modal-content w3-animate-zoom">
-      <!-- <div class="w3-container w3-black">
-        <span onclick="document.getElementById('contact').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
-        <h1>Contact</h1>
-      </div> -->
-      <!-- <div class="w3-container"> -->
-        <!-- <p>Reserve a table, ask for today's special or just send us a message:</p>
-        <form action="/action_page.php" target="_blank">
-          <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Name" required name="Name"></p>
-          <p><input class="w3-input w3-padding-16 w3-border" type="number" placeholder="How many people" required name="People"></p>
-          <p><input class="w3-input w3-padding-16 w3-border" type="datetime-local" placeholder="Date and time" required name="date" value="2017-11-16T20:00"></p>
-          <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Message \ Special requirements" required name="Message"></p>
-          <p><button class="w3-button" type="submit">SEND MESSAGE</button></p>
-        </form> -->
-
-        <!-- <div class="w3-display-middle" style="width:65%"> -->
+      
             <div class="w3-bar w3-black">
                 <span onclick="document.getElementById('contact').style.display='none'" class="w3-button w3-display-topright">x</span>
               <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Hostel');"><i class="fas fa-campground"></i>  Hostel</button>
               <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Fees');"><i class="fa fa-bed"></i>  Fees</button>
               <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Mess');"><i class="fa fa-car"></i>  Mess</button>
+              <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Faculty');"><i class="fa fa-car"></i>  Faculty</button>
+              <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Lab');"><i class="fa fa-car"></i>  Lab</button>
+              <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Library');"><i class="fa fa-car"></i>  Library</button>
             </div>
         
             <!-- Tabs -->
+
+            <!-- Hostel Complaint Tab -->
             <div id="Hostel" class="w3-container w3-white w3-padding-16 myLink">
 
-              <div style="display: flex;">
-              <label class="container" style="margin-right: 3cm">Personal
-                <input type="radio" checked="checked" name="radio">
-                <span class="checkmark"></span>
-              </label>
-              <label class="container">General
-                <input type="radio" name="radio">
-                <span class="checkmark"></span>
-              </label>
+              <!-- Complaint general or personal -->
+              <div  style="display: flex;">
+                <label style="padding-right: 1cm;" class="container">
+                <input class="w3-radio" type="radio" name="hostelCat" value="general"checked >
+                <span class="checkmark"></span>General</label>
+                
+                <label class="container">
+                <input class="w3-radio" type="radio" name="hostelCat" value="personal">
+                <span class="checkmark"></span>Personal</label> 
+              </div>
+
+
+           <!-- Dropdown Menu -->
+            <div style="padding-bottom: 10px;">
+              <p style="padding-top: 5px; padding-bottom: 5px;">Related To :</p>
+            <select id="hostelSelect" onchange="whatChecked(this,'hostelOther')" style="border-radius: 5px;" class="dropbtn"> 
+              <option value="electrical">Electrical</option>
+              <option value="Water">Water</option>
+              <option value="network">Network</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+           <!-- Other Input -->
+            <input name="hostelOther" type="text" placeholder="Specify the Other" style="border-radius: 5px; visibility: hidden; padding: 5px;  ; color: black;">
+            <!-- Description -->
+            <div>
+              <p>Description</p>
+              <textarea id="hostelDesc" rows="4" cols="50" placeholder="Description should not exceed 200 characters" style="border-radius: 5px;"></textarea>
             </div>
-
-
-            <div class="dropdown">
-              <p id="DropdownDisplay" onclick="myDropDownFunction()" class="dropbtn" type="text" >none selected</p>
-            
-              <div id="myDropdown" class="dropdown-content">
-                <a  onclick="selectFromDropDown(0)">Electrical</a>
-                <a  onclick="selectFromDropDown(1)">Water</a>
-                <a  onclick="selectFromDropDown(2)">Network</a>
-                <a  onclick="selectFromDropDown(3)">Other</a>
-            </div>
-
-            <input name="HostelOther" type="text" placeholder="Specify the Other" style="visibility:hidden ; color: black;"> <!--style="visibility: hidden">-->  
-
-            </div>
-
-
-
-
+            <!-- Submit -->
+            <button id="hostelSubmit" onclick="compSubmit('hostel')"  class="dropbtn">Submit</button>
 
             </div>
         
+            <!-- Hostel Complaint Tab Over -->
+
+            <!-- Fees Complaint Tab -->
+
             <div id="Fees" class="w3-container w3-white w3-padding-16 myLink">
-              <h3>Find the best hotels</h3>
-              <p>Book a hotel with us and get the best fares and promotions.</p>
-              <p>We know hotels - we know comfort.</p>
-              <p><button class="w3-button w3-dark-grey">Search Hotels</button></p>
-            </div>
+              <!-- Complaint general or personal -->
+              <div  style="display: flex;">
+                <label style="padding-right: 1cm;" class="container">
+                <input class="w3-radio" type="radio" name="feesCat" value="general" checked >
+                <span class="checkmark"></span>General</label>
+                
+                <label class="container">
+                <input class="w3-radio" type="radio" name="feesCat" value="personal">
+                <span class="checkmark"></span>Personal</label> 
+              </div>
+
+              <!-- Description -->
+              <div>
+                <p>Description</p>
+                <textarea id="feesDesc" rows="4" cols="50" placeholder="Description should not exceed 200 characters" style="border-radius: 5px;"></textarea>
+              </div>
+
+              <!-- Submit -->
+              <button id="FeesSubmit" onclick="compSubmit('fees')" class="dropbtn">Submit</button>
+              </div>            
+           
+            <!-- Fees Complaint Tab Over -->
         
+            <!-- Mess Complaint Tab  -->
             <div id="Mess" class="w3-container w3-white w3-padding-16 myLink">
-              <h3>Best car rental in the world!</h3>
-              <p><span class="w3-tag w3-deep-orange">DISCOUNT!</span> Special offer if you book today: 25% off anywhere in the world with CarServiceRentalRUs</p>
-              <input class="w3-input w3-border" type="text" placeholder="Pick-up point">
-              <p><button class="w3-button w3-dark-grey">Search Availability</button></p>
+               <!-- Complaint general or personal -->
+               <div  style="display: flex;">
+                <label style="padding-right: 1cm;" class="container">
+                <input class="w3-radio" type="radio" name="messCat" value="general" checked >
+                <span class="checkmark"></span>General</label>
+                
+                <label class="container">
+                <input class="w3-radio" type="radio" name="messCat" value="personal">
+                <span class="checkmark"></span>Personal</label> 
+              </div>
+ 
+               <!-- Dropdown Menu -->
+            <div style="padding-bottom: 10px;">
+              <p style="padding-top: 5px; padding-bottom: 5px;">Related To :</p>
+            <select id="messSelect" onchange="whatChecked(this,'messOther')" style="border-radius: 5px;" class="dropbtn"> 
+              <option value="mess staff">Mess Staff</option>
+              <option value="food">Food</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+           <!-- Other Input -->
+            <input name="messOther" type="text" placeholder="Specify the Other" style="border-radius: 5px; visibility: hidden; padding: 5px;  ; color: black;">
+
+
+               <!-- Description -->
+               <div>
+                 <p>Description</p>
+                 <textarea id="messDesc" rows="4" cols="50" placeholder="Description should not exceed 200 characters" style="border-radius: 5px;"></textarea>
+               </div>
+               <!-- Submit -->
+               <button id="messSubmit" onclick="compSubmit('mess')" class="dropbtn">Submit</button>
+              
+              </div>  
+              
+            <!-- Mess Complaint Tab Over -->
+
+          <!-- Faculty Complaint Tab -->
+
+          <div id="Faculty" class="w3-container w3-white w3-padding-16 myLink">
+            <!-- Complaint general or personal -->
+            <div  style="display: flex;">
+             <label style="padding-right: 1cm;" class="container">
+             <input class="w3-radio" type="radio" name="facCat" value="general" checked >
+             <span class="checkmark"></span>General</label>
+             
+             <label class="container">
+             <input class="w3-radio" type="radio" name="facCat" value="personal">
+             <span class="checkmark"></span>Personal</label> 
+           </div>
+
+            <!-- Dropdown Menu -->
+         <div style="padding-bottom: 20px;">
+           <p style="padding-top: 3px; padding-bottom:0.2px;">Department</p>
+         <select id="facSelect" style="border-radius: 5px;" class="dropbtn"> 
+           <option value="ch">CH</option>
+           <option value="cs">CSE</option>
+           <option value="cv">CV</option>
+           <option value="ee">EEE</option>
+           <option value="ec">EC</option>
+           <option value="it">IT</option>
+           <option value="mc">MEC</option>
+           <option value="mi">MI</option>
+           <option value="mt">MT</option>
+         </select>
+       </div>
+       <!-- Faculty Name -->
+       <input name="facName"  type="text" placeholder="Faculty Name" style="border-color: #3498DB;;border-radius: 5px; padding: 5px;">
+            <!-- Description -->
+            <div>
+              <p>Description</p>
+              <textarea id="facDesc" rows="4" cols="50" placeholder="Description should not exceed 200 characters" style="border-radius: 5px;"></textarea>
             </div>
-          <!-- </div> -->
+
+             <!-- Submit -->
+             <button id="facSubmit" onclick="compSubmit('fac')" class="dropbtn">Submit</button>
+            </div>
+            
+            <!-- Faculty Complaint Tab Over -->
+
+            <!-- Lab Complaint Tab -->
+
+            <div id="Lab" class="w3-container w3-white w3-padding-16 myLink">
+              <!-- Complaint general or personal -->
+              <div  style="display: flex;">
+               <label style="padding-right: 1cm;" class="container">
+               <input class="w3-radio" type="radio" name="labCat" value="general" checked >
+               <span class="checkmark"></span>General</label>
+               
+               <label class="container">
+               <input class="w3-radio" type="radio" name="labCat" value="personal">
+               <span class="checkmark"></span>Personal</label> 
+             </div>
+  
+              <!-- Dropdown Menu -->
+           <div style="padding-bottom: 20px;">
+             <p style="padding-top: 3px; padding-bottom:0.2px;">Department :</p>
+           <select id="labSelect" style="border-radius: 5px;" class="dropbtn"> 
+             <option value="ch">CH</option>
+             <option value="cs">CSE</option>
+             <option value="cv">CV</option>
+             <option value="ee">EEE</option>
+             <option value="ec">EC</option>
+             <option value="it">IT</option>
+             <option value="mc">MEC</option>
+             <option value="mi">MI</option>
+             <option value="mt">MT</option>
+           </select>
+         </div>
+         <!-- Faculty Name -->
+         <input name="labName"  type="text" placeholder="Lab Name" style="border-color: #3498DB;;border-radius: 5px; padding: 5px;">
+              <!-- Description -->
+              <div>
+                <p>Description</p>
+                <textarea id="labDesc" rows="4" cols="50" placeholder="Description should not exceed 200 characters" style="border-radius: 5px;"></textarea>
+              </div>
+  
+               <!-- Submit -->
+               <button id="labSubmit" onclick="compSubmit('lab')" class="dropbtn">Submit</button>
+              </div>
+            <!-- Lab Complaint Tab Over -->
+
+            <!-- Library Complaint Tab -->
+            <div id="Library" class="w3-container w3-white w3-padding-16 myLink">
+
+              <!-- Complaint general or personal -->
+              <div  style="display: flex;">
+                <label style="padding-right: 1cm;" class="container">
+                <input class="w3-radio" type="radio" name="libCat" value="general"checked >
+                <span class="checkmark"></span>General</label>
+                
+                <label class="container">
+                <input class="w3-radio" type="radio" name="libCat" value="personal">
+                <span class="checkmark"></span>Personal</label> 
+              </div>
 
 
-      <!-- </div> -->
-    </div>
+           <!-- Dropdown Menu -->
+            <div style="padding-bottom: 10px;">
+              <p style="padding-top: 5px; padding-bottom: 5px;">Related To :</p>
+            <select id="libSelect" onchange="whatChecked(this,'libOther')" style="border-radius: 5px;" class="dropbtn"> 
+              <option value="books">Books</option>
+              <option value="library staff">Library Staff</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+           <!-- Other Input -->
+            <input name="libOther" type="text" placeholder="Specify the Other" style="border-radius: 5px; visibility: hidden; padding: 5px;  ; color: black;">
+            <!-- Description -->
+            <div>
+              <p>Description</p>
+              <textarea id="libDesc" rows="4" cols="50" placeholder="Description should not exceed 200 characters" style="border-radius: 5px;"></textarea>
+            </div>
+
+            <!-- Submit -->
+            <button id="libSubmit" onclick="compSubmit('library')" class="dropbtn">Submit</button>
+            </div>
+
+            <!-- Library Complaint Tab Over -->
+
+   
+         </div> 
+    
   </header>
   </div>
   
 
 
 </body>
+
+
+
 </html>
