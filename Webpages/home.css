@@ -92,3 +92,19 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 .rowCollAnimate .collapsed .fa {
   transform: rotate(90deg);
 }
+
+/* Table's rounded corners */
+table.roundedCorners { 
+  border: 1px solid #3498DB;
+  border-radius: 13px; 
+  border-spacing: 0;
+  }
+table.roundedCorners td, 
+table.roundedCorners th { 
+  border-bottom: 1px solid #3498DB;
+  padding: 10px; 
+  }
+table.roundedCorners tr:last-child > td {
+  border-bottom: none;}
+
+  /* Table's rounded corners over */

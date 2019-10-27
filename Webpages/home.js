@@ -218,7 +218,7 @@ function compSubmit(type)
     const description = document.getElementById('libDesc').value;
 
 
-    const toBeSent = {
+    const toBeSent = {    
                       category: category,
                       type : relatedTo+otherRel,
                       desc : description
@@ -233,3 +233,342 @@ function compSubmit(type)
 }
 //Submit Complaint Over
 
+
+
+//
+//Feed Table Creation
+var iter =0;
+function loadHostel(tabname){
+
+ 
+  const tabl = document.getElementById(tabname);
+
+  var dispRow = document.createElement("tr");
+
+  dispRow.setAttribute("for", 'collapseme');
+  dispRow.setAttribute('data-toggle','collapse');
+  dispRow.setAttribute('href','#collapseme');
+  dispRow.setAttribute('aria-expanded','true');
+  dispRow.setAttribute('aria-controls','collapseme');
+  dispRow.setAttribute('class','collapsed w3-large w3-text-blue');
+  
+  
+  dispRow.innerHTML = "<td><i class='fas fa-hotel w3-large'> Hotel </i></td>"
+                      + "<td><i class='far fa-calendar-plus'> <b> 12-19-1999</b></i></td>"
+                      + "<td><i class='fas fa-pen'> jadkljafdjljasfjd;</i></td>"
+                      +"<td><b>pending</b> </td>";
+                          
+ tabl.appendChild(dispRow);
+
+ dispRow = document.createElement('tr');
+
+ dispRow.setAttribute('style',"background-color: #f1f1f1;");
+ dispRow.setAttribute('class',"w3-text-blue")
+
+ dispRow.innerHTML =  "<td colspan='4'>"
+                      +"<table id='collapseme' style='border: none;' class='collapse'>"
+                        +"<tr>"
+                        +"  <td style='padding-right: 155px; padding-left: 115px;'>"
+                          +"  <div id='collapseme' style='text-align: right;' class='collapse fa fa-signature w3-large'> Hostel Name </div>"
+                          +"</td>"
+                          +"<td >"
+                           +" <div id='collapseme'  class='collapse'>TeeHee</div>"
+                        +"</tr>"
+                        +"<tr>"
+                          +"  <td style='padding-right: 155px; padding-left: 115px;'>"
+                            +"    <div id='collapseme' style='text-align: right;' class='collapse fas fa-chevron-circle-down w3-large'>"
+                            +"  Related To </div>"
+                          +"<td >"
+                           +" <div id='collapseme'  class='collapse'>TeeHee</div>"
+                        +"</tr>"
+                        +"<tr>"
+                          +"  <td style='padding-right: 155px; padding-left: 115px;'>"
+                            +"    <div id='collapseme' style='text-align: right;' class='collapse fas fa-pen  w3-large'> Description </div>"
+                          +"<td >"
+                            +"<div id='collapseme'  class='collapse'>TeeHedjlasjfdajdlkja;je</div>"
+                       +" </tr>"
+                      +"</table> "
+                      +"  </td>"
+
+tabl.appendChild(dispRow);
+}
+
+
+function loadFees(tabname)
+{
+
+  const tabl = document.getElementById(tabname);
+
+  var dispRow = document.createElement("tr");
+
+  dispRow.setAttribute("for", 'collapseme');
+  dispRow.setAttribute('data-toggle','collapse');
+  dispRow.setAttribute('href','#collapseme');
+  dispRow.setAttribute('aria-expanded','true');
+  dispRow.setAttribute('aria-controls','collapseme');
+  dispRow.setAttribute('class','collapsed w3-large w3-text-teal');
+  
+  dispRow.innerHTML = "<td><i class='fas fa-rupee-sign w3-large'> Fees </i></td>"
+                      + "<td><i class='far fa-calendar-plus'> <b> 12-19-1999</b></i></td>"
+                      + "<td><i class='fas fa-pen'> jadkljafdjljasfjd;</i></td>"
+                      +"<td><b>pending</b> </td>";
+                          
+ tabl.appendChild(dispRow);
+
+ dispRow = document.createElement('tr');
+
+ dispRow.setAttribute('style',"background-color: #f1f1f1;");
+ dispRow.setAttribute('class',"w3-text-teal")
+
+ dispRow.innerHTML =  "<td colspan='4'>"
+                      +"<table id='collapseme' style='border: none;' class='collapse'>"
+                        +"<tr>"
+                          +"  <td style='padding-right: 75px; padding-left: 115px;'>"
+                            +"    <div id='collapseme' style='text-align: right;' class='collapse fas fa-pen  w3-large'> Description </div>"
+                          +"<td >"
+                            +"<div id='collapseme'  class='collapse'>TeeHedjlasjfdajdlkja;je</div>"
+                       +" </tr>"
+                      +"</table> "
+                      +"  </td>"
+
+tabl.appendChild(dispRow);
+}
+
+function loadMess(tabname)
+{
+
+  const tabl = document.getElementById(tabname);
+
+  var dispRow = document.createElement("tr");
+
+  dispRow.setAttribute("for", 'collapseme');
+  dispRow.setAttribute('data-toggle','collapse');
+  dispRow.setAttribute('href','#collapseme');
+  dispRow.setAttribute('aria-expanded','true');
+  dispRow.setAttribute('aria-controls','collapseme');
+  dispRow.setAttribute('class','collapsed w3-large w3-text-blue-grey');
+  
+  dispRow.innerHTML = "<td><i class='fas fa-utensils w3-large'>  Mess </i></td>"
+                      + "<td><i class='far fa-calendar-plus'> <b> 12-19-1999</b></i></td>"
+                      + "<td><i class='fas fa-pen'> jadkljafdjljasfjd;</i></td>"
+                      +"<td><b>pending</b> </td>";
+                          
+ tabl.appendChild(dispRow);
+
+ dispRow = document.createElement('tr');
+
+ dispRow.setAttribute('style',"background-color: #f1f1f1;");
+ dispRow.setAttribute('class',"w3-text-blue-grey")
+
+ dispRow.innerHTML =   "<td colspan='4'>"
+                      +"<table id='collapseme' style='border: none;' class='collapse'>"
+                        +"<tr>"
+                        +"  <td style='padding-right: 155px; padding-left: 115px;'>"
+                          +"  <div id='collapseme' style='text-align: right;' class='collapse fa fa-signature w3-large'> Mess Name </div>"
+                          +"</td>"
+                          +"<td >"
+                           +" <div id='collapseme'  class='collapse'>TeeHee</div>"
+                        +"</tr>"
+                        +"<tr>"
+                          +"  <td style='padding-right: 155px; padding-left: 115px;'>"
+                            +"    <div id='collapseme' style='text-align: right;' class='collapse fas fa-chevron-circle-down w3-large'>"
+                            +"  Related To </div>"
+                          +"<td >"
+                           +" <div id='collapseme'  class='collapse'>TeeHee</div>"
+                        +"</tr>"
+                        +"<tr>"
+                          +"  <td style='padding-right: 155px; padding-left: 115px;'>"
+                            +"    <div id='collapseme' style='text-align: right;' class='collapse fas fa-pen  w3-large'> Description </div>"
+                          +"<td >"
+                            +"<div id='collapseme'  class='collapse'>TeeHedjlasjfdajdlkja;je</div>"
+                       +" </tr>"
+                      +"</table> "
+                      +"  </td>"
+
+
+tabl.appendChild(dispRow);
+
+}
+
+
+function loadFaculty(tabname)
+{
+
+  const tabl = document.getElementById(tabname);
+
+  var dispRow = document.createElement("tr");
+
+  dispRow.setAttribute("for", 'collapseme');
+  dispRow.setAttribute('data-toggle','collapse');
+  dispRow.setAttribute('href','#collapseme');
+  dispRow.setAttribute('aria-expanded','true');
+  dispRow.setAttribute('aria-controls','collapseme');
+  dispRow.setAttribute('class','collapsed w3-large');
+  dispRow.setAttribute('style','color:#2e005e');  
+  
+  dispRow.innerHTML = "<td><i class='fas fa-chalkboard-teacher w3-large'>  Faculty </i></td>"
+                      + "<td><i class='far fa-calendar-plus'> <b> 12-19-1999</b></i></td>"
+                      + "<td><i class='fas fa-pen'> jadkljafdjljasfjd;</i></td>"
+                      +"<td><b>pending</b> </td>";
+                          
+ tabl.appendChild(dispRow);
+
+ dispRow = document.createElement('tr');
+
+ dispRow.setAttribute('style',"background-color:#f1f1f1; color:#2e005e; ");
+ //dispRow.setAttribute('class',"w3-text-deep-purple");
+//  e
+ dispRow.innerHTML =   "<td colspan='4'>"
+                      +"<table id='collapseme' style='border: none;' class='collapse'>"
+                        +"<tr>"
+                        +"  <td style='padding-right: 155px; padding-left: 115px;'>"
+                          +"  <div id='collapseme' style='text-align: right;' class='collapse fa fa-signature w3-large'> Professor's Name </div>"
+                          +"</td>"
+                          +"<td >"
+                           +" <div id='collapseme'  class='collapse'>TeeHee</div>"
+                        +"</tr>"
+                        +"<tr>"
+                          +"  <td style='padding-right: 155px; padding-left: 115px;'>"
+                            +"    <div id='collapseme' style='text-align: right;' class='collapse fas fa-chevron-circle-down w3-large'>"
+                            +"  Department </div>"
+                          +"<td >"
+                           +" <div id='collapseme'  class='collapse'>TeeHee</div>"
+                        +"</tr>"
+                        +"<tr>"
+                          +"  <td style='padding-right: 155px; padding-left: 115px;'>"
+                            +"    <div id='collapseme' style='text-align: right;' class='collapse fas fa-pen  w3-large'> Description </div>"
+                          +"<td >"
+                            +"<div id='collapseme'  class='collapse'>TeeHedjlasjfdajdlkja;je</div>"
+                       +" </tr>"
+                      +"</table> "
+                      +"  </td>"
+
+
+tabl.appendChild(dispRow);
+
+}
+
+
+function loadLab(tabname)
+{
+
+  const tabl = document.getElementById(tabname);
+
+  var dispRow = document.createElement("tr");
+
+  dispRow.setAttribute("for", 'collapseme');
+  dispRow.setAttribute('data-toggle','collapse');
+  dispRow.setAttribute('href','#collapseme');
+  dispRow.setAttribute('aria-expanded','true');
+  dispRow.setAttribute('aria-controls','collapseme');
+  dispRow.setAttribute('class','collapsed w3-large');
+  dispRow.setAttribute('style','color:#783612');  
+  
+  dispRow.innerHTML = "<td><i class='fas fa-flask w3-large'>  Lab </i></td>"
+                      + "<td><i class='far fa-calendar-plus'> <b> 12-19-1999</b></i></td>"
+                      + "<td><i class='fas fa-pen'> jadkljafdjljasfjd;</i></td>"
+                      +"<td><b>pending</b> </td>";
+                          
+ tabl.appendChild(dispRow);
+
+ dispRow = document.createElement('tr');
+
+ dispRow.setAttribute('style',"background-color:#f1f1f1; color:#783612; ");
+ //dispRow.setAttribute('class',"w3-text-deep-purple");
+//  e
+ dispRow.innerHTML =   "<td colspan='4'>"
+                      +"<table id='collapseme' style='border: none;' class='collapse'>"
+                        +"<tr>"
+                        +"  <td style='padding-right: 155px; padding-left: 115px;'>"
+                          +"  <div id='collapseme' style='text-align: right;' class='collapse fa fa-signature w3-large'> Lab's Name </div>"
+                          +"</td>"
+                          +"<td >"
+                           +" <div id='collapseme'  class='collapse'>TeeHee</div>"
+                        +"</tr>"
+                        +"<tr>"
+                          +"  <td style='padding-right: 155px; padding-left: 115px;'>"
+                            +"    <div id='collapseme' style='text-align: right;' class='collapse fas fa-chevron-circle-down w3-large'>"
+                            +"  Department </div>"
+                          +"<td >"
+                           +" <div id='collapseme'  class='collapse'>TeeHee</div>"
+                        +"</tr>"
+                        +"<tr>"
+                          +"  <td style='padding-right: 155px; padding-left: 115px;'>"
+                            +"    <div id='collapseme' style='text-align: right;' class='collapse fas fa-pen  w3-large'> Description </div>"
+                          +"<td >"
+                            +"<div id='collapseme'  class='collapse'>TeeHedjlasjfdajdlkja;je</div>"
+                       +" </tr>"
+                      +"</table> "
+                      +"  </td>"
+
+
+tabl.appendChild(dispRow);
+
+}
+
+function loadLib(tabname)
+{
+
+  const tabl = document.getElementById(tabname);
+
+  var dispRow = document.createElement("tr");
+
+  dispRow.setAttribute("for", 'collapseme');
+  dispRow.setAttribute('data-toggle','collapse');
+  dispRow.setAttribute('href','#collapseme');
+  dispRow.setAttribute('aria-expanded','true'); 
+  dispRow.setAttribute('aria-controls','collapseme');
+  dispRow.setAttribute('class','collapsed w3-large');
+  dispRow.setAttribute('style','color:#8c6d81');  
+
+  
+  dispRow.innerHTML = "<td><i class='fas fa-utensils w3-large'>  Library </i></td>"
+                      + "<td><i class='far fa-calendar-plus'> <b> 12-19-1999</b></i></td>"
+                      + "<td><i class='fas fa-pen'> jadkljafdjljasfjd;</i></td>"
+                      +"<td><b>pending</b> </td>";
+                          
+ tabl.appendChild(dispRow);
+
+ dispRow = document.createElement('tr');
+
+ dispRow.setAttribute('style',"background-color: #f1f1f1; color:#8c6d81;");
+
+
+ dispRow.innerHTML =   "<td colspan='4'>"
+                      +"<table id='collapseme' style='border: none;' class='collapse'>"
+                        +"<tr>"
+                          +"  <td style='padding-right: 155px; padding-left: 115px;'>"
+                            +"    <div id='collapseme' style='text-align: right;' class='collapse fas fa-chevron-circle-down w3-large'>"
+                            +"  Related To </div>"
+                          +"<td >"
+                           +" <div id='collapseme'  class='collapse'>TeeHee</div>"
+                        +"</tr>"
+                        +"<tr>"
+                          +"  <td style='padding-right: 155px; padding-left: 115px;'>"
+                            +"    <div id='collapseme' style='text-align: right;' class='collapse fas fa-pen  w3-large'> Description </div>"
+                          +"<td >"
+                            +"<div id='collapseme'  class='collapse'>TeeHedjlasjfdajdlkja;je</div>"
+                       +" </tr>"
+                      +"</table> "
+                      +"  </td>"
+
+
+tabl.appendChild(dispRow);
+
+}
+
+function loadAll(tabname)
+{
+  loadHostel(tabname);
+  loadFees(tabname);
+  loadMess(tabname);
+  loadFaculty(tabname);
+  loadLab(tabname);
+  loadLib(tabname);
+}
+
+// $('#collapseme').on('hidden.bs.collapse',function() {
+//   alert('HelloWOrld');});
+
+  // <tr for='collapseme' data-toggle='collapse' href='#collapseme' aria-expanded='true'
+  //aria-controls='collapseme' class='collapsed w3-large w3-text-blue'>
