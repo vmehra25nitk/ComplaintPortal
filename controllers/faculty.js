@@ -6,7 +6,12 @@ const Complaint = require('../models/complaint');
 
  exports.createFacultyComplaint = (type,cid,name,department)=>{
 
-    Faculty.create({type:type, complaintCid:cid, name:name, department: department})
+    Faculty.create({
+        type:type, 
+        complaintCid:cid,
+        name:name,
+        department: department
+    })
     .then(result=>{
         console.log("Faculty added\n"+result);
     })

@@ -1,6 +1,7 @@
 /*jshint esversion: 6 */
 
 const Student = require('../models/authStudent');
+const Complaint = require('../models/complaint');
 
 const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
@@ -45,16 +46,10 @@ exports.signUp = (req, res) => {
                         hostel: hostel,
                         password: hashedPassword
                     }).then(result => {
-                        transporter.sendMail({
-                            to: email,
-                            from: 'complaintPortal@nodejs.com',
-                            subject: 'SignUp Succeeded',
-                            html: '<h1>You are signed up</h1>'
-                        }).then(() => {
-                            res.redirect('/studentSignUp');
-                        })
+                        res.redirect('/studentSignIn')
                     })
                     .catch(err => {
+                        res.redirect('/studentSignUp')
                         res.send(err);
                     });
             });
@@ -75,6 +70,10 @@ exports.signIn = (req, res) => {
     const sid = req.body.sid;
     const password = req.body.password;
 
+    if(req.session.isLoggedIn && req.session.isStudent){
+        res.redirect('/studentHomePage');
+    }
+
     Student.findByPk(sid)
         .then(student => {
             bcrypt.compare(password, student.password)
@@ -84,12 +83,13 @@ exports.signIn = (req, res) => {
                         req.session.isLoggedIn = true;
                         req.session.isStudent = true;
                         req.session.isAdmin = false;
-                        req.session.cookie.maxAge = 60 * 60 * 24;
+                        req.session.sid = sid;
+                        req.session.cookie.maxAge = 24 * 60 * 60 * 1000;
                         console.log(req.session);
-                        res.send('OK');
+                        res.redirect('/studentHomePage');
                     } else {
-                        console.log('Incorrect Password');
-                        res.send('Incorrect Password');
+                        alert('Incorrect Password');
+                        res.redirect('/studentSignIn');
                     }
                 })
                 .catch(err => {
@@ -98,6 +98,7 @@ exports.signIn = (req, res) => {
                 });
         })
         .catch(err => {
+            res.redirect('/studentSignIn');
             res.send(err);
         });
 
@@ -116,6 +117,14 @@ exports.getStudentSignUp = (req, res) => {
     res.render("signUpStudent", {
         pageTitle: "Sign Up"
     });
+}
+
+exports.getStudentHomePage = (req, res) => {
+    if(req.session.isLoggedIn && req.session.isStudent){
+        res.render('home');
+    }else{
+        res.redirect('/');
+    }
 }
 
 
@@ -169,3 +178,29 @@ exports.postResetStudentPassword = (req, res) => {
         }
     })
 };  
+
+
+
+exports.getStudentPendingComplaint = (req, res) => {
+    const sid = req.body.sid;
+    Student.findByPk(sid)
+    .then(() => {
+        Complaint.findAll({
+            include: [
+                {
+                    studentSid: sid
+                }
+            ]
+        })
+        .then({
+
+        });
+    });
+}
+
+exports.signOutStudent = (req, res) => {
+    const sid = req.session.sid;
+    req.session.destroy();
+    console.log(req.session);
+    res.redirect('/studentSignIn');
+}

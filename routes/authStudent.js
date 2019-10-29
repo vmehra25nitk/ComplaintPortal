@@ -18,9 +18,12 @@ router.get('/studentSignIn', authStudentController.getStudentSignIn);
 
 router.get('/studentSignUp', authStudentController.getStudentSignUp);
 
+router.get('/studentHomePage', authStudentController.getStudentHomePage);
+
 router.get('/studentResetPassword', authStudentController.getResetStudentPassword);
 
 router.post('/studentResetPassword', authStudentController.postResetStudentPassword);
 
+router.post('/signOutStudent', authStudentController.signOutStudent);
 
 module.exports = router;

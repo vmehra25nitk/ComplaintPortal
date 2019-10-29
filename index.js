@@ -11,6 +11,8 @@ const sequelize = require('./util/database');
 
 const app = express();
 
+require('dotenv').config();
+
 const studentRoutes = require('./routes/student');
 const complaintRoutes = require('./routes/complaint');
 const authStudentRoutes = require('./routes/authStudent');
@@ -22,20 +24,22 @@ const feesRoutes = require('./routes/fees');
 const hostelRoutes = require('./routes/hostel');
 const libraryRoutes = require('./routes/library');
 const testRoutes = require('./routes/test');
+const adminRoutes = require('./routes/admin');
 
 
-app.use(bodyParser.urlencoded({
-    extended: false
-}));
-app.use(express.static("public"));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'Webpages')));
 app.set('view engine', 'ejs');
+app.set('views', 'views');
+
 
 
 app.use(session({
-    secret: 'thisisarandomtext',
+    secret: 'pT',
     resave: false,
     saveUninitialized: false,
-    maxAge: 60
+    maxAge: 60 * 60 * 24
 }));
 app.use(studentRoutes);
 app.use(complaintRoutes);
@@ -47,14 +51,17 @@ app.use(feesRoutes);
 app.use(hostelRoutes);
 app.use(libraryRoutes);
 app.use(testRoutes);
+app.use(adminRoutes);
 
 
 app.get("/", function (req, res) {
     if(req.session.isLoggedIn){
         if(req.session.isStudent){
-            res.send('Logged in as Student');
+            res.redirect('/studentHomePage');
         }else{
-            res.send('Logged in as Admin');
+            res.render("mainLogin", {
+                pageTitle: "Home"
+            })
         }
     }else{
         res.render("mainLogin", {

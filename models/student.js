@@ -14,7 +14,7 @@ const Student = sequelize.define('student', {
     },
     lastName: {
         type: Sequelize.STRING,
-        allowNull:false
+        allowNull: false
     },
     email: {
         type: Sequelize.STRING,
@@ -24,24 +24,24 @@ const Student = sequelize.define('student', {
         type: Sequelize.INTEGER,
         allowNull: false
     },
-    
-    
-        room: {
-            type: Sequelize.STRING,
-            allowNull: false
-        },
-        branch: {
-            type: Sequelize.ENUM,
-            values: ['cse','it','ece','eee','min','mec','met','civ','che'],
-            allowNull: false
-        },
-        hostel: {
-            type: Sequelize.ENUM,
-            values:['1','2','3','4','5','6','7','8','mt1','mt2','mt3'],
-            allowNull: false
-        }
-    
-    });
+
+
+    room: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    branch: {
+        type: Sequelize.ENUM,
+        values: ['cse', 'it', 'ece', 'eee', 'min', 'mec', 'met', 'civ', 'che'],
+        allowNull: false
+    },
+    hostel: {
+        type: Sequelize.ENUM,
+        values: ['1', '2', '3', '4', '5', '6', '7', '8', 'mt1', 'mt2', 'mt3'],
+        allowNull: false
+    }
+
+});
 
 
 

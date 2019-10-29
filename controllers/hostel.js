@@ -4,9 +4,13 @@ const Complaint = require('../models/complaint');
 
 // CREATE
 
- exports.createHostelComplaint = (type,cid)=>{
+ exports.createHostelComplaint = (type, cid, name)=>{
 
-    Hostel.create({type:type, complaintCid:cid})
+    Hostel.create({
+        type:type,
+        complaintCid:cid,
+        name:name
+    })
     .then(result=>{
         console.log("Hostel added\n"+result);
     })

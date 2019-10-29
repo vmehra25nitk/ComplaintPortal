@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 
 const sequelize = require('../util/database');
 
-const Student = require('./student');
+const Student = require('./authStudent');
 
 
 
@@ -22,7 +22,7 @@ const Complaint = sequelize.define('complaint', {
         allowNull: false,
         primaryKey: true
     },
-    status: {
+    category: {
         type: Sequelize.ENUM,
         values: ['faculty','fees','hostel','lab','library','mess'],
         allowNull: false
@@ -35,7 +35,7 @@ const Complaint = sequelize.define('complaint', {
         type: Sequelize.DATE,
         allowNull: true
     },
-    category: {
+    type: {
         type: Sequelize.ENUM,
         values: ['gen','per'],
         allowNull: false
@@ -55,6 +55,9 @@ const Complaint = sequelize.define('complaint', {
             model: Student,
             key: 'sid'
         }
+    },
+    status: {
+        type: Sequelize.STRING
     }
 
 

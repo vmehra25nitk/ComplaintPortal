@@ -4,9 +4,13 @@ const Complaint = require('../models/complaint');
 
 // CREATE
 
- exports.createMessComplaint = (type,cid)=>{
+ exports.createMessComplaint = (type, cid, messName)=>{
 
-    Mess.create({type:type, complaintCid:cid})
+    Mess.create({
+        type:type,
+        complaintCid:cid,
+        messName: messName
+    })
     .then(result=>{
         console.log("Mess added\n"+result);
     })

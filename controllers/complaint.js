@@ -5,28 +5,46 @@ const ComplaintCreateDetector = require('./complaintTypeDetect/createComplaintDe
 
 
 exports.createComplaint = function (req, res)  {
+    
+    req.body.studentSid = req.session.sid;
+    var complaintType = "";
+    if(req.body.general === "personal"){
+        complaintType = 'per';
+    }else{
+        complaintType = 'gen';
+    }
+    req.body.type = complaintType;
+    req.body.cid = Date.now();
+    req.body.startDate = req.body.cid;  req.body.endDate = req.body.startDate;
+    req.body.status = "unsolved";
+    req.body.solvedBy = '';
+
     const cid = req.body.cid;
     const status = req.body.status;
-    const startDate = req.body.startDate;
-    const endDate = req.body.endDate;
+    const startDate = req.body.cid;
+    const endDate = req.body.cid;
     const category = req.body.category;
     const description = req.body.description;
     const solvedBy = req.body.solvedBy;
     const studentSid = req.body.studentSid;
+    const type = req.body.type;
     const request = req.body;
 
+    console.log(req.body);
 
     Complaint.create({
             cid: cid,
             startDate: startDate,
-            status: status,
+            status: "pending",
             endDate: endDate,
             category: category,
             description: description,
             solvedBy: solvedBy,
-            studentSid: studentSid
+            studentSid: studentSid,
+            type: type
         })
         .then(result => {
+            res.send(result);
                 console.log(req.body.category);
 
                 var status = false;

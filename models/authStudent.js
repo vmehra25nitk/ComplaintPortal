@@ -33,11 +33,13 @@ const authStudent = sequelize.define('authStudent', {
         allowNull: false
     },
     branch: {
-        type: Sequelize.STRING,
+        type: Sequelize.ENUM,
+        values: ['cse', 'it', 'ece', 'eee', 'min', 'mec', 'met', 'civ', 'che'],
         allowNull: false
     },
     hostel: {
-        type: Sequelize.STRING,
+        type: Sequelize.ENUM,
+        values: ['1', '2', '3', '4', '5', '6', '7', '8', 'mt1', 'mt2', 'mt3'],
         allowNull: false
     },
     password: {
