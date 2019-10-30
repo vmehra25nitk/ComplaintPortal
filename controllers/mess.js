@@ -32,7 +32,8 @@ exports.readMessComplaint = (req, res) => {
     const sid = req.body.sid;
     Complaint.findAll({
             where: {
-                studentSid: sid
+                //studentSid: sid
+                category: 'mess'
             },
             include:[{
                 model: Mess,

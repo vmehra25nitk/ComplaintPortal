@@ -30,8 +30,11 @@
 //Open the file boxes
 function openBlock(prefix)
 {
+    var tabname = 'Hostel';
+    if(prefix != '')
+    tabname = prefix;
 
-    openLink(event, 'Hostel'+prefix,prefix+'tablink',prefix+'myLink');
+    openLink(event, tabname,prefix+'tablink',prefix+'myLink');
     try{
     var form = document.getElementById(prefix+'Complaints');//.style.display('block');
     form.style.display = 'block';
@@ -56,13 +59,30 @@ function openLink(evt, linkName,tablink,mylink) {
     }
     tablinks = document.getElementsByClassName(tablink);
     for (i = 0; i < x.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" w3-grey", "");
+      tablinks[i].className = tablinks[i].className.replace(" w3-blue-grey", "");
+      
     }
     document.getElementById(linkName).style.display = "block";
-    document.getElementById(linkName+"Btn").className += " w3-grey";
+     document.getElementById(linkName+"Btn").className += " w3-blue-grey";
+    
   }
 
 //open boxes over
+
+
+//Restrict future dates
+
+function restrictFutureDate(status)
+{
+  var now = new Date(),
+    minDate = now.toISOString().substring(0,10);
+    
+    document.getElementById(status+'ToDate').setAttribute('max',minDate);
+    document.getElementById(status+'FromDate').setAttribute('max',minDate);
+
+}
+
+//Restrict future dates over
 
   //Dropdown menu
 function whatChecked(that,othName)
@@ -243,27 +263,27 @@ function compSubmit(type)
 var iter =0;
 function loadHostel(tabname, obj){
 
-  obj = {
-          cid : '12',
-          category:'hostel',
-          startDate:'2010-12-12',
-          type:'gen',
-          description: 'djljfjfdfjlfjfjafajfsdfjafkl;asjflsjf',
-          status: 'solved',
-          hostel:{
-                    name: '4',
-                    type: 'electrical'
-                 }
-        }
+  // obj = {
+  //         cid : '12',
+  //         category:'hostel',
+  //         startDate:'2010-12-12',
+  //         type:'gen',
+  //         description: 'djljfjfdfjlfjfjafajfsdfjafkl;asjflsjf',
+  //         status: 'solved',
+  //         hostel:{
+  //                   name: '4',
+  //                   type: 'electrical'
+  //                }
+  //       }
 
   var status = obj.status;
   if(status == "pending")
   {
-    status = "<i class='fas fa-clock' style='color:orange'> "+status+"</i>"
+    status = "<i class='fas fa-clock' class='w3-blue-grey'> </i>"
   }
   if(status == "solved")
   {
-    status = "<i class='fas fa-check-circle' style='color:green'> "+status+"</i>"
+    status = "<i class='fas fa-check-circle' class='w3-blue-grey'> </i>"
   }
   var collapseme = 'coll'+obj.cid;
 
@@ -277,7 +297,7 @@ function loadHostel(tabname, obj){
   dispRow.setAttribute('href','#'+ collapseme);
   dispRow.setAttribute('aria-expanded','true');
   dispRow.setAttribute('aria-controls','"+collapseme+"');
-  dispRow.setAttribute('class','collapsed w3-large w3-text-blue');
+  dispRow.setAttribute('class','collapsed w3-large w3-text-blue-grey');
   
         
   dispRow.innerHTML = "<td><i class='fas fa-hotel w3-large'> Hostel </i></td>"
@@ -290,7 +310,7 @@ function loadHostel(tabname, obj){
  dispRow = document.createElement('tr');
 
  dispRow.setAttribute('style',"background-color: #f1f1f1;");
- dispRow.setAttribute('class',"w3-text-blue")
+ dispRow.setAttribute('class','w3-text-blue-grey')
 
  dispRow.innerHTML =  "<td colspan='4'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
@@ -320,30 +340,30 @@ function loadHostel(tabname, obj){
 tabl.appendChild(dispRow);
 }
 
-
+//Fees
 function loadFees(tabname,obj)
 {
 
-  obj = {
-          cid : '13',
-          category:'hostel',
-          startDate:'2010-12-12',
-          type:'gen',
-          description: 'djljfjfdfjlfjfjafajfsdfjafkl;asjflsjf',
-          status: 'solved',
-          fees:{
-                    type: 'electrical'
-                 }
-        }
+  // obj = {
+  //         cid : '13',
+  //         category:'hostel',
+  //         startDate:'2010-12-12',
+  //         type:'gen',
+  //         description: 'djljfjfdfjlfjfjafajfsdfjafkl;asjflsjf',
+  //         status: 'solved',
+  //         fees:{
+  //                   type: 'electrical'
+  //                }
+  //       }
 
   var status = obj.status;
   if(status == "pending")
   {
-    status = "<i class='fas fa-clock' style='color:orange'> "+status+"</i>"
+    status = "<i class='fas fa-clock' class='w3-blue-grey'> </i>"
   }
   if(status == "solved")
   {
-    status = "<i class='fas fa-check-circle' style='color:green'> "+status+"</i>"
+    status = "<i class='fas fa-check-circle' class='w3-blue-grey'> </i>"
   }
   var collapseme = 'coll'+obj.cid;
 
@@ -357,7 +377,7 @@ function loadFees(tabname,obj)
   dispRow.setAttribute('href','#'+collapseme);
   dispRow.setAttribute('aria-expanded','true');
   dispRow.setAttribute('aria-controls','"+collapseme+"');
-  dispRow.setAttribute('class','collapsed w3-large w3-text-teal');
+  dispRow.setAttribute('class','collapsed w3-large w3-text-blue-grey');
   
   dispRow.innerHTML = "<td><i class='fas fa-rupee-sign w3-large'> Fees </i></td>"
                       + "<td><i class='far fa-calendar-plus'> <b> "+obj.startDate+"</b></i></td>"
@@ -369,7 +389,7 @@ function loadFees(tabname,obj)
  dispRow = document.createElement('tr');
 
  dispRow.setAttribute('style',"background-color: #f1f1f1;");
- dispRow.setAttribute('class',"w3-text-teal")
+ dispRow.setAttribute('class','w3-text-blue-grey')
 
  dispRow.innerHTML =  "<td colspan='4'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
@@ -384,31 +404,31 @@ function loadFees(tabname,obj)
 
 tabl.appendChild(dispRow);
 }
-
+//Mess
 function loadMess(tabname,obj)
 {
 
-  obj = {
-          cid : '14',
-          category:'hostel',
-          startDate:'2010-12-12',
-          type:'gen',
-          description: 'djljfjfdfjlfjfjafajfsdfjafkl;asjflsjf',
-          status: 'solved',
-          mess:{
-                    type: 'food',
-                    messName: '4'
-                 }
-        }
+  // obj = {
+  //         cid : '14',
+  //         category:'hostel',
+  //         startDate:'2010-12-12',
+  //         type:'gen',
+  //         description: 'djljfjfdfjlfjfjafajfsdfjafkl;asjflsjf',
+  //         status: 'solved',
+  //         mess:{
+  //                   type: 'food',
+  //                   messName: '4'
+  //                }
+  //       }
 
   var status = obj.status;
   if(status == "pending")
   {
-    status = "<i class='fas fa-clock' style='color:orange'> "+status+"</i>"
+    status = "<i class='fas fa-clock' class='w3-blue-grey'> </i>"
   }
   if(status == "solved")
   {
-    status = "<i class='fas fa-check-circle' style='color:green'> "+status+"</i>"
+    status = "<i class='fas fa-check-circle' class='w3-blue-grey'> </i>"
   }
   var collapseme = 'coll'+obj.cid;
 
@@ -466,31 +486,31 @@ tabl.appendChild(dispRow);
 
 }
 
-
+//Faculty
 function loadFaculty(tabname,obj)
 {
 
-    obj = {
-      cid : '15',
-      category:'hostel',
-      startDate:'2010-12-12',
-      type:'gen',
-      description: 'djljfjfdfjlfjfjafajfsdfjafkl;asjflsjf',
-      status: 'solved',
-      faculty:{
-                department:'cse',
-                name: 'dkaf'
-            }
-    }
+    // obj = {
+    //   cid : '15',
+    //   category:'hostel',
+    //   startDate:'2010-12-12',
+    //   type:'gen',
+    //   description: 'djljfjfdfjlfjfjafajfsdfjafkl;asjflsjf',
+    //   status: 'solved',
+    //   faculty:{
+    //             department:'cse',
+    //             name: 'dkaf'
+    //         }
+    // }
 
   var status = obj.status;
   if(status == "pending")
   {
-  status = "<i class='fas fa-clock' style='color:orange'> "+status+"</i>"
+  status = "<i class='fas fa-clock' class='w3-blue-grey'> </i>"
   }
   if(status == "solved")
   {
-  status = "<i class='fas fa-check-circle' style='color:green'> "+status+"</i>"
+  status = "<i class='fas fa-check-circle' class='w3-blue-grey'> </i>"
   }
   var collapseme = 'coll'+obj.cid;
 
@@ -504,8 +524,8 @@ function loadFaculty(tabname,obj)
   dispRow.setAttribute('href','#'+collapseme);
   dispRow.setAttribute('aria-expanded','true');
   dispRow.setAttribute('aria-controls',collapseme);
-  dispRow.setAttribute('class','collapsed w3-large');
-  dispRow.setAttribute('style','color:#2e005e');  
+  dispRow.setAttribute('class','collapsed w3-large w3-text-blue-grey');
+  //dispRow.setAttribute('style','color:#2e005e');  
   
   dispRow.innerHTML = "<td><i class='fas fa-chalkboard-teacher w3-large'>  Faculty </i></td>"
                        + "<td><i class='far fa-calendar-plus'> <b> "+obj.startDate+"</b></i></td>"
@@ -516,8 +536,8 @@ function loadFaculty(tabname,obj)
 
  dispRow = document.createElement('tr');
 
- dispRow.setAttribute('style',"background-color:#f1f1f1; color:#2e005e; ");
- //dispRow.setAttribute('class',"w3-text-deep-purple");
+ dispRow.setAttribute('style',"background-color:#f1f1f1;");// color:#2e005e; ");
+ dispRow.setAttribute('class',"w3-text-blue-grey");
 //  e
  dispRow.innerHTML =   "<td colspan='4'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
@@ -549,31 +569,31 @@ tabl.appendChild(dispRow);
 
 }
 
-
+//Lab
 function loadLab(tabname,obj)
 {
 
-  obj = {
-      cid : '16',
-      category:'hostel',
-      startDate:'2010-12-12',
-      type:'gen',
-      description: 'djljfjfdfjlfjfjafajfsdfjafkl;asjflsjf',
-      status: 'solved',
-      lab:{
-                department:'cse',
-                name: 'dkaf'
-            }
-    }
+  // obj = {
+  //     cid : '16',
+  //     category:'hostel',
+  //     startDate:'2010-12-12',
+  //     type:'gen',
+  //     description: 'djljfjfdfjlfjfjafajfsdfjafkl;asjflsjf',
+  //     status: 'solved',
+  //     lab:{
+  //               department:'cse',
+  //               name: 'dkaf'
+  //           }
+  //   }
 
   var status = obj.status;
   if(status == "pending")
   {
-  status = "<i class='fas fa-clock' style='color:orange'> "+status+"</i>"
+  status = "<i class='fas fa-clock' class='w3-blue-grey'> </i>"
   }
   if(status == "solved")
   {
-  status = "<i class='fas fa-check-circle' style='color:green'> "+status+"</i>"
+  status = "<i class='fas fa-check-circle' class='w3-blue-grey'> </i>"
   }
   var collapseme = 'coll'+obj.cid;
   
@@ -587,8 +607,8 @@ function loadLab(tabname,obj)
   dispRow.setAttribute('href','#'+collapseme);
   dispRow.setAttribute('aria-expanded','true');
   dispRow.setAttribute('aria-controls',collapseme);
-  dispRow.setAttribute('class','collapsed w3-large');
-  dispRow.setAttribute('style','color:#783612');  
+  dispRow.setAttribute('class','collapsed w3-large w3-text-blue-grey');
+  //dispRow.setAttribute('style','color:#783612');  
   
   dispRow.innerHTML = "<td><i class='fas fa-flask w3-large'>  Lab </i></td>"
                        + "<td><i class='far fa-calendar-plus'> <b> "+obj.startDate+"</b></i></td>"
@@ -599,8 +619,8 @@ function loadLab(tabname,obj)
 
  dispRow = document.createElement('tr');
 
- dispRow.setAttribute('style',"background-color:#f1f1f1; color:#783612; ");
- //dispRow.setAttribute('class',"w3-text-deep-purple");
+ dispRow.setAttribute('style',"background-color:#f1f1f1;");// color:#783612; ");
+ dispRow.setAttribute('class',"w3-text-blue-grey");
 //  e
  dispRow.innerHTML =   "<td colspan='4'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
@@ -631,30 +651,30 @@ function loadLab(tabname,obj)
 tabl.appendChild(dispRow);
 
 }
-
+//Lib
 function loadLib(tabname,obj)
 {
 
-  obj = {
-      cid : '17',
-      category:'hostel',
-      startDate:'2010-12-12',
-      type:'gen',
-      description: 'djljfjfdfjlfjfjafajfsdfjafkl;asjflsjf',
-      status: 'solved',
-      library:{
-                type:'books'
-            }
-    }
+  // obj = {
+  //     cid : '17',
+  //     category:'hostel',
+  //     startDate:'2010-12-12',
+  //     type:'gen',
+  //     description: 'djljfjfdfjlfjfjafajfsdfjafkl;asjflsjf',
+  //     status: 'pending',
+  //     library:{
+  //               type:'books'
+  //           }
+  //   }
 
   var status = obj.status;
   if(status == "pending")
   {
-  status = "<i class='fas fa-clock' style='color:orange'> "+status+"</i>"
+  status = "<i class='fas fa-clock' class='w3-blue-grey'> </i>"
   }
   if(status == "solved")
   {
-  status = "<i class='fas fa-check-circle' style='color:green'> "+status+"</i>"
+  status = "<i class='fas fa-check-circle' class='w3-blue-grey'> </i>"
   }
   var collapseme = 'coll'+obj.cid;
 
@@ -668,8 +688,8 @@ function loadLib(tabname,obj)
   dispRow.setAttribute('href','#'+collapseme);
   dispRow.setAttribute('aria-expanded','true'); 
   dispRow.setAttribute('aria-controls',collapseme);
-  dispRow.setAttribute('class','collapsed w3-large');
-  dispRow.setAttribute('style','color:#8c6d81');  
+  dispRow.setAttribute('class','collapsed w3-large w3-text-blue-grey');
+  //dispRow.setAttribute('style','color:#8c6d81');  
 
   
   dispRow.innerHTML = "<td><i class='fas fa-utensils w3-large'>  Library </i></td>"
@@ -681,8 +701,8 @@ function loadLib(tabname,obj)
 
  dispRow = document.createElement('tr');
 
- dispRow.setAttribute('style',"background-color: #f1f1f1; color:#8c6d81;");
-
+ //dispRow.setAttribute('style',"background-color: #f1f1f1; color:#8c6d81;");
+   dispRow.setAttribute('class','w3-text-blue-grey');
 
  dispRow.innerHTML =   "<td colspan='4'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
@@ -707,14 +727,77 @@ tabl.appendChild(dispRow);
 
 }
 
-function loadAll(tabname)
+// Loading Complaints
+function loadComplaints(status)
 {
-  loadHostel(tabname,null);
-  loadFees(tabname,null);
-  loadMess(tabname,null);
-  loadFaculty(tabname,null);
-  loadLab(tabname,null);
-  loadLib(tabname,null);
+  var type = document.querySelector('input[name="'+status+'Cat"]:checked').value;
+  const category = document.getElementById(status+'Select').value;
+  
+  const fromDate = document.getElementById(status+'FromDate').value;  
+  const toDate = document.getElementById(status+'ToDate').value;  
+
+  if(toDate==""|| fromDate=="" || (fromDate)> (toDate))
+  document.getElementById(status+'Warning').innerHTML = 'Please select correct dates';
+  else
+  document.getElementById(status+'Warning').innerHTML = '';
+ 
+  type = type.substring(0,3);
+  console.log(type);
+  const obj = {
+                type: type.substring(0.3),
+                category : category,
+                fromDate : fromDate,
+                toDate : toDate,
+                status : status
+              } 
+ 
+ 
+  console.log(obj);
+  const url = 'http://localhost:3000/testing';
+  $.post(url,obj,function(data,status)
+  {
+    console.log(data);
+    
+      for(var i=0;i<data.length;i++)
+      {
+        loadFees('feedTable',data[i]);
+      }
+    
+  });
+
+
+ 
+
+}
+
+function loadAll(data,status)
+{
+  console.log(status);
+  if(status==200)
+  {
+    for(var i=0;i<data.length;i++)
+    {
+      loadFees('feedTable',data[i]);
+    }
+  }
+}
+
+
+//Loading Complaints Over
+
+function getData()
+{
+  const httx = new XMLHttpRequest();
+  const url = "http://localhost:3000/readFaculty";
+  httx.open('GET',url,false);
+  httx.send();
+  
+  httx.onreadystatechange = ()=>{
+   
+   console.log((httx.response));
+   if (httx.readyState == 4 && httx .status == 200)
+    loadFaculty('feedTable',JSON.parse(httx.response)[0]);
+  }
 }
 
 // $('#"+collapseme+"').on('hidden.bs.collapse',function() {

@@ -18,9 +18,9 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
   integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" /> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />  -->
 
 
 <!-- Bootstrap Over -->
@@ -99,7 +99,7 @@
         <h4>File Complaint</h4>
       </div>
     </div>
-    <div class="w3-quarter" onclick="openBlock('Pending');">
+    <div class="w3-quarter" onclick="openBlock('Pending'); restrictFutureDate('pending');">
       <div class="w3-container w3-blue w3-padding-16">
         <div class="w3-left"><i class="fa fa-eye w3-xxxlarge"></i></div>
         <div class="w3-right">
@@ -109,7 +109,7 @@
         <h4>Pending Complaints</h4>
       </div>
     </div>
-    <div class="w3-quarter" onclick="openBlock('Solved')" >
+    <div class="w3-quarter" onclick="openBlock('Solved');restrictFutureDate('solved');" >
       <div class="w3-container w3-teal w3-padding-16">
         <div class="w3-left"><i class="fa fa-share-alt w3-xxxlarge"></i></div>
         <div class="w3-right">
@@ -136,7 +136,7 @@
     <div class="w3-row-padding" style="margin:0 -16px">
 
       <div>
-        <h5 onclick="loadAll('feedTable');">Feeds</h5>
+        <h5 onclick="getData()">Feeds</h5>
         <table id='feedTable' class='w3-table  w3-striped w3-white' >
            
 
@@ -278,9 +278,9 @@
 <!-- Contact Modal -->
 <div id="Complaints" class="w3-modal">
   <header class="w3-display-container w3-content w3-hide-small" style="max-width:1500px">
-    <div class="w3-modal-content w3-animate-zoom" style="border-top-left-radius: 15px; border-top-right-radius: 15px;" >
+    <div class="w3-modal-content w3-animate-zoom" style="border-top-left-radius: 15px; border-top-right-radius: 15px; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;" >
 
-      <div class="w3-bar w3-black" style="border-top-left-radius: 15px; border-top-right-radius: 15px;" >
+      <div class="w3-bar w3-black" style="border-top-left-radius: 15px; border-top-right-radius: 15px; " >
         <span onclick="document.getElementById('Complaints').style.display='none'"
           class="w3-button w3-display-topright" style="border-top-right-radius: 15px;">x</span>
         <button id="HostelBtn" class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Hostel','tablink','myLink');"><i
@@ -301,16 +301,16 @@
 
       <form method="POST" action="/createComplaint" id="hostelComplaintForm">
       <!-- Hostel Complaint Tab -->
-      <div id="Hostel" class="w3-container w3-white w3-padding-16 myLink">
+      <div id="Hostel" class="w3-container w3-white w3-padding-16 myLink" style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
 
         <!-- Complaint general or personal -->
         <div style="display: flex;">
           <label style="padding-right: 1cm;" class="container">
-            <input class="w3-radio" type="radio" name="general" value="general" checked>
+            <input class="w3-radio" type="radio" name="hostelCat" value="general" checked>
             <span class="checkmark"></span>General</label>
 
           <label class="container">
-            <input class="w3-radio" type="radio" name="general" value="personal">
+            <input class="w3-radio" type="radio" name="hostelCat" value="personal">
             <span class="checkmark"></span>Personal</label>
         </div>
 
@@ -347,15 +347,15 @@
       <!-- Fees Complaint Tab -->
 
       <form action="/createComplaint" id="feesComplaintForm" method="POST">
-      <div id="Fees" class="w3-container w3-white w3-padding-16 myLink">
+      <div id="Fees" class="w3-container w3-white w3-padding-16 myLink" style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
         <!-- Complaint general or personal -->
         <div style="display: flex;">
           <label style="padding-right: 1cm;" class="container">
-            <input class="w3-radio" type="radio" name="general" value="general" checked>
+            <input class="w3-radio" type="radio" name="feesCat" value="general" checked>
             <span class="checkmark"></span>General</label>
 
           <label class="container">
-            <input class="w3-radio" type="radio" name="general" value="personal">
+            <input class="w3-radio" type="radio" name="feesCat" value="personal">
             <span class="checkmark"></span>Personal</label>
         </div>
 
@@ -374,17 +374,17 @@
     </form>
       <!-- Fees Complaint Tab Over -->
 
-      <form action="/createComplaint" id="messComplaintForm" method="POST">
+      <form action="/createComplaint" id="messComplaintForm" method="POST" >
       <!-- Mess Complaint Tab  -->
-      <div id="Mess" class="w3-container w3-white w3-padding-16 myLink">
+      <div id="Mess" class="w3-container w3-white w3-padding-16 myLink" style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
         <!-- Complaint general or personal -->
         <div style="display: flex;">
           <label style="padding-right: 1cm;" class="container">
-            <input class="w3-radio" type="radio" name="general" value="general" checked>
+            <input class="w3-radio" type="radio" name="messCat" value="general" checked>
             <span class="checkmark"></span>General</label>
 
           <label class="container">
-            <input class="w3-radio" type="radio" name="general" value="personal">
+            <input class="w3-radio" type="radio" name="messCat" value="personal">
             <span class="checkmark"></span>Personal</label>
         </div>
 
@@ -421,15 +421,15 @@
       <!-- Faculty Complaint Tab -->
 
       <form action="/createComplaint" id="facultyComplaintForm" method="POST">
-      <div id="Faculty" class="w3-container w3-white w3-padding-16 myLink">
+      <div id="Faculty" class="w3-container w3-white w3-padding-16 myLink" style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
         <!-- Complaint general or personal -->
         <div style="display: flex;">
           <label style="padding-right: 1cm;" class="container">
-            <input class="w3-radio" type="radio" name="general" value="general" checked>
+            <input class="w3-radio" type="radio" name="facCat" value="general" checked>
             <span class="checkmark"></span>General</label>
 
           <label class="container">
-            <input class="w3-radio" type="radio" name="general" value="personal">
+            <input class="w3-radio" type="radio" name="facCat" value="personal">
             <span class="checkmark"></span>Personal</label>
         </div>
 
@@ -469,15 +469,15 @@
       <!-- Lab Complaint Tab -->
 
       <form action="/createComplaint" id="labComplaintForm" method="POST">
-      <div id="Lab" class="w3-container w3-white w3-padding-16 myLink">
+      <div id="Lab" class="w3-container w3-white w3-padding-16 myLink" style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
         <!-- Complaint general or personal -->
         <div style="display: flex;">
           <label style="padding-right: 1cm;" class="container">
-            <input class="w3-radio" type="radio" name="general" value="general" checked>
+            <input class="w3-radio" type="radio" name="labCat" value="general" checked>
             <span class="checkmark"></span>General</label>
 
           <label class="container">
-            <input class="w3-radio" type="radio" name="general" value="personal">
+            <input class="w3-radio" type="radio" name="labCat" value="personal">
             <span class="checkmark"></span>Personal</label>
         </div>
 
@@ -496,7 +496,7 @@
             <option value="met">MT</option>
           </select>
         </div>
-        <!-- Faculty Name -->
+        <!-- Lab's Name -->
         <input name="labName" type="text" placeholder="Lab Name"
           style="border-color: #3498DB;;border-radius: 5px; padding: 5px;">
         <!-- Description -->
@@ -516,16 +516,16 @@
 
     <form action="/createComplaint" id="libraryComplaintForm" method="POST">
       <!-- Library Complaint Tab -->
-      <div id="Library" class="w3-container w3-white w3-padding-16 myLink">
+      <div id="Library" class="w3-container w3-white w3-padding-16 myLink" style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
 
         <!-- Complaint general or personal -->
         <div style="display: flex;">
           <label style="padding-right: 1cm;" class="container">
-            <input class="w3-radio" type="radio" name="general" value="general" checked>
+            <input class="w3-radio" type="radio" name="libCat" value="general" checked>
             <span class="checkmark"></span>General</label>
 
           <label class="container">
-            <input class="w3-radio" type="radio" name="general" value="personal">
+            <input class="w3-radio" type="radio" name="libCat" value="personal">
             <span class="checkmark"></span>Personal</label>
         </div>
 
@@ -567,50 +567,71 @@
 
 <div id="PendingComplaints" class="w3-modal">
     <header class="w3-display-container w3-content w3-hide-small" style="max-width:1500px">
-      <div class="w3-modal-content w3-animate-zoom" style="border-top-left-radius: 15px; border-top-right-radius: 15px;" >
+      <div class="w3-modal-content w3-animate-zoom" style="border-top-left-radius: 15px; border-top-right-radius: 15px; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;" >
   
         <div class="w3-bar w3-black" style="border-top-left-radius: 15px; border-top-right-radius: 15px;" >
           <span onclick="document.getElementById('PendingComplaints').style.display='none'"
             class="w3-button w3-display-topright" style="border-top-right-radius: 15px;">x</span>
-          <button id="HostelPendingBtn" class="w3-bar-item w3-button Pendingtablink" onclick="openLink(event, 'HostelPending','Pendingtablink','PendingmyLink');"><i
-              class="fas fa-campground"></i> Hostel</button>
-          <button id="FeesPendingBtn" class="w3-bar-item w3-button Pendingtablink" onclick="openLink(event, 'FeesPending','Pendingtablink','PendingmyLink');"><i class="fa fa-bed"></i>
-            Fees</button>
-          <button id="MessPendingBtn" class="w3-bar-item w3-button Pendingtablink" onclick="openLink(event, 'MessPending','Pendingtablink','PendingmyLink');"><i class="fa fa-car"></i>
-            Mess</button>
-          <button id="FacultyPendingBtn" class="w3-bar-item w3-button Pendingtablink" onclick="openLink(event, 'FacultyPending','Pendingtablink','PendingmyLink');"><i class="fa fa-car"></i>
-            Faculty</button>
-          <button id="LabPendingBtn" class="w3-bar-item w3-button Pendingtablink" onclick="openLink(event, 'LabPending','Pendingtablink','PendingmyLink');"><i class="fa fa-car"></i>
-            Lab</button>
-          <button id="LibraryPendingBtn" class="w3-bar-item w3-button Pendingtablink" onclick="openLink(event, 'LibraryPending','Pendingtablink','PendingmyLink');"><i class="fa fa-car"></i>
-            Library</button>
+          <button id="PendingBtn" class="w3-bar-item w3-button Pendingtablink" onclick="openLink(event, 'Pending','Pendingtablink','PendingmyLink');"><i
+              class="fas fa-campground"></i> Pending Complaints</button>
         </div>
   
         <!-- Tabs -->
   
         <!-- Hostel Complaint Tab -->
-        <div id="HostelPending" class="w3-container w3-white w3-padding-16 PendingmyLink">
-           </div>
-  
+        <div id="Pending" class="w3-container w3-white w3-padding-16 PendingmyLink" style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
+          
+          
             
-        <div id="FeesPending" class="w3-container w3-white w3-padding-16 PendingmyLink">
-           </div>
-  
-           
-        <div id="MessPending" class="w3-container w3-white w3-padding-16 PendingmyLink">
-           </div>
-  
+            <!-- General Or Personal -->
+            <div style="display: flex;">
+              <label style="padding-right: 1cm;" class="container">
+                <input class="w3-radio" type="radio" name="pendingCat" value="general" checked>
+                <span class="checkmark"></span>General</label>
+    
+              <label class="container">
+                <input class="w3-radio" type="radio" name="pendingCat" value="personal">
+                <span class="checkmark"></span>Personal</label>
+            </div>
             
-        <div id="FacultyPending" class="w3-container w3-white w3-padding-16 PendingmyLink">
-           </div>
-  
+            <!-- Dropdown Menu -->
+            <div style="display: flex;">
+            <div style="padding-bottom: 10px; margin-right: 10px;;" >
+              <p style="padding-top: 5px; padding-bottom: 1px;">Category :</p>
+              <select id="pendingSelect"  style="border-radius: 5px; " class="dropbtn" name="pendingSelect">
+                <option value="all" selected>All</option>
+                <option value="hostel">Hostel</option>
+                <option value="fees">Fees</option>
+                <option value="mess">Mess</option>
+                <option value="faculty">Faculty</option>
+                <option value="lab">Lab</option>
+                <option value="library">Library</option>
+              </select>
+            </div>
+            <div style="padding-bottom: 10px; margin-right: 10px;;" >
+              <p style="padding-top: 5px; padding-bottom: 1px;">From :</p>
+            <input type="date" id="pendingFromDate"  class="dropbtn">
+            </div>
+            <div style="padding-bottom: 10px; margin-right: 10px;;" >
+              <p style="padding-top: 5px; padding-bottom: 1px;">To :</p>
+            <input type="date" id="pendingToDate" class="dropbtn">
+            </div>
+
+            <div style="padding-bottom: 10px; margin-right: 10px;;" >
+                <p style="padding-top: 5px; padding-bottom: 1px;"> <br>  </p>
+              <button id="pendingSubmit" onclick="loadComplaints('pending');" class="dropbtn"><i class="fa fa-search"></i></button>
+            </div>
+          </div>
             
-        <div id="LabPending" class="w3-container w3-white w3-padding-16 PendingmyLink">
-           </div>
-  
-           
-        <div id="LibraryPending" class="w3-container w3-white w3-padding-16 PendingmyLink">
-           </div>
+            <div>
+            <p class="w3-text-red" id="pendingWarning"></p>
+            <table id='pendingTable' class= 'w3-table  w3-striped w3-white' >
+               
+    
+            </table>
+          </div>
+        
+        </div>
   
      </div>
   
@@ -623,51 +644,68 @@
 
 <div id="SolvedComplaints" class="w3-modal">
   <header class="w3-display-container w3-content w3-hide-small" style="max-width:1500px">
-    <div class="w3-modal-content w3-animate-zoom" style="border-top-left-radius: 15px; border-top-right-radius: 15px;" >
+    <div class="w3-modal-content w3-animate-zoom" style="border-top-left-radius: 15px; border-top-right-radius: 15px; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;" >
 
-      <div class="w3-bar w3-black" style="border-top-left-radius: 15px; border-top-right-radius: 15px;" >
+      <div class="w3-bar w3-black" style="border-top-left-radius: 15px; border-top-right-radius: 15px; " >
         <span onclick="document.getElementById('SolvedComplaints').style.display='none'"
           class="w3-button w3-display-topright" style="border-top-right-radius: 15px;">x</span>
-        <button id="HostelSolvedBtn" class="w3-bar-item w3-button Solvedtablink" onclick="openLink(event, 'HostelSolved','Solvedtablink','SolvedmyLink');"><i
-            class="fas fa-campground"></i> Hostel</button>
-        <button id="FeesSolvedBtn" class="w3-bar-item w3-button Solvedtablink" onclick="openLink(event, 'FeesSolved','Solvedtablink','SolvedmyLink');"><i class="fa fa-bed"></i>
-          Fees</button>
-        <button id="MessSolvedBtn" class="w3-bar-item w3-button Solvedtablink" onclick="openLink(event, 'MessSolved','Solvedtablink','SolvedmyLink');"><i class="fa fa-car"></i>
-          Mess</button>
-        <button id="FacultySolvedBtn" class="w3-bar-item w3-button Solvedtablink" onclick="openLink(event, 'FacultySolved','Solvedtablink','SolvedmyLink');"><i class="fa fa-car"></i>
-          Faculty</button>
-        <button id="LabSolvedBtn" class="w3-bar-item w3-button Solvedtablink" onclick="openLink(event, 'LabSolved','Solvedtablink','SolvedmyLink');"><i class="fa fa-car"></i>
-          Lab</button>
-        <button id="LibrarySolvedBtn" class="w3-bar-item w3-button Solvedtablink" onclick="openLink(event, 'LibrarySolved','Solvedtablink','SolvedmyLink');"><i class="fa fa-car"></i>
-          Library</button>
+        <button id="SolvedBtn" class="w3-bar-item w3-button Solvedtablink" onclick="openLink(event, 'Solved','Solvedtablink','SolvedmyLink');"><i
+            class="fas fa-campground"></i> Solved Complaints</button>
       </div>
 
       <!-- Tabs -->
 
       <!-- Hostel Complaint Tab -->
-      <div id="HostelSolved" class="w3-container w3-white w3-padding-16 SolvedmyLink">
-         </div>
+      <div id="Solved" class="w3-container w3-white w3-padding-16 SolvedmyLink" style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
+      
+          <div style="display: flex;">
+              <label style="padding-right: 1cm;" class="container">
+                <input class="w3-radio" type="radio" name="solvedCat" value="general" checked>
+                <span class="checkmark"></span>General</label>
+    
+              <label class="container">
+                <input class="w3-radio" type="radio" name="solvedCat" value="personal">
+                <span class="checkmark"></span>Personal</label>
+            </div>
+            
+            <!-- Dropdown Menu -->
+            <div style="display: flex;">
+            <div style="padding-bottom: 10px; margin-right: 10px;;" >
+              <p style="padding-top: 5px; padding-bottom: 1px;">Category :</p>
+              <select id="solvedSelect"  style="border-radius: 5px; " class="dropbtn" name="solvedSelect">
+                <option value="all" selected>All</option>
+                <option value="hostel">Hostel</option>
+                <option value="fees">Fees</option>
+                <option value="mess">Mess</option>
+                <option value="faculty">Faculty</option>
+                <option value="lab">Lab</option>
+                <option value="library">Library</option>
+              </select>
+            </div>
+            <div style="padding-bottom: 10px; margin-right: 10px;;" >
+              <p style="padding-top: 5px; padding-bottom: 1px;">From :</p>
+            <input type="date" id="solvedFromDate"  class="dropbtn">
+            </div>
+            <div style="padding-bottom: 10px; margin-right: 10px;;" >
+              <p style="padding-top: 5px; padding-bottom: 1px;">To :</p>
+            <input type="date" id="solvedToDate" class="dropbtn">
+            </div>
 
-          
-      <div id="FeesSolved" class="w3-container w3-white w3-padding-16 SolvedmyLink">
-         </div>
-
-         
-      <div id="MessSolved" class="w3-container w3-white w3-padding-16 SolvedmyLink">
-         </div>
-
-          
-      <div id="FacultySolved" class="w3-container w3-white w3-padding-16 SolvedmyLink">
-         </div>
-
-          
-      <div id="LabSolved" class="w3-container w3-white w3-padding-16 SolvedmyLink">
-         </div>
-
-         
-      <div id="LibrarySolved" class="w3-container w3-white w3-padding-16 SolvedmyLink">
-         </div>
-
+            <div style="padding-bottom: 10px; margin-right: 10px;;" >
+                <p style="padding-top: 5px; padding-bottom: 1px;"> <br>  </p>
+              <button id="solvedSubmit" onclick="loadComplaints('solved');" class="dropbtn"><i class="fa fa-search"></i></button>
+            </div>
+          </div>
+            
+            <div>
+            <p class="w3-text-red" id="solvedWarning"></p>
+            <table id='solvedTable' class= 'w3-table  w3-striped w3-white' >
+               
+    
+            </table>
+          </div>
+      
+      </div>
    </div>
 
   </header>

@@ -30,14 +30,16 @@ const Complaint = require('../models/complaint');
 // READ
 
 exports.readHostelComplaint = (req, res) => {
-    const sid = req.body.sid;
+   // const sid = req.body.sid;
+   console.log("About TO Read Hostel");
     Complaint.findAll({
             where: {
-                studentSid: sid
+                // studentSid: sid
+                category: 'hostel'
             },
             include:[{
                 model: Hostel,
-                attributes: ['type'],
+                attributes: ['type','name'],
                 required : true
             }]
         })
