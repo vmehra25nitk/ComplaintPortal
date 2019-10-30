@@ -30,6 +30,8 @@ exports.signUp = (req, res) => {
     const password = req.body.password;
     const confirmPassword = req.body.confirmPassword;
 
+    console.log(req.body);
+
     if(req.session.isLoggedIn && req.session.isStudent){
         res.redirect('/studentHomePage');
     }else if(req.session.isLoggedIn && req.session.isAdmin){

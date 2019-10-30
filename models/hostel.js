@@ -11,7 +11,7 @@ const Hostel = sequelize.define('hostel', {
     },
     name:{
         type: Sequelize.ENUM,
-        values:['1','2','3','4','5','6','7','8','mt1','mt2','mt3'],
+        values:['I','II','III','IV','V','PG','VII','VIII','MT1','MT2','MT3', 'GB'],
         allowNull: false
     },
     complaintCid: {

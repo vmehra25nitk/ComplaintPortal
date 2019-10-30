@@ -7,6 +7,19 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
+
+<script>
+    function myFunction() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+</script>
+
+
 </head>
 
 <body>
@@ -25,8 +38,13 @@
             <!-- Login Form -->
             <br>
             <form method="POST" action="/adminSignIn">
-                <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password" required>
+                <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password"
+                    required>
                 <input type="submit" class="fadeIn fourth" value="Sign In">
+                <!-- An element to toggle between password visibility -->
+                <br>
+                <input type="checkbox" onclick="myFunction()">Show Password
+                <br><br>
             </form>
 
             <!-- Remind Password -->
@@ -36,5 +54,5 @@
 
         </div>
     </div>
-        
+
     <%- include('./partials/footer') -%>
