@@ -30,6 +30,12 @@ exports.signUp = (req, res) => {
     const password = req.body.password;
     const confirmPassword = req.body.confirmPassword;
 
+    if(req.session.isLoggedIn && req.session.isStudent){
+        res.redirect('/studentHomePage');
+    }else if(req.session.isLoggedIn && req.session.isAdmin){
+        res.redirect('/adminHomePage');
+    }
+
     if (password.localeCompare(confirmPassword) != 0) {
         res.redirect('/studentSignUp');
     } else {
@@ -107,23 +113,33 @@ exports.signIn = (req, res) => {
 
 
 exports.getStudentSignIn = (req, res) => {
-    res.render('signInStudent', {
-        pageTitle: "Sign In"
-    });
+    if(req.session.isLoggedIn && req.session.isStudent){
+        res.redirect('/studentHomePage');
+    }else{
+        res.render('signInStudent', {
+            pageTitle: "Sign In"
+        });
+    }
+    
 };  
 
 
 exports.getStudentSignUp = (req, res) => {
-    res.render("signUpStudent", {
-        pageTitle: "Sign Up"
-    });
+    if(req.session.isLoggedIn && req.session.isStudent){
+        res.redirect('/studentHomePage');
+    }else{
+        res.render("signUpStudent", {
+            pageTitle: "Sign Up"
+        });
+    }
 }
 
 exports.getStudentHomePage = (req, res) => {
     if(req.session.isLoggedIn && req.session.isStudent){
         res.render('home');
     }else{
-        res.redirect('/');
+        console.log('here');
+        res.redirect('/studentSignIn');
     }
 }
 

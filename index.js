@@ -25,6 +25,7 @@ const hostelRoutes = require('./routes/hostel');
 const libraryRoutes = require('./routes/library');
 const testRoutes = require('./routes/test');
 const adminRoutes = require('./routes/admin');
+const displayComplaintsRoutes = require('./routes/displayComplaint');
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -36,7 +37,7 @@ app.set('views', 'views');
 
 
 app.use(session({
-    secret: 'pT',
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false,
     maxAge: 60 * 60 * 24
@@ -60,6 +61,7 @@ app.use(hostelRoutes);
 app.use(libraryRoutes);
 app.use(testRoutes);
 app.use(adminRoutes);
+app.use(displayComplaintsRoutes);
 
 
 app.get("/", function (req, res) {

@@ -10,6 +10,11 @@ html {
     height: 100vh;
   }
   
+  p {
+    font-family: "Poppins", sans-serif;
+    color: #707070;
+  }
+  
   a {
     color: #92badd;
     display:inline-block;
@@ -78,6 +83,12 @@ html {
   }
   
   
+
+  option {
+    font-family: "Poppins", sans-serif;
+    color: #707070;
+  }
+
   
   /* FORM TYPOGRAPHY*/
   

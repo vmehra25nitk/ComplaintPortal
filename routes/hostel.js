@@ -6,6 +6,6 @@ const hostelController = require('../controllers/hostel');
 
 const router = express.Router();
 
-router.post('/readHostel', hostelController.readHostelComplaint);
+router.get('/readHostel', hostelController.readHostelComplaint);
 
 module.exports = router;

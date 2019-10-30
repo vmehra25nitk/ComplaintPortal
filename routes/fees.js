@@ -8,6 +8,4 @@ const router = express.Router();
 
 router.post('/readFees', feesController.readFeesComplaint);
 
-router.post('/testing',feesController.test)
-
 module.exports = router;

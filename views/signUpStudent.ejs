@@ -47,11 +47,49 @@
                 <input type="text" id="firstName" class="fadeIn second" name="firstName" placeholder="First Name"
                     required>
                 <input type="text" id="lastName" class="fadeIn second" name="lastName" placeholder="Last Name" required>
-                <input type="tel" pattern="[0-9]{10}" id="mobile" class="fadeIn second" name="mobile"
+                <input type="text" pattern="[0-9]{10}" id="mobile" class="fadeIn second" name="mobile"
                     placeholder="Mobile Number" required>
                 <input type="text" id="room" class="fadeIn second" name="room" placeholder="Room Number" required>
-                <input type="text" id="branch" class="fadeIn second" name="branch" placeholder="Branch" required>
-                <input type="text" id="hostel" class="fadeIn second" name="hostel" placeholder="Hostel" required>
+                
+                <!-- Dropdown Menu For Branch-->
+
+                <div style="padding-bottom: 10px;" class="fadeIn second">
+                    <p>Branch</p>
+                    <select id="branch" onchange="whatChecked(this,'hostelOther')" style="border-radius: 5px;"
+                        class="dropbtn" name="branch" required>
+                        <option value="cse">CSE</option>
+                        <option value="it">IT</option>
+                        <option value="ece">ECE</option>
+                        <option value="eee">EEE</option>
+                        <option value="mec">MECH</option>
+                        <option value="min">MINING</option>
+                        <option value="met">META</option>
+                        <option value="civ">CIVIL</option>
+                        <option value="che">CHEM</option>
+                    </select>
+                </div>
+
+                <!-- Dropdown Menu For Hostel-->
+
+                <div style="padding-bottom: 5px;" class="fadeIn second">
+                    <p>HOSTEL</p>
+                    <select id="hostel" onchange="whatChecked(this,'hostelOther')" style="border-radius: 5px;"
+                        class="dropbtn" name="hostel" required>
+                        <option value="1">I</option>
+                        <option value="2">II</option>
+                        <option value="3">III</option>
+                        <option value="4">IV</option>
+                        <option value="5">V</option>
+                        <option value="6">PG</option>
+                        <option value="7">VII</option>
+                        <option value="8">VIII</option>
+                        <option value="mt1">MT1</option>
+                        <option value="mt2">MT2</option>
+                        <option value="mt3">MT3</option>
+                    </select>
+                </div>
+
+
                 <input type="email" id="email" class="fadeIn second" name="email" placeholder="Email" required>
                 <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password"
                     onkeyup='check();' required>
@@ -64,6 +102,8 @@
             <!-- Remind Password -->
             <div id="formFooter">
                 <a class="underlineHover" href="/studentSignIn">Already have an account?</a>
+                <br>
+                <a class="underlineHover" href="/">Not Student?</a>
             </div>
 
         </div>

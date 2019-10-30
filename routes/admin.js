@@ -10,4 +10,8 @@ router.get('/adminSignIn', adminController.getAdminSignIn);
 
 router.get('/adminHomePage', adminController.getAdminHomePage);
 
+router.post('/adminSignIn', adminController.postAdminSignIn);
+
+router.post('/adminSignOut', adminController.postAdminSignOut);
+
 module.exports = router;

@@ -1,7 +1,6 @@
 const Fees = require('../models/fees');
 const Complaint = require('../models/complaint');
-const sequelize = require('sequelize');
-const Op = sequelize.Op;
+
 
 // CREATE
 
@@ -30,18 +29,16 @@ const Op = sequelize.Op;
 // READ
 
 exports.readFeesComplaint = (req, res) => {
-    //const sid = req.body.sid;
+    const sid = req.body.sid;
     Complaint.findAll({
             where: {
-                // studentSid: sid
-                category: 'fees',
-                
+                studentSid: sid
             },
-            // include:[{
-            //     model: Fees,
-            //     attributes: ['type'],
-            //     required : true
-            // }]
+            include:[{
+                model: Fees,
+                attributes: ['type'],
+                required : true
+            }]
         })
         .then(result => {
             res.send(result);
@@ -49,42 +46,6 @@ exports.readFeesComplaint = (req, res) => {
         .catch(err => {
             res.send(err);
         });
-};
-
-exports.test = (req, res) =>{
-
-    const obj = req.body;
-    const fromDate= new Date(obj.fromDate+'T05:30:00');
-    var toDate= new Date(obj.toDate+'T05:29:59');
-    toDate.setDate(toDate.getDate()+1);
-    console.log(fromDate+"  "+toDate);
-
-
-    Complaint.findAll({
-        where: {
-            // studentSid: sid
-            [Op.and] : [
-                        {startDate:{[Op.gte]:fromDate}},
-                        {startDate:{[Op.lte]:toDate}}
-                       ],
-            status: obj.status,
-            type : obj.type
-        },
-        // include:[{
-        //     model: Fees,
-        //     attributes: ['type'],
-        //     required : true
-        // }]
-    })
-    .then(result => {
-        //console.log(result)
-        res.send(result);
-    })
-    .catch(err => {
-        res.send(err);
-    });
-
-
 };
 
 

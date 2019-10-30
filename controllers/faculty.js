@@ -30,15 +30,14 @@ const Complaint = require('../models/complaint');
 // READ
 
 exports.readFacultyComplaint = (req, res) => {
-    //const sid = req.body.sid;
+    const sid = req.body.sid;
     Complaint.findAll({
             where: {
-                //studentSid: sid
-                category: 'faculty'
+                studentSid: sid
             },
             include:[{
                 model: Faculty,
-                attributes: ['name','department'],
+                attributes: ['name','type','department'],
                 required : true
             }]
         })
