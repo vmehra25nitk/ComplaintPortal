@@ -37,7 +37,7 @@ const Complaint = sequelize.define('complaint', {
     },
     type: {
         type: Sequelize.ENUM,
-        values: ['gen','per'],
+        values: ['gen','per','rej'],
         allowNull: false
     },
     description: {

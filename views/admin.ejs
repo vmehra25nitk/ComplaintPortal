@@ -41,11 +41,14 @@
       <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i
           class="fa fa-bars"></i>  Menu</button>
       <span class="w3-bar-item w3-right">
-        <form action="/signOutStudent" method="POST">
+        <form action="/adminSignOut" method="POST">
           <button type="submit">Logout</button>
         </form>
       </span>
     </div>
+    <br>
+    <br>
+    <br>
 </body>
 <h1>Manage Complaints....</h1>
 <div class="w3-container w3-padding-16" style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
@@ -105,7 +108,7 @@
           <p class="w3-text-red" id="adminWarning"></p>
             <div class="w3-twothird">
             
-            <table id='feedTable' class= 'w3-table  w3-striped w3-white' >
+            <table id='adminTable' class= 'w3-table  w3-striped w3-white' >
                <tr>
                 <td>Category</td>
                 <td>Registered On</td>

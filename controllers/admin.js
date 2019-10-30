@@ -1,3 +1,7 @@
+const Complaint = require('../models/complaint');
+const sequelize = require('sequelize');
+const Op = sequelize.Op;
+
 exports.getAdminSignIn = (req, res) => {
     if (req.session.isAdmin && req.session.isLoggedIn) {
         res.render('signInAdmin', {
@@ -14,7 +18,7 @@ exports.getAdminSignIn = (req, res) => {
 
 exports.getAdminHomePage = (req, res) => {
     if (req.session.isLoggedIn == true && req.session.isAdmin) {
-        res.render('homeAdmin');
+        res.render('admin');
     } else if (req.session.isLoggedIn && req.session.isStudent) {
         res.redirect('/studentHomePage');
     } else {
@@ -42,4 +46,26 @@ exports.postAdminSignIn = (req, res) => {
 exports.postAdminSignOut = (req, res) => {
     req.session.destroy();
     res.redirect('/adminSignIn');
+}
+
+exports.makeChanges = (req,res)=>{
+
+    const status = req.body.status;
+    const solvedBy= req.body.solvedBy;
+    const cid = req.body.cid;
+
+    console.log(req.body);
+    Complaint.update(
+        {
+            status : status,
+            solvedBy : solvedBy
+        },
+        {where : {
+            cid : cid
+        }}
+    ).then(res=>{
+        console.log('Updated Successfully');
+    }).catch(err=>{
+        console.log(err);
+    });
 }

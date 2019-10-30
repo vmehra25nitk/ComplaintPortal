@@ -39,7 +39,7 @@ const authStudent = sequelize.define('authStudent', {
     },
     hostel: {
         type: Sequelize.ENUM,
-        values: ['1', '2', '3', '4', '5', '6', '7', '8', 'mt1', 'mt2', 'mt3'],
+        values: ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'MT1', 'MT2', 'MT3', 'GB'],
         allowNull: false
     },
     password: {

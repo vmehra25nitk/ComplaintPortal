@@ -44,7 +44,7 @@ exports.createComplaint = function (req, res)  {
             type: type
         })
         .then(result => {
-            res.send(result);
+            res.redirect('/');
                 console.log(req.body.category);
 
                 var status = false;

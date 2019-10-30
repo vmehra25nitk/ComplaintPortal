@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>W3.CSS Template</title>
+<title>Integrated Complaint Portal</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -49,16 +49,13 @@
   </div>
 
   <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
-  <div class="w3-container w3-row">
-    <div class="w3-col s4">
-      <img src="/w3images/avatar2.png" class="w3-circle w3-margin-right" style="width:46px">
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:230px;" id="mySidebar"><br>
+  <div class="w3-container w3-row" style="display: flex;">
+    <div >
+      <i class="w3-circle  fa fa-user w3-xxxlarge" style="margin-right:0.5cm;" ></i>
     </div>
-    <div class="w3-col s8 w3-bar">
-      <span>Welcome, <strong>Mike</strong></span><br>
-      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
-      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
-      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
+    <div >
+      <span>Welcome, <strong><%= student.firstName %></strong></span><br>
     </div>
   </div>
   <hr>
@@ -66,16 +63,16 @@
     <h5>Dashboard</h5>
   </div>
   <div class="w3-bar-block">
-    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  Overview</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Views</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Traffic</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Geo</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Orders</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>  News</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  General</a>
+    
+    <p  class="w3-bar-item w3-padding" ><i class="fab fa-slack-hash fa-fw w3-large"></i>  <%= student.sid %></p>
+    <p  class="w3-bar-item  w3-padding"><i class="fas fa-graduation-cap fa-fw w3-large"></i>  <%= student.branch %></p>
+    <p  class="w3-bar-item  w3-padding"><i class="fas fa-hotel fa-fw w3-large"></i>  <%= student.hostel %></p>
+    <p  class="w3-bar-item  w3-padding"><i class="fas fa-bed fa-fw w3-large"></i> <%= student.room %></p>
+    <p  class="w3-bar-item  w3-padding"><i class="fas fa-envelope fa-fw w3-large"></i>  <%= student.email %></p>
+    <p  class="w3-bar-item  w3-padding"><i class="fas fa-mobile-alt fa-fw w3-large"></i>  <%= student.mobile %></p>
+    <!-- <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  General</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  History</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Settings</a><br><br>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Settings</a><br><br> -->
   </div>
 </nav>
 
@@ -103,7 +100,6 @@
       <div class="w3-container w3-blue w3-padding-16">
         <div class="w3-left"><i class="fa fa-eye w3-xxxlarge"></i></div>
         <div class="w3-right">
-          <h3>99</h3>
         </div>
         <div class="w3-clear"></div>
         <h4>Pending Complaints</h4>
@@ -113,20 +109,18 @@
       <div class="w3-container w3-teal w3-padding-16">
         <div class="w3-left"><i class="fa fa-share-alt w3-xxxlarge"></i></div>
         <div class="w3-right">
-          <h3>23</h3>
         </div>
         <div class="w3-clear"></div>
         <h4>Solved Complaints</h4>
       </div>
     </div>
-    <div class="w3-quarter">
+    <div class="w3-quarter" onclick="openBlock('Rejected');">
       <div class="w3-container w3-orange w3-text-white w3-padding-16">
         <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
         <div class="w3-right">
-          <h3>50</h3>
         </div>
         <div class="w3-clear"></div>
-        <h4>Halwa</h4>
+        <h4>Rejected Complaints</h4>
       </div>
     </div>
   </div>
@@ -166,116 +160,10 @@
   </div>
   <hr>
 
-  <div class="w3-container">
-    <h5>Countries</h5>
-    <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
-      <tr>
-        <td>United States</td>
-        <td>65%</td>
-      </tr>
-      <tr>
-        <td>UK</td>
-        <td>15.7%</td>
-      </tr>
-      <tr>
-        <td>Russia</td>
-        <td>5.6%</td>
-      </tr>
-      <tr>
-        <td>Spain</td>
-        <td>2.1%</td>
-      </tr>
-      <tr>
-        <td>India</td>
-        <td>1.9%</td>
-      </tr>
-      <tr>
-        <td>France</td>
-        <td>1.5%</td>
-      </tr>
-    </table><br>
-    <button class="w3-button w3-dark-grey">More Countries  <i class="fa fa-arrow-right"></i></button>
-  </div>
-  <hr>
-  <div class="w3-container">
-    <h5>Recent Users</h5>
-    <ul class="w3-ul w3-card-4 w3-white">
-      <li class="w3-padding-16">
-        <img src="/w3images/avatar2.png" class="w3-left w3-circle w3-margin-right" style="width:35px">
-        <span class="w3-xlarge">Mike</span><br>
-      </li>
-      <li class="w3-padding-16">
-        <img src="/w3images/avatar5.png" class="w3-left w3-circle w3-margin-right" style="width:35px">
-        <span class="w3-xlarge">Jill</span><br>
-      </li>
-      <li class="w3-padding-16">
-        <img src="/w3images/avatar6.png" class="w3-left w3-circle w3-margin-right" style="width:35px">
-        <span class="w3-xlarge">Jane</span><br>
-      </li>
-    </ul>
-  </div>
-  <hr>
+  
+  
 
-  <div class="w3-container">
-    <h5>Recent Comments</h5>
-    <div class="w3-row">
-      <div class="w3-col m2 text-center">
-        <img class="w3-circle" src="/w3images/avatar3.png" style="width:96px;height:96px">
-      </div>
-      <div class="w3-col m10 w3-container">
-        <h4>John <span class="w3-opacity w3-medium">Sep 29, 2014, 9:12 PM</span></h4>
-        <p>Keep up the GREAT work! I am cheering for you!! Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><br>
-      </div>
-    </div>
-
-    <div class="w3-row">
-      <div class="w3-col m2 text-center">
-        <img class="w3-circle" src="/w3images/avatar1.png" style="width:96px;height:96px">
-      </div>
-      <div class="w3-col m10 w3-container">
-        <h4>Bo <span class="w3-opacity w3-medium">Sep 28, 2014, 10:15 PM</span></h4>
-        <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><br>
-      </div>
-    </div>
-  </div>
-  <br>
-  <div class="w3-container w3-dark-grey w3-padding-32">
-    <div class="w3-row">
-      <div class="w3-container w3-third">
-        <h5 class="w3-bottombar w3-border-green">Demographic</h5>
-        <p>Language</p>
-        <p>Country</p>
-        <p>City</p>
-      </div>
-      <div class="w3-container w3-third">
-        <h5 class="w3-bottombar w3-border-red">System</h5>
-        <p>Browser</p>
-        <p>OS</p>
-        <p>More</p>
-      </div>
-      <div class="w3-container w3-third">
-        <h5 class="w3-bottombar w3-border-orange">Target</h5>
-        <p>Users</p>
-        <p>Active</p>
-        <p>Geo</p>
-        <p>Interests</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <footer class="w3-container w3-padding-16 w3-light-grey">
-    <h4>FOOTER</h4>
-    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-  </footer>
-
-  <!-- End page content -->
-</div>
-
-
-
-<!-- Contact Modal -->
+<!-- Complaints Tab -->
 <div id="Complaints" class="w3-modal">
   <header class="w3-display-container w3-content w3-hide-small" style="max-width:1500px">
     <div class="w3-modal-content w3-animate-zoom" style="border-top-left-radius: 15px; border-top-right-radius: 15px; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;" >
@@ -739,10 +627,91 @@
 
   </header>
 </div>
-
-
-
   <!-- Solved Complaints Over -->
+
+
+<!-- Rejected Complaints -->
+
+<div id="RejectedComplaints" class="w3-modal">
+    <header class="w3-display-container w3-content w3-hide-small" style="max-width:1500px">
+      <div class="w3-modal-content w3-animate-zoom" style="border-top-left-radius: 15px; border-top-right-radius: 15px; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;" >
+  
+        <div class="w3-bar w3-black" style="border-top-left-radius: 15px; border-top-right-radius: 15px; " >
+          <span onclick="document.getElementById('RejectedComplaints').style.display='none'"
+            class="w3-button w3-display-topright" style="border-top-right-radius: 15px;">x</span>
+          <button id="RejectedBtn" class="w3-bar-item w3-button Rejectedtablink" onclick="openLink(event, 'Rejected','Rejectedtablink','RejectedmyLink');"><i
+              class="fas fa-campground"></i> Rejected Complaints</button>
+        </div>
+  
+        <!-- Tabs -->
+  
+        <!-- Hostel Complaint Tab -->
+        <div id="Rejected" class="w3-container w3-white w3-padding-16 RejectedmyLink" style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
+        
+            <div style="display: flex;">
+                <label style="padding-right: 1cm;" class="apsy-container">
+                  <input class="w3-radio" type="radio" name="rejectedCat" value="general" checked>
+                  <span class="checkmark"></span>General</label>
+      
+                <label class="apsy-container">
+                  <input class="w3-radio" type="radio" name="rejectedCat" value="personal">
+                  <span class="checkmark"></span>Personal</label>
+              </div>
+              
+              <!-- Dropdown Menu -->
+              <div style="display: flex;">
+              <div style="padding-bottom: 10px; margin-right: 10px;;" >
+                <p style="padding-top: 5px; padding-bottom: 1px;">Category :</p>
+                <select id="rejectedSelect"  style="border-radius: 5px; " class="dropbtn" name="rejectedSelect">
+                  <option value="all" selected>All</option>
+                  <option value="hostel">Hostel</option>
+                  <option value="fees">Fees</option>
+                  <option value="mess">Mess</option>
+                  <option value="faculty">Faculty</option>
+                  <option value="lab">Lab</option>
+                  <option value="library">Library</option>
+                </select>
+              </div>
+              <div style="padding-bottom: 10px; margin-right: 10px;;" >
+                <p style="padding-top: 5px; padding-bottom: 1px;">From :</p>
+              <input type="date" id="rejectedFromDate"  class="dropbtn">
+              </div>
+              <div style="padding-bottom: 10px; margin-right: 10px;;" >
+                <p style="padding-top: 5px; padding-bottom: 1px;">To :</p>
+              <input type="date" id="rejectedToDate" class="dropbtn">
+              </div>
+  
+              <div style="padding-bottom: 10px; margin-right: 10px;;" >
+                  <p style="padding-top: 5px; padding-bottom: 1px;"> <br>  </p>
+                <button id="rejectedSubmit" onclick="loadComplaints('rejected');" class="dropbtn"><i class="fa fa-search"></i></button>
+              </div>
+            </div>
+              
+              <div>
+              <p class="w3-text-red" id="rejectedWarning"></p>
+              <table id='rejectedTable' class= 'w3-table  w3-striped w3-white' >
+                <tr>
+                  <td>Category</td>
+                  <td>Registered On</td>
+                  <td>Description</td>
+                  <td colspan="1">Status</td>
+                 </tr>
+                 <tr><table class="w3-table"></table></tr>
+      
+              </table>
+            </div>
+        
+        </div>
+     </div>
+  
+    </header>
+  </div>
+  
+  
+  
+    <!-- Rejected Complaints Over -->
+
+
 </body>
 
 <script src="home.js"></script>

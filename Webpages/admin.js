@@ -293,7 +293,7 @@ function loadHostel(tabname, obj){
                       + "<td><button class='dropbtn'  id='"+obj.cid+"Btn"+"'  style='padding: 3px'>Make Changes</button></td>";
                           
  tabl.appendChild(dispRow);
-
+ document.getElementById(obj.cid+"Btn").onclick = function(){clickMakeChanges(obj)};
 
  dispRow = document.createElement('tr');
 
@@ -442,7 +442,7 @@ function loadMess(tabname,obj)
                       + "<td><button class='dropbtn'  id='"+obj.cid+"Btn"+"'  style='padding: 3px'>Make Changes</button></td>";
                           
  tabl.appendChild(dispRow);
-
+ document.getElementById(obj.cid+"Btn").onclick = function(){clickMakeChanges(obj)};
  dispRow = document.createElement('tr');
 
  dispRow.setAttribute('style',"background-color: #f1f1f1;");
@@ -526,7 +526,7 @@ function loadFaculty(tabname,obj)
                       + "<td><button class='dropbtn'  id='"+obj.cid+"Btn"+"'  style='padding: 3px'>Make Changes</button></td>";
                           
  tabl.appendChild(dispRow);
-
+ document.getElementById(obj.cid+"Btn").onclick = function(){clickMakeChanges(obj)};
  dispRow = document.createElement('tr');
 
  dispRow.setAttribute('style',"background-color:#f1f1f1;");// color:#2e005e; ");
@@ -610,7 +610,7 @@ function loadLab(tabname,obj)
                       + "<td><button class='dropbtn'  id='"+obj.cid+"Btn"+"'  style='padding: 3px'>Make Changes</button></td>";
                           
  tabl.appendChild(dispRow);
-
+ document.getElementById(obj.cid+"Btn").onclick = function(){clickMakeChanges(obj)};
  dispRow = document.createElement('tr');
 
  dispRow.setAttribute('style',"background-color:#f1f1f1;");// color:#783612; ");
@@ -693,7 +693,7 @@ function loadLib(tabname,obj)
                       + "<td><button class='dropbtn'  id='"+obj.cid+"Btn"+"'  style='padding: 3px'>Make Changes</button></td>";
                           
  tabl.appendChild(dispRow);
-
+ document.getElementById(obj.cid+"Btn").onclick = function(){clickMakeChanges(obj)};
  dispRow = document.createElement('tr');
 
  //dispRow.setAttribute('style',"background-color: #f1f1f1; color:#8c6d81;");
@@ -726,19 +726,21 @@ tabl.appendChild(dispRow);
 function loadComplaints(status)
 {
   var type = document.querySelector('input[name="'+status+'Cat"]:checked').value;
-
   var realStatus = document.querySelector('input[name="'+status+'Status"]:checked').value;
 
   const category = document.getElementById(status+'Select').value;
   
-  const fromDate = document.getElementById(status+'FromDate').value;  
-  const toDate = document.getElementById(status+'ToDate').value;  
-
-  if(toDate==""|| fromDate=="" || (fromDate)> (toDate))
+  var fromDate = document.getElementById(status+'FromDate').value;  
+  var toDate = document.getElementById(status+'ToDate').value;  
+  console.log(toDate);
+  if(toDate==""|| fromDate=="" || (fromDate)> (toDate)){
   document.getElementById(status+'Warning').innerHTML = 'Please select correct dates';
+   return;}
   else
   document.getElementById(status+'Warning').innerHTML = '';
- 
+  fromDate = new Date(fromDate+'T00:00:00');
+  toDate = new Date(toDate+'T23:59:59');
+
   type = type.substring(0,3);
   console.log(type);
   const obj = {
@@ -749,20 +751,51 @@ function loadComplaints(status)
                 status : realStatus
               } 
  
- 
+               
   console.log(obj);
-  const url = 'http://localhost:3000/testing';
-  $.post(url,obj,function(data,status)
+  const url = 'http://localhost:3000/getComplaintByCategoryAdmin';
+  $.post(url,obj,function(data,status1)
   {
     console.log(data);
     
-      for(var i=0;i<data.length;i++)
-      {
-        loadFees('feedTable',data[i]);
-      }
-    
+    loadAll(data,status);
+     
   });
+}
 
+function loadAll(data,status)
+{
+  console.log("I am Here");
+  status = status+'Table';
+  
+  document.getElementById(status).innerHTML="<tr> <td>Category</td><td>Registered On</td> <td>Description</td><td colspan='1'>Status</td> </tr> <tr></tr>";
+  for(var i=0; i<data.length;i++)
+  {
+    data[i].startDate = data[i].startDate.substring(0,10);
+  switch(data[i].category)
+  {
+    case 'hostel':
+        //console.log(data.category);
+      loadHostel(status,data[i]);
+    break;
+    case 'fees':
+    loadFees(status,data[i]);
+    break;
+    case 'faculty':
+    loadFaculty(status,data[i]);
+    break;
+    case 'mess':
+    loadMess(status,data[i]);
+    break;
+    case 'lab':
+    loadLab(status,data[i]);
+    break;
+    case 'library':
+    loadLib(status,data[i]);
+    break;
+  }
+}
+  
 }
 
 //Loading Complaints Over
@@ -788,10 +821,18 @@ function clickMakeChanges(obj)
     document.getElementById('adminChange').onclick = function(){
       var status = document.querySelector('input[name="adminChangeStatus"]:checked').value;
 
-      const solvedBy = getElementsByName('adminPersonAssigned')[0].value;
+      const solvedBy = document.getElementsByName('adminPersonAssigned')[0].value;
       if(status!=obj.status || solvedBy != obj.solvedBy)
       {
         //To be Continued
+        obj.status= status;
+        obj.solvedBy=solvedBy;
+
+        const url = 'http://localhost:3000/adminMakeChanges';
+        $.post(url,obj,function(data,status1)
+        {
+          console.log(data);
+        });
       }
       
     }

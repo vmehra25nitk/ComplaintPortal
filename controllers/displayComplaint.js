@@ -533,18 +533,9 @@ exports.getComplaintByCategoryAdmin = (req, res) => {
     const type = req.body.type;
     var result = [],
         result1 = [];
-
-    var fromDate = new Date(req.body.fromDate);
-    var toDate = new Date(req.body.toDate);
-
-    var day = fromDate.getDay(),
-        month = fromDate.getMonth(),
-        year = fromDate.getFullYear();
-    fromDate = new Date(year, month, day);
-    day = toDate.getDay();
-    month = toDate.getMonth();
-    year = toDate.getFullYear();
-    toDate = new Date(year, month, day);
+    var status = req.body.status;
+    var fromDate = req.body.fromDate;
+    var toDate = req.body.toDate;
 
 
     if (category === 'all') {
@@ -595,7 +586,8 @@ exports.getComplaintByCategoryAdmin = (req, res) => {
                                 result1 = [];
                                 Complaint.findAll({
                                         where: {
-                                            type: type
+                                            type: type,
+                                            status :status
                                         },
                                         include: [{
                                             model: Lab,
@@ -649,7 +641,9 @@ exports.getComplaintByCategoryAdmin = (req, res) => {
                                                         finalResult = finalResult.concat(r4);
                                                         finalResult = finalResult.concat(r5);
                                                         var tmp = [];
+                                                        console.log(finalResult.length);
                                                         for (i = 0; i < finalResult.length; i++) {
+                                                            console.log(finalResult[i].startDate+"  "+new Date(fromDate)+"  "+new Date(toDate));
                                                             if (finalResult[i].startDate >= new Date(fromDate) && finalResult[i].startDate <= new Date(toDate)) {
                                                                 tmp.push(finalResult[i]);
                                                                 console.log(finalResult[i]);

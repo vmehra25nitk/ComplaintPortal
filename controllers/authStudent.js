@@ -138,7 +138,13 @@ exports.getStudentSignUp = (req, res) => {
 
 exports.getStudentHomePage = (req, res) => {
     if(req.session.isLoggedIn && req.session.isStudent){
-        res.render('home');
+        Student.findByPk(req.session.sid)
+        .then(student => {
+            res.render('home', {
+                student: student
+            })
+        })
+        //res.render('home');
     }else{
         console.log('here');
         res.redirect('/studentSignIn');

@@ -14,4 +14,6 @@ router.post('/adminSignIn', adminController.postAdminSignIn);
 
 router.post('/adminSignOut', adminController.postAdminSignOut);
 
+router.post('/adminMakeChanges',adminController.makeChanges)
+
 module.exports = router;
