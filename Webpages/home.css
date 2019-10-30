@@ -2,8 +2,8 @@
 html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 /* Radio Buttons Css */
-/* The container */
-.container {
+/* The apsy-container */
+.apsy-container {
   display: block;
   position: relative;
   padding-left: 35px;
@@ -17,7 +17,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 }
 
 /* Hide the browser's default radio button */
-.container input {
+.apsy-container input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -35,12 +35,12 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 }
 
 /* On mouse-over, add a grey background color */
-.container:hover input ~ .checkmark {
+.apsy-container:hover input ~ .checkmark {
   background-color: #ccc;
 }
 
 /* When the radio button is checked, add a blue background */
-.container input:checked ~ .checkmark {
+.apsy-container input:checked ~ .checkmark {
   background-color: #607D8B;
 }
 
@@ -52,12 +52,12 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 }
 
 /* Show the indicator (dot/circle) when checked */
-.container input:checked ~ .checkmark:after {
+.apsy-container input:checked ~ .checkmark:after {
   display: block;
 }
 
 /* Style the indicator (dot/circle) */
-.container .checkmark:after {
+.apsy-container .checkmark:after {
  	top: 9px;
 	left: 9px;
 	width: 8px;
