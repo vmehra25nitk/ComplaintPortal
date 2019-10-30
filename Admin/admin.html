@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+
+<!-- BootStrap -->
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />  -->
+
+
+<!-- Bootstrap Over -->
+
+<link rel="stylesheet" href=admin.css>
+<script src="admin.js"></script>
+
+<!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
+<!-- <script src="home.js"></script> -->
+
+<!-- <style>
+
+</style> -->
+
+<body class="w3-light-grey">
+</body>
+<h1>Manage Complaints....</h1>
+<div class="w3-container w3-padding-16" style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
+      
+          <div style="display: flex;">
+              <label style="padding-right : 1cm;" class=" apsy-container">
+                <input class="w3-radio" type="radio" name="adminCat" value="general" checked>
+                <span class="checkmark"></span>General</label>
+                
+              <label class="apsy-container">
+                <input class="w3-radio" type="radio" name="adminCat" value="personal">
+                <span class="checkmark"></span>Personal</label>
+          </div>
+
+          <div style="display: flex;">
+                <label style="padding-right : 1.2cm;" class=" apsy-container">
+                  <input class="w3-radio" type="radio" name="adminStatus" value="solved" checked>
+                  <span class="checkmark"></span> Solved</label>
+                  
+                <label style="padding-right : 1cm;" class="apsy-container">
+                  <input class="w3-radio" type="radio" name="adminStatus" value="pending">
+                  <span class="checkmark"></span>Pending</label>
+
+                  <label class="apsy-container">
+                        <input class="w3-radio" type="radio" name="adminStatus" value="rejected">
+                        <span class="checkmark"></span>Rejected</label>
+            </div>
+            
+            <!-- Dropdown Menu -->
+            <div style="display: flex;">
+            <div style="padding-bottom: 10px; margin-right: 10px;;" >
+              <p style="padding-top: 5px; padding-bottom: 1px;">Category :</p>
+              <select id="adminSelect"  style="border-radius: 5px; " class="dropbtn" name="adminSelect">
+                <option value="all" selected>All</option>
+                <option value="hostel">Hostel</option>
+                <option value="fees">Fees</option>
+                <option value="mess">Mess</option>
+                <option value="faculty">Faculty</option>
+                <option value="lab">Lab</option>
+                <option value="library">Library</option>
+              </select>
+            </div>
+            <div style="padding-bottom: 10px; margin-right: 10px;;" >
+              <p style="padding-top: 5px; padding-bottom: 1px;">From :</p>
+            <input type="date" id="adminFromDate"  class="dropbtn">
+            </div>
+            <div style="padding-bottom: 10px; margin-right: 10px;;" >
+              <p style="padding-top: 5px; padding-bottom: 1px;">To :</p>
+            <input type="date" id="adminToDate" class="dropbtn">
+            </div>
+
+            <div style="padding-bottom: 10px; margin-right: 10px;;" >
+                <p style="padding-top: 5px; padding-bottom: 1px;"> <br>  </p>
+              <button id="adminSubmit" onclick="loadComplaints('admin');" class="dropbtn"><i class="fa fa-search"></i></button>
+            </div>
+          </div>
+          <p class="w3-text-red" id="adminWarning"></p>
+            <div class="w3-twothird">
+            
+            <table id='feedTable' class= 'w3-table  w3-striped w3-white' >
+               <tr>
+                <td>Category</td>
+                <td>Registered On</td>
+                <td>Description</td>
+                <td colspan="2">Status</td>
+               </tr>
+               <tr><table class="w3-table"></table></tr>
+    
+            </table>
+          </div>
+      
+      </div>
+
+      <div id="AdminComplaints" class="w3-modal">
+            <header class="w3-display-container w3-content w3-hide-small" style="max-width:1500px">
+              <div class="w3-modal-content w3-animate-zoom" style="border-top-left-radius: 15px; border-top-right-radius: 15px; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;" >
+          
+                <div class="w3-bar w3-black" style="border-top-left-radius: 15px; border-top-right-radius: 15px; " >
+                  <span onclick="document.getElementById('AdminComplaints').style.display='none'"
+                    class="w3-button w3-display-topright" style="border-top-right-radius: 15px;">x</span>
+                  <button id="AdminBtn" class="w3-bar-item w3-button Admintablink"> <!-- onclick="openLink(event, 'Admin','Admintablink','AdminmyLink');">-->
+                    <i
+                      class="fas fa-campground"></i> Make Changes </button>
+                </div>
+                
+                <div id="Admin" class="w3-container w3-padding-16 AdminmyLink" style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
+                
+                 
+                <div style="display: flex;" >
+                      <label style="padding-right : 1.2cm;" class=" apsy-container">
+                        <input class="w3-radio" type="radio" name="adminChangeStatus" value="solved" checked>
+                        <span class="checkmark"></span> Solved</label>
+                        
+                      <label style="padding-right : 1cm;" class="apsy-container">
+                        <input class="w3-radio" type="radio" name="adminChangeStatus" value="pending">
+                        <span class="checkmark"></span>Pending</label>
+      
+                        <label class="apsy-container">
+                              <input class="w3-radio" type="radio" name="adminChangeStatus" value="rejected">
+                              <span class="checkmark"></span>Rejected</label>
+                  </div>
+                  <div style="display: flex;">
+                <input name="adminPersonAssigned"  style=" margin-right: 1cm;  ;background-color: white; border-width: 3px; border-color:#607D8B; border-radius: 5px;padding: 5px ;color: #607D8B;" placeholder="Assign a person" /> 
+                    <button id="adminChange" class="dropbtn">Change</button>
+              </div>
+                </div>
+
+
+            </div>
+
+        </header>
+      </div>
+
+
+</html>

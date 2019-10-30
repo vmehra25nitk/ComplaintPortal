@@ -99,7 +99,7 @@
         <h4>File Complaint</h4>
       </div>
     </div>
-    <div class="w3-quarter" onclick="openBlock('Pending'); restrictFutureDate('pending');">
+    <div class="w3-quarter" onclick="openBlock('Pending');" > <!--restrictFutureDate('pending');"> -->
       <div class="w3-container w3-blue w3-padding-16">
         <div class="w3-left"><i class="fa fa-eye w3-xxxlarge"></i></div>
         <div class="w3-right">
@@ -109,7 +109,7 @@
         <h4>Pending Complaints</h4>
       </div>
     </div>
-    <div class="w3-quarter" onclick="openBlock('Solved');restrictFutureDate('solved');" >
+    <div class="w3-quarter" onclick="openBlock('Solved');"> <!--restrictFutureDate('solved');" >-->
       <div class="w3-container w3-teal w3-padding-16">
         <div class="w3-left"><i class="fa fa-share-alt w3-xxxlarge"></i></div>
         <div class="w3-right">
@@ -306,11 +306,11 @@
         <!-- Complaint general or personal -->
         <div style="display: flex;">
           <label style="padding-right: 1cm;" class="apsy-container">
-            <input class="w3-radio" type="radio" name="hostelCat" value="general" checked>
+            <input class="w3-radio" type="radio" name="general" value="general" checked>
             <span class="checkmark"></span>General</label>
 
           <label class="apsy-container">
-            <input class="w3-radio" type="radio" name="hostelCat" value="personal">
+            <input class="w3-radio" type="radio" name="general" value="personal">
             <span class="checkmark"></span>Personal</label>
         </div>
 
@@ -351,11 +351,11 @@
         <!-- Complaint general or personal -->
         <div style="display: flex;">
           <label style="padding-right: 1cm;" class="apsy-container">
-            <input class="w3-radio" type="radio" name="feesCat" value="general" checked>
+            <input class="w3-radio" type="radio" name="general" value="general" checked>
             <span class="checkmark"></span>General</label>
 
           <label class="apsy-container">
-            <input class="w3-radio" type="radio" name="feesCat" value="personal">
+            <input class="w3-radio" type="radio" name="general" value="personal">
             <span class="checkmark"></span>Personal</label>
         </div>
 
@@ -380,11 +380,11 @@
         <!-- Complaint general or personal -->
         <div style="display: flex;">
           <label style="padding-right: 1cm;" class="apsy-container">
-            <input class="w3-radio" type="radio" name="messCat" value="general" checked>
+            <input class="w3-radio" type="radio" name="general" value="general" checked>
             <span class="checkmark"></span>General</label>
 
           <label class="apsy-container">
-            <input class="w3-radio" type="radio" name="messCat" value="personal">
+            <input class="w3-radio" type="radio" name="general" value="personal">
             <span class="checkmark"></span>Personal</label>
         </div>
 
@@ -425,11 +425,11 @@
         <!-- Complaint general or personal -->
         <div style="display: flex;">
           <label style="padding-right: 1cm;" class="apsy-container">
-            <input class="w3-radio" type="radio" name="facCat" value="general" checked>
+            <input class="w3-radio" type="radio" name="general" value="general" checked>
             <span class="checkmark"></span>General</label>
 
           <label class="apsy-container">
-            <input class="w3-radio" type="radio" name="facCat" value="personal">
+            <input class="w3-radio" type="radio" name="general" value="personal">
             <span class="checkmark"></span>Personal</label>
         </div>
 
@@ -473,11 +473,11 @@
         <!-- Complaint general or personal -->
         <div style="display: flex;">
           <label style="padding-right: 1cm;" class="apsy-container">
-            <input class="w3-radio" type="radio" name="labCat" value="general" checked>
+            <input class="w3-radio" type="radio" name="general" value="general" checked>
             <span class="checkmark"></span>General</label>
 
           <label class="apsy-container">
-            <input class="w3-radio" type="radio" name="labCat" value="personal">
+            <input class="w3-radio" type="radio" name="general" value="personal">
             <span class="checkmark"></span>Personal</label>
         </div>
 
@@ -521,11 +521,11 @@
         <!-- Complaint general or personal -->
         <div style="display: flex;">
           <label style="padding-right: 1cm;" class="apsy-container">
-            <input class="w3-radio" type="radio" name="libCat" value="general" checked>
+            <input class="w3-radio" type="radio" name="general" value="general" checked>
             <span class="checkmark"></span>General</label>
 
           <label class="apsy-container">
-            <input class="w3-radio" type="radio" name="libCat" value="personal">
+            <input class="w3-radio" type="radio" name="general" value="personal">
             <span class="checkmark"></span>Personal</label>
         </div>
 
@@ -626,7 +626,13 @@
             <div>
             <p class="w3-text-red" id="pendingWarning"></p>
             <table id='pendingTable' class= 'w3-table  w3-striped w3-white' >
-               
+              <tr>
+                <td>Category</td>
+                <td>Registered On</td>
+                <td>Description</td>
+                <td colspan="1">Status</td>
+               </tr>
+               <tr><table class="w3-table"></table></tr>
     
             </table>
           </div>
@@ -700,8 +706,7 @@
             <div>
             <p class="w3-text-red" id="solvedWarning"></p>
             <table id='solvedTable' class= 'w3-table  w3-striped w3-white' >
-               
-    
+              <tr> <td>Category</td><td>Registered On</td> <td>Description</td><td colspan="1">Status</td> </tr> <tr></tr>
             </table>
           </div>
       

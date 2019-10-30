@@ -53,7 +53,8 @@ const Complaint = sequelize.define('complaint', {
         allowNull: false,
         references: {
             model: Student,
-            key: 'sid'
+            key: 'sid',
+            onDelete:'CASCADE'
         }
     },
     status: {
@@ -66,10 +67,10 @@ const Complaint = sequelize.define('complaint', {
 
 
 //Adding Constraints
-Complaint.belongsTo(Student, {
-    constraints: true,
-    onDelete: 'CASCADE'
-});
+// Complaint.belongsTo(Student, {
+//     constraints: true,
+//     onDelete: 'CASCADE'
+// });
 
 
 Fees.belongsTo(Complaint,{

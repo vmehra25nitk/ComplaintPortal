@@ -51,21 +51,7 @@ function openBlock(prefix)
 
 
 
-function openLink(evt, linkName,tablink,mylink) {
-    var i, x, tablinks;
-    x = document.getElementsByClassName(mylink);
-    for (i = 0; i < x.length; i++) {  
-      x[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName(tablink);
-    for (i = 0; i < x.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" w3-blue-grey", "");
-      
-    }
-    document.getElementById(linkName).style.display = "block";
-     document.getElementById(linkName+"Btn").className += " w3-blue-grey";
-    
-  }
+
 
 //open boxes over
 
@@ -303,16 +289,18 @@ function loadHostel(tabname, obj){
   dispRow.innerHTML = "<td><i class='fas fa-hotel w3-large'> Hostel </i></td>"
                       + "<td><i class='far fa-calendar-plus'> <b> "+obj.startDate+"</b></i></td>"
                       + "<td><i class='fas fa-pen'> "+obj.description.substring(0,9)+"...."+"</i></td>"
-                      +"<td>"+status+" </td>";
+                      +"<td>"+status+" </td>"
+                      + "<td><button class='dropbtn'  id='"+obj.cid+"Btn"+"'  style='padding: 3px'>Make Changes</button></td>";
                           
  tabl.appendChild(dispRow);
+
 
  dispRow = document.createElement('tr');
 
  dispRow.setAttribute('style',"background-color: #f1f1f1;");
  dispRow.setAttribute('class','w3-text-blue-grey')
 
- dispRow.innerHTML =  "<td colspan='4'>"
+ dispRow.innerHTML =  "<td colspan='5'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
                         +"<tr>"
                         +"  <td style='padding-right: 155px; padding-left: 115px;'>"
@@ -382,16 +370,19 @@ function loadFees(tabname,obj)
   dispRow.innerHTML = "<td><i class='fas fa-rupee-sign w3-large'> Fees </i></td>"
                       + "<td><i class='far fa-calendar-plus'> <b> "+obj.startDate+"</b></i></td>"
                       + "<td><i class='fas fa-pen'> "+obj.description.substring(0,9)+"...."+"</i></td>"
-                      +"<td>"+status+" </td>";
+                      +"<td>"+status+" </td>"
+                      + "<td><button  class='dropbtn'  id='"+obj.cid+"Btn"+"'  style='padding: 3px'>Make Changes</button></td>";
                           
  tabl.appendChild(dispRow);
+
+ document.getElementById(obj.cid+"Btn").onclick = function(){clickMakeChanges(obj)};
 
  dispRow = document.createElement('tr');
 
  dispRow.setAttribute('style',"background-color: #f1f1f1;");
  dispRow.setAttribute('class','w3-text-blue-grey')
 
- dispRow.innerHTML =  "<td colspan='4'>"
+ dispRow.innerHTML =  "<td colspan='5'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
                         +"<tr>"
                           +"  <td style='padding-right: 160px; padding-left: 115px;'>"
@@ -447,7 +438,8 @@ function loadMess(tabname,obj)
   dispRow.innerHTML = "<td><i class='fas fa-utensils w3-large'>  Mess </i></td>"
                        + "<td><i class='far fa-calendar-plus'> <b> "+obj.startDate+"</b></i></td>"
                       + "<td><i class='fas fa-pen'> "+obj.description.substring(0,9)+"...."+"</i></td>"
-                      +"<td>"+status+" </td>";
+                      +"<td>"+status+" </td>"
+                      + "<td><button class='dropbtn'  id='"+obj.cid+"Btn"+"'  style='padding: 3px'>Make Changes</button></td>";
                           
  tabl.appendChild(dispRow);
 
@@ -456,7 +448,7 @@ function loadMess(tabname,obj)
  dispRow.setAttribute('style',"background-color: #f1f1f1;");
  dispRow.setAttribute('class',"w3-text-blue-grey")
 
- dispRow.innerHTML =   "<td colspan='4'>"
+ dispRow.innerHTML =   "<td colspan='5'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
                         +"<tr>"
                         +"  <td style='padding-right: 155px; padding-left: 115px;'>"
@@ -530,7 +522,8 @@ function loadFaculty(tabname,obj)
   dispRow.innerHTML = "<td><i class='fas fa-chalkboard-teacher w3-large'>  Faculty </i></td>"
                        + "<td><i class='far fa-calendar-plus'> <b> "+obj.startDate+"</b></i></td>"
                       + "<td><i class='fas fa-pen'> "+obj.description.substring(0,9)+"...."+"</i></td>"
-                      +"<td>"+status+" </td>";
+                      +"<td>"+status+" </td>"
+                      + "<td><button class='dropbtn'  id='"+obj.cid+"Btn"+"'  style='padding: 3px'>Make Changes</button></td>";
                           
  tabl.appendChild(dispRow);
 
@@ -539,7 +532,7 @@ function loadFaculty(tabname,obj)
  dispRow.setAttribute('style',"background-color:#f1f1f1;");// color:#2e005e; ");
  dispRow.setAttribute('class',"w3-text-blue-grey");
 //  e
- dispRow.innerHTML =   "<td colspan='4'>"
+ dispRow.innerHTML =   "<td colspan='5'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
                         +"<tr>"
                         +"  <td style='padding-right: 100px; padding-left: 115px;'>"
@@ -613,7 +606,8 @@ function loadLab(tabname,obj)
   dispRow.innerHTML = "<td><i class='fas fa-flask w3-large'>  Lab </i></td>"
                        + "<td><i class='far fa-calendar-plus'> <b> "+obj.startDate+"</b></i></td>"
                       + "<td><i class='fas fa-pen'> "+obj.description.substring(0,9)+"...."+"</i></td>"
-                      +"<td>"+status+" </td>";
+                      +"<td>"+status+" </td>"
+                      + "<td><button class='dropbtn'  id='"+obj.cid+"Btn"+"'  style='padding: 3px'>Make Changes</button></td>";
                           
  tabl.appendChild(dispRow);
 
@@ -622,7 +616,7 @@ function loadLab(tabname,obj)
  dispRow.setAttribute('style',"background-color:#f1f1f1;");// color:#783612; ");
  dispRow.setAttribute('class',"w3-text-blue-grey");
 //  e
- dispRow.innerHTML =   "<td colspan='4'>"
+ dispRow.innerHTML =   "<td colspan='5'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
                         +"<tr>"
                         +"  <td style='padding-right: 155px; padding-left: 115px;'>"
@@ -695,7 +689,8 @@ function loadLib(tabname,obj)
   dispRow.innerHTML = "<td><i class='fas fa-utensils w3-large'>  Library </i></td>"
                        + "<td><i class='far fa-calendar-plus'> <b> "+obj.startDate+"</b></i></td>"
                       + "<td><i class='fas fa-pen'> "+obj.description.substring(0,9)+"...."+"</i></td>"
-                      +"<td>"+status+" </td>";
+                      +"<td>"+status+" </td>"
+                      + "<td><button class='dropbtn'  id='"+obj.cid+"Btn"+"'  style='padding: 3px'>Make Changes</button></td>";
                           
  tabl.appendChild(dispRow);
 
@@ -704,7 +699,7 @@ function loadLib(tabname,obj)
  //dispRow.setAttribute('style',"background-color: #f1f1f1; color:#8c6d81;");
    dispRow.setAttribute('class','w3-text-blue-grey');
 
- dispRow.innerHTML =   "<td colspan='4'>"
+ dispRow.innerHTML =   "<td colspan='5'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
                         +"<tr>"
                           +"  <td style='padding-right: 155px; padding-left: 115px;'>"
@@ -731,19 +726,19 @@ tabl.appendChild(dispRow);
 function loadComplaints(status)
 {
   var type = document.querySelector('input[name="'+status+'Cat"]:checked').value;
+
+  var realStatus = document.querySelector('input[name="'+status+'Status"]:checked').value;
+
   const category = document.getElementById(status+'Select').value;
   
-  var fromDate = document.getElementById(status+'FromDate').value;  
-  var toDate = document.getElementById(status+'ToDate').value;  
-  console.log(toDate);
-  if(toDate==""|| fromDate=="" || (fromDate)> (toDate)){
+  const fromDate = document.getElementById(status+'FromDate').value;  
+  const toDate = document.getElementById(status+'ToDate').value;  
+
+  if(toDate==""|| fromDate=="" || (fromDate)> (toDate))
   document.getElementById(status+'Warning').innerHTML = 'Please select correct dates';
-   return;}
   else
   document.getElementById(status+'Warning').innerHTML = '';
-  fromDate = new Date(fromDate+'T00:00:00');
-  toDate = new Date(toDate+'T23:59:59');
-
+ 
   type = type.substring(0,3);
   console.log(type);
   const obj = {
@@ -751,67 +746,77 @@ function loadComplaints(status)
                 category : category,
                 fromDate : fromDate,
                 toDate : toDate,
-                status : status
+                status : realStatus
               } 
  
-               
+ 
   console.log(obj);
-  const url = 'http://localhost:3000/getComplaintByCategoryStudent';
-  $.post(url,obj,function(data,status1)
+  const url = 'http://localhost:3000/testing';
+  $.post(url,obj,function(data,status)
   {
     console.log(data);
     
-    loadAll(data,status);
-      // for(var i=0;i<data.length;i++)
-      // {
-      //   loadFees('feedTable',data[i]);
-      // }
+      for(var i=0;i<data.length;i++)
+      {
+        loadFees('feedTable',data[i]);
+      }
     
   });
 
-
- 
-
 }
-
-function loadAll(data,status)
-{
-  console.log("I am Here");
-  status = status+'Table';
-  
-  document.getElementById(status).innerHTML="<tr> <td>Category</td><td>Registered On</td> <td>Description</td><td colspan='1'>Status</td> </tr> <tr></tr>";
-  for(var i=0; i<data.length;i++)
-  {
-    data[i].startDate = data[i].startDate.substring(0,10);
-  switch(data[i].category)
-  {
-    case 'hostel':
-        //console.log(data.category);
-      loadHostel(status,data[i]);
-    break;
-    case 'fees':
-    loadFees(status,data[i]);
-    break;
-    case 'faculty':
-    loadFaculty(status,data[i]);
-    break;
-    case 'mess':
-    loadMess(status,data[i]);
-    break;
-    case 'lab':
-    loadLab(status,data[i]);
-    break;
-    case 'library':
-    loadLib(status,data[i]);
-    break;
-  }
-}
-  
-}
-
 
 //Loading Complaints Over
 
+//Click  Make Changes
+
+function clickMakeChanges(obj)
+{
+    console.log("MakeChanges  - "+obj.cid);
+
+    var prefix = "Admin";
+
+    openLink(event, prefix,prefix+'tablink',prefix+'myLink');
+    try{
+    var form = document.getElementById(prefix+'Complaints');//.style.display('block');
+    form.style.display = 'block';
+    }
+    catch(error)
+    {
+        alert(error.toString());   
+    }
+
+    document.getElementById('adminChange').onclick = function(){
+      var status = document.querySelector('input[name="adminChangeStatus"]:checked').value;
+
+      const solvedBy = getElementsByName('adminPersonAssigned')[0].value;
+      if(status!=obj.status || solvedBy != obj.solvedBy)
+      {
+        //To be Continued
+      }
+      
+    }
+}
+
+function openLink(evt, linkName,tablink,mylink) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName(mylink);
+  for (i = 0; i < x.length; i++) {  
+    x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName(tablink);
+  for (i = 0; i < x.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" w3-blue-grey", "");
+    
+  }
+  document.getElementById(linkName).style.display = "block";
+   document.getElementById(linkName+"Btn").className += " w3-blue-grey";
+  
+}
+
+//Click Make Changes    
+
+
+//Demo Get Req
 function getData()
 {
   const httx = new XMLHttpRequest();

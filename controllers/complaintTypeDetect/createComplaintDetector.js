@@ -54,7 +54,6 @@ exports.detect = function (req) {
     case 'mess': {
         var studentSid = req.body.studentSid;
         var messType = req.body.messSelect;
-        req.body.messName = "asd";
         var messName = req.body.messName;
         Mess.createMessComplaint(messType, cid, messName);
     }

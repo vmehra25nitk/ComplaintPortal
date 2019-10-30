@@ -207,7 +207,7 @@ exports.getComplaintByCategoryStudent = (req, res) => {
                 },
                 include: [{
                     model: Hostel,
-                    attributes: ['type'],
+                    attributes: ['type', 'name'],
                     required: true
                 }]
             })
@@ -239,7 +239,7 @@ exports.getComplaintByCategoryStudent = (req, res) => {
                                 },
                                 include: [{
                                     model: Lab,
-                                    attributes: ['type'],
+                                    attributes: ['type', 'name', 'department'],
                                     required: true
                                 }]
                             })
@@ -255,7 +255,7 @@ exports.getComplaintByCategoryStudent = (req, res) => {
                                         },
                                         include: [{
                                             model: Mess,
-                                            attributes: ['type'],
+                                            attributes: ['type', 'messName'],
                                             required: true
                                         }]
                                     })
@@ -271,7 +271,7 @@ exports.getComplaintByCategoryStudent = (req, res) => {
                                                 },
                                                 include: [{
                                                     model: Faculty,
-                                                    attributes: ['type'],
+                                                    attributes: ['type', 'name', 'department'],
                                                     required: true
                                                 }]
                                             })
@@ -308,11 +308,8 @@ exports.getComplaintByCategoryStudent = (req, res) => {
                                                         finalResult = finalResult.concat(r5);
                                                         var tmp = [];
                                                         for (i = 0; i < finalResult.length; i++) {
-                                                            var day = finalResult[i].startDate.getDay(),
-                                                                month = finalResult[i].startDate.getMonth(),
-                                                                year = finalResult[i].startDate.getFullYear();
-                                                            finalResult[i].startDate = new Date(year, month, day);
-                                                            if (finalResult[i].startDate >= fromDate && finalResult[i].startDate <= toDate) {
+                                                           
+                                                            if (finalResult[i].startDate >= new Date(fromDate) && finalResult[i].startDate <= new Date(toDate)) {
                                                                 tmp.push(finalResult[i]);
                                                                 console.log(finalResult[i]);
                                                             }
@@ -335,18 +332,16 @@ exports.getComplaintByCategoryStudent = (req, res) => {
                     },
                     include: [{
                         model: Hostel,
-                        attributes: ['type'],
+                        attributes: ['type', 'name'],
                         required: true
                     }]
                 })
                 .then(complaints => {
                     var tmp = [];
                     for (i = 0; i < complaints.length; i++) {
-                        //= complaints[i].startDate.getDay(),
-                        //     month = complaints[i].startDate.getMonth(),
-                        //     year = complaints[i].startDate.getFullYear();
-                        console.log((complaints[i].startDate<=toDate)+"  "+complaints[i].startDate+"   "+toDate);
-                        if (complaints[i].startDate >= fromDate && complaints[i].startDate <= toDate) {
+                       
+                        console.log("Number of Complaints - "+complaints.length+"  "+complaints[i].startDate+"  "+ new Date(fromDate)+"  "+new Date(toDate));
+                        if (complaints[i].startDate >= new Date(fromDate) && complaints[i].startDate <= new Date(toDate)) {
                             tmp.push(complaints[i]);
                             console.log(complaints[i]);
                         }
@@ -367,18 +362,15 @@ exports.getComplaintByCategoryStudent = (req, res) => {
                     },
                     include: [{
                         model: Lab,
-                        attributes: ['type'],
+                        attributes: ['type', 'name', 'department'],
                         required: true
                     }]
                 })
                 .then(complaints => {
                     var tmp = [];
                     for (i = 0; i < complaints.length; i++) {
-                        var day = complaints[i].startDate.getDay(),
-                            month = complaints[i].startDate.getMonth(),
-                            year = complaints[i].startDate.getFullYear();
-                        complaints[i].startDate = new Date(year, month, day);
-                        if (complaints[i].startDate >= fromDate && complaints[i].startDate <= toDate) {
+                       
+                        if (complaints[i].startDate >= new Date(fromDate) && complaints[i].startDate <= new Date(toDate)) {
                             tmp.push(complaints[i]);
                             console.log(complaints[i]);
                         }
@@ -406,11 +398,8 @@ exports.getComplaintByCategoryStudent = (req, res) => {
                 .then(complaints => {
                     var tmp = [];
                     for (i = 0; i < complaints.length; i++) {
-                        var day = complaints[i].startDate.getDay(),
-                            month = complaints[i].startDate.getMonth(),
-                            year = complaints[i].startDate.getFullYear();
-                        complaints[i].startDate = new Date(year, month, day);
-                        if (complaints[i].startDate >= fromDate && complaints[i].startDate <= toDate) {
+                       
+                        if (complaints[i].startDate >= new Date(fromDate) && complaints[i].startDate <= new Date(toDate)) {
                             tmp.push(complaints[i]);
                             console.log(complaints[i]);
                         }
@@ -431,12 +420,20 @@ exports.getComplaintByCategoryStudent = (req, res) => {
                     },
                     include: [{
                         model: Faculty,
-                        attributes: ['type'],
+                        attributes: ['type', 'name', 'department'],
                         required: true
                     }]
                 })
                 .then(complaints => {
-                    res.send(complaints);
+                    var tmp = [];
+                    for (i = 0; i < complaints.length; i++) {
+                       
+                        if (complaints[i].startDate >= new Date(fromDate) && complaints[i].startDate <= new Date(toDate)) {
+                            tmp.push(complaints[i]);
+                            console.log(complaints[i]);
+                        }
+                    }
+                    res.send(tmp);
                 })
                 .catch(err => {
                     console.log(err);
@@ -459,11 +456,8 @@ exports.getComplaintByCategoryStudent = (req, res) => {
                 .then(complaints => {
                     var tmp = [];
                     for (i = 0; i < complaints.length; i++) {
-                        var day = complaints[i].startDate.getDay(),
-                            month = complaints[i].startDate.getMonth(),
-                            year = complaints[i].startDate.getFullYear();
-                        complaints[i].startDate = new Date(year, month, day);
-                        if (complaints[i].startDate >= fromDate && complaints[i].startDate <= toDate) {
+                       
+                        if (complaints[i].startDate >= new Date(fromDate) && complaints[i].startDate <= new Date(toDate)) {
                             tmp.push(complaints[i]);
                             console.log(complaints[i]);
                         }
@@ -484,18 +478,15 @@ exports.getComplaintByCategoryStudent = (req, res) => {
                     },
                     include: [{
                         model: Mess,
-                        attributes: ['type'],
+                        attributes: ['type', 'messName'],
                         required: true
                     }]
                 })
                 .then(complaints => {
                     var tmp = [];
                     for (i = 0; i < complaints.length; i++) {
-                        var day = complaints[i].startDate.getDay(),
-                            month = complaints[i].startDate.getMonth(),
-                            year = complaints[i].startDate.getFullYear();
-                        complaints[i].startDate = new Date(year, month, day);
-                        if (complaints[i].startDate >= fromDate && complaints[i].startDate <= toDate) {
+                       
+                        if (complaints[i].startDate >= new Date(fromDate) && complaints[i].startDate <= new Date(toDate)) {
                             tmp.push(complaints[i]);
                             console.log(complaints[i]);
                         }
@@ -564,7 +555,7 @@ exports.getComplaintByCategoryAdmin = (req, res) => {
                 },
                 include: [{
                     model: Hostel,
-                    attributes: ['type'],
+                    attributes: ['type', 'name'],
                     required: true
                 }]
             })
@@ -594,7 +585,7 @@ exports.getComplaintByCategoryAdmin = (req, res) => {
                                 },
                                 include: [{
                                     model: Faculty,
-                                    attributes: ['type'],
+                                    attributes: ['type', 'name', 'department'],
                                     required: true
                                 }]
                             })
@@ -608,7 +599,7 @@ exports.getComplaintByCategoryAdmin = (req, res) => {
                                         },
                                         include: [{
                                             model: Lab,
-                                            attributes: ['type'],
+                                            attributes: ['type', 'name', 'department'],
                                             required: true
                                         }]
                                     })
@@ -638,7 +629,7 @@ exports.getComplaintByCategoryAdmin = (req, res) => {
                                                         },
                                                         include: [{
                                                             model: Mess,
-                                                            attributes: ['type'],
+                                                            attributes: ['type', 'messName'],
                                                             required: true
                                                         }]
                                                     })
@@ -659,11 +650,7 @@ exports.getComplaintByCategoryAdmin = (req, res) => {
                                                         finalResult = finalResult.concat(r5);
                                                         var tmp = [];
                                                         for (i = 0; i < finalResult.length; i++) {
-                                                            var day = finalResult[i].startDate.getDay(),
-                                                                month = finalResult[i].startDate.getMonth(),
-                                                                year = finalResult[i].startDate.getFullYear();
-                                                            finalResult[i].startDate = new Date(year, month, day);
-                                                            if (finalResult[i].startDate >= fromDate && finalResult[i].startDate <= toDate) {
+                                                            if (finalResult[i].startDate >= new Date(fromDate) && finalResult[i].startDate <= new Date(toDate)) {
                                                                 tmp.push(finalResult[i]);
                                                                 console.log(finalResult[i]);
                                                             }
@@ -689,18 +676,15 @@ exports.getComplaintByCategoryAdmin = (req, res) => {
                     },
                     include: {
                         model: Hostel,
-                        attributes: ['type'],
+                        attributes: ['type', 'name'],
                         required: true
                     }
                 })
                 .then(complaints => {
                     var tmp = [];
                     for (i = 0; i < complaints.length; i++) {
-                        var day = complaints[i].startDate.getDay(),
-                            month = complaints[i].startDate.getMonth(),
-                            year = complaints[i].startDate.getFullYear();
-                        complaints[i].startDate = new Date(year, month, day);
-                        if (complaints[i].startDate >= fromDate && complaints[i].startDate <= toDate) {
+                       
+                        if (complaints[i].startDate >= new Date(fromDate) && complaints[i].startDate <= new Date(toDate)) {
                             tmp.push(complaints[i]);
                             console.log(complaints[i]);
                         }
@@ -720,18 +704,15 @@ exports.getComplaintByCategoryAdmin = (req, res) => {
                     },
                     include: {
                         model: Lab,
-                        attributes: ['type'],
+                        attributes: ['type', 'name', 'department'],
                         required: true
                     }
                 })
                 .then(complaints => {
                     var tmp = [];
                     for (i = 0; i < complaints.length; i++) {
-                        var day = complaints[i].startDate.getDay(),
-                            month = complaints[i].startDate.getMonth(),
-                            year = complaints[i].startDate.getFullYear();
-                        complaints[i].startDate = new Date(year, month, day);
-                        if (complaints[i].startDate >= fromDate && complaints[i].startDate <= toDate) {
+                       
+                        if (complaints[i].startDate >= new Date(fromDate) && complaints[i].startDate <= new Date(toDate)) {
                             tmp.push(complaints[i]);
                             console.log(complaints[i]);
                         }
@@ -758,11 +739,8 @@ exports.getComplaintByCategoryAdmin = (req, res) => {
                 .then(complaints => {
                     var tmp = [];
                     for (i = 0; i < complaints.length; i++) {
-                        var day = complaints[i].startDate.getDay(),
-                            month = complaints[i].startDate.getMonth(),
-                            year = complaints[i].startDate.getFullYear();
-                        complaints[i].startDate = new Date(year, month, day);
-                        if (complaints[i].startDate >= fromDate && complaints[i].startDate <= toDate) {
+                       
+                        if (complaints[i].startDate >= new Date(fromDate) && complaints[i].startDate <= new Date(toDate)) {
                             tmp.push(complaints[i]);
                             console.log(complaints[i]);
                         }
@@ -782,18 +760,15 @@ exports.getComplaintByCategoryAdmin = (req, res) => {
                     },
                     include: {
                         model: Faculty,
-                        attributes: ['type'],
+                        attributes: ['type', 'name', 'department'],
                         required: true
                     }
                 })
                 .then(complaints => {
                     var tmp = [];
                     for (i = 0; i < complaints.length; i++) {
-                        var day = complaints[i].startDate.getDay(),
-                            month = complaints[i].startDate.getMonth(),
-                            year = complaints[i].startDate.getFullYear();
-                        complaints[i].startDate = new Date(year, month, day);
-                        if (complaints[i].startDate >= fromDate && complaints[i].startDate <= toDate) {
+                       
+                        if (complaints[i].startDate >= new Date(fromDate) && complaints[i].startDate <= new Date(toDate)) {
                             tmp.push(complaints[i]);
                             console.log(complaints[i]);
                         }
@@ -805,7 +780,7 @@ exports.getComplaintByCategoryAdmin = (req, res) => {
 
                     res.redirect('/');
                 })
-        } else if (category === 'lab') {
+        } else if (category === 'fees') {
             Complaint.findAll({
                     where: {
                         category: category,
@@ -821,11 +796,8 @@ exports.getComplaintByCategoryAdmin = (req, res) => {
                 .then(complaints => {
                     var tmp = [];
                     for (i = 0; i < complaints.length; i++) {
-                        var day = complaints[i].startDate.getDay(),
-                            month = complaints[i].startDate.getMonth(),
-                            year = complaints[i].startDate.getFullYear();
-                        complaints[i].startDate = new Date(year, month, day);
-                        if (complaints[i].startDate >= fromDate && complaints[i].startDate <= toDate) {
+                       
+                        if (complaints[i].startDate >= new Date(fromDate) && complaints[i].startDate <= new Date(toDate)) {
                             tmp.push(complaints[i]);
                             console.log(complaints[i]);
                         }
@@ -845,18 +817,15 @@ exports.getComplaintByCategoryAdmin = (req, res) => {
                     },
                     include: {
                         model: Mess,
-                        attributes: ['type'],
+                        attributes: ['type', 'messName'],
                         required: true
                     }
                 })
                 .then(complaints => {
                     var tmp = [];
                     for (i = 0; i < complaints.length; i++) {
-                        var day = complaints[i].startDate.getDay(),
-                            month = complaints[i].startDate.getMonth(),
-                            year = complaints[i].startDate.getFullYear();
-                        complaints[i].startDate = new Date(year, month, day);
-                        if (complaints[i].startDate >= fromDate && complaints[i].startDate <= toDate) {
+                       
+                        if (complaints[i].startDate >= new Date(fromDate) && complaints[i].startDate <= new Date(toDate)) {
                             tmp.push(complaints[i]);
                             console.log(complaints[i]);
                         }
