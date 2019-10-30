@@ -7,6 +7,9 @@ const Library = require('../models/library');
 const Mess = require('../models/mess');
 
 
+const sequelize = require('sequelize');
+const Op = sequelize.Op;
+
 // STUDENT FUNCTIONS //
 
 exports.getStudentComplaints = (req, res) => {
@@ -62,7 +65,7 @@ exports.getStudentComplaints = (req, res) => {
             Complaint.findAll({
                     where: {
                         type: type,
-                        studentSid: studentSid,
+                        studentSId : {[Op.like] : studentSid },
                         category: category
                     }
                 })
@@ -173,21 +176,24 @@ exports.displayComplaint = (req, res) => {
 exports.getComplaintByCategoryStudent = (req, res) => {
     const category = req.body.category;
     const type = req.body.type;
-    const studentSid = req.body.sid;
+    var studentSid = req.body.sid;
+    const status = req.body.status;
     if (req.session.sid) {
         studentSid = req.session.sid;
     }
-    var fromDate = new Date(req.body.fromDate);
-    var toDate = new Date(req.body.toDate);
+    if(type=='gen')
+    studentSid="%";
+    var fromDate =(req.body.fromDate);
+    var toDate = (req.body.toDate);
 
-    var day = fromDate.getDay(),
-        month = fromDate.getMonth(),
-        year = fromDate.getFullYear();
-    fromDate = new Date(year, month, day);
-    day = toDate.getDay();
-    month = toDate.getMonth();
-    year = toDate.getFullYear();
-    toDate = new Date(year, month, day);
+    // var day = fromDate.getDay(),
+    //     month = fromDate.getMonth(),
+    //     year = fromDate.getFullYear();
+    // fromDate = new Date(year, month, day);
+    // day = toDate.getDay();
+    // month = toDate.getMonth();
+    // year = toDate.getFullYear();
+    // toDate = new Date(year, month, day);
 
 
     if (category === 'all') {
@@ -195,8 +201,9 @@ exports.getComplaintByCategoryStudent = (req, res) => {
             result1 = [];
         Complaint.findAll({
                 where: {
-                    studentSid: studentSid,
-                    type: type
+                    studentSId : {[Op.like] : studentSid },
+                    type: type,
+                    status: status
                 },
                 include: [{
                     model: Hostel,
@@ -210,8 +217,9 @@ exports.getComplaintByCategoryStudent = (req, res) => {
                 result1 = [];
                 Complaint.findAll({
                         where: {
-                            studentSid: studentSid,
-                            type: type
+                            studentSId : {[Op.like] : studentSid },
+                            type: type,
+                            status: status
                         },
                         include: [{
                             model: Library,
@@ -225,8 +233,9 @@ exports.getComplaintByCategoryStudent = (req, res) => {
                         result1 = [];
                         Complaint.findAll({
                                 where: {
-                                    studentSid: studentSid,
-                                    type: type
+                                    studentSId : {[Op.like] : studentSid },
+                                    type: type,
+                                    status: status
                                 },
                                 include: [{
                                     model: Lab,
@@ -240,8 +249,9 @@ exports.getComplaintByCategoryStudent = (req, res) => {
                                 result1 = [];
                                 Complaint.findAll({
                                         where: {
-                                            studentSid: studentSid,
-                                            type: type
+                                            studentSId : {[Op.like] : studentSid },
+                                            type: type,
+                                            status: status
                                         },
                                         include: [{
                                             model: Mess,
@@ -255,8 +265,9 @@ exports.getComplaintByCategoryStudent = (req, res) => {
                                         result1 = [];
                                         Complaint.findAll({
                                                 where: {
-                                                    studentSid: studentSid,
-                                                    type: type
+                                                    studentSId : {[Op.like] : studentSid },
+                                                    type: type,
+                                                    status: status
                                                 },
                                                 include: [{
                                                     model: Faculty,
@@ -270,8 +281,9 @@ exports.getComplaintByCategoryStudent = (req, res) => {
                                                 result1 = [];
                                                 Complaint.findAll({
                                                         where: {
-                                                            studentSid: studentSid,
-                                                            type: type
+                                                            studentSId : {[Op.like] : studentSid },
+                                                            type: type,
+                                                            status: status
                                                         },
                                                         include: [{
                                                             model: Fees,
@@ -316,9 +328,10 @@ exports.getComplaintByCategoryStudent = (req, res) => {
         if (category === 'hostel') {
             Complaint.findAll({
                     where: {
-                        studentSid: studentSid,
+                        studentSId : {[Op.like] : studentSid },
                         type: type,
-                        category: category
+                        category: category,
+                        status: status
                     },
                     include: [{
                         model: Hostel,
@@ -329,10 +342,10 @@ exports.getComplaintByCategoryStudent = (req, res) => {
                 .then(complaints => {
                     var tmp = [];
                     for (i = 0; i < complaints.length; i++) {
-                        var day = complaints[i].startDate.getDay(),
-                            month = complaints[i].startDate.getMonth(),
-                            year = complaints[i].startDate.getFullYear();
-                        complaints[i].startDate = new Date(year, month, day);
+                        //= complaints[i].startDate.getDay(),
+                        //     month = complaints[i].startDate.getMonth(),
+                        //     year = complaints[i].startDate.getFullYear();
+                        console.log((complaints[i].startDate<=toDate)+"  "+complaints[i].startDate+"   "+toDate);
                         if (complaints[i].startDate >= fromDate && complaints[i].startDate <= toDate) {
                             tmp.push(complaints[i]);
                             console.log(complaints[i]);
@@ -347,9 +360,10 @@ exports.getComplaintByCategoryStudent = (req, res) => {
         } else if (category === 'lab') {
             Complaint.findAll({
                     where: {
-                        studentSid: studentSid,
+                        studentSId : {[Op.like] : studentSid },
                         type: type,
-                        category: category
+                        category: category,
+                        status: status
                     },
                     include: [{
                         model: Lab,
@@ -378,9 +392,10 @@ exports.getComplaintByCategoryStudent = (req, res) => {
         } else if (category === 'library') {
             Complaint.findAll({
                     where: {
-                        studentSid: studentSid,
+                        studentSId : {[Op.like] : studentSid },
                         type: type,
-                        category: category
+                        category: category,
+                        status: status
                     },
                     include: [{
                         model: Library,
@@ -409,9 +424,10 @@ exports.getComplaintByCategoryStudent = (req, res) => {
         } else if (category === 'faculty') {
             Complaint.findAll({
                     where: {
-                        studentSid: studentSid,
+                        studentSId : {[Op.like] : studentSid },
                         type: type,
-                        category: category
+                        category: category,
+                        status: status
                     },
                     include: [{
                         model: Faculty,
@@ -429,9 +445,10 @@ exports.getComplaintByCategoryStudent = (req, res) => {
         } else if (category === 'fees') {
             Complaint.findAll({
                     where: {
-                        studentSid: studentSid,
+                        studentSId : {[Op.like] : studentSid },
                         type: type,
-                        category: category
+                        category: category,
+                        status: status
                     },
                     include: [{
                         model: Fees,
@@ -460,9 +477,10 @@ exports.getComplaintByCategoryStudent = (req, res) => {
         } else if (category === 'mess') {
             Complaint.findAll({
                     where: {
-                        studentSid: studentSid,
+                        studentSId : {[Op.like] : studentSid },
                         type: type,
-                        category: category
+                        category: category,
+                        status: status
                     },
                     include: [{
                         model: Mess,
@@ -541,7 +559,8 @@ exports.getComplaintByCategoryAdmin = (req, res) => {
     if (category === 'all') {
         Complaint.findAll({
                 where: {
-                    type: type
+                    type: type,
+                    status: status
                 },
                 include: [{
                     model: Hostel,
@@ -555,7 +574,8 @@ exports.getComplaintByCategoryAdmin = (req, res) => {
                 result1 = [];
                 Complaint.findAll({
                         where: {
-                            type: type
+                            type: type,
+                            status: status
                         },
                         include: [{
                             model: Fees,
@@ -569,7 +589,8 @@ exports.getComplaintByCategoryAdmin = (req, res) => {
                         result1 = [];
                         Complaint.findAll({
                                 where: {
-                                    type: type
+                                    type: type,
+                                    status: status
                                 },
                                 include: [{
                                     model: Faculty,
@@ -597,7 +618,8 @@ exports.getComplaintByCategoryAdmin = (req, res) => {
                                         result1 = [];
                                         Complaint.findAll({
                                                 where: {
-                                                    type: type
+                                                    type: type,
+                                                    status: status
                                                 },
                                                 include: [{
                                                     model: Library,
@@ -611,7 +633,8 @@ exports.getComplaintByCategoryAdmin = (req, res) => {
                                                 result1 = [];
                                                 Complaint.findAll({
                                                         where: {
-                                                            type: type
+                                                            type: type,
+                                                            status: status
                                                         },
                                                         include: [{
                                                             model: Mess,
@@ -661,7 +684,8 @@ exports.getComplaintByCategoryAdmin = (req, res) => {
             Complaint.findAll({
                     where: {
                         category: category,
-                        type: type
+                        type: type,
+                        status: status
                     },
                     include: {
                         model: Hostel,
@@ -691,7 +715,8 @@ exports.getComplaintByCategoryAdmin = (req, res) => {
             Complaint.findAll({
                     where: {
                         category: category,
-                        type: type
+                        type: type,
+                        status: status
                     },
                     include: {
                         model: Lab,
@@ -721,7 +746,8 @@ exports.getComplaintByCategoryAdmin = (req, res) => {
             Complaint.findAll({
                     where: {
                         category: category,
-                        type: type
+                        type: type,
+                        status: status
                     },
                     include: {
                         model: Library,
@@ -751,7 +777,8 @@ exports.getComplaintByCategoryAdmin = (req, res) => {
             Complaint.findAll({
                     where: {
                         category: category,
-                        type: type
+                        type: type,
+                        status: status
                     },
                     include: {
                         model: Faculty,
@@ -782,7 +809,8 @@ exports.getComplaintByCategoryAdmin = (req, res) => {
             Complaint.findAll({
                     where: {
                         category: category,
-                        type: type
+                        type: type,
+                        status: status
                     },
                     include: {
                         model: Lab,
@@ -812,7 +840,8 @@ exports.getComplaintByCategoryAdmin = (req, res) => {
             Complaint.findAll({
                     where: {
                         category: category,
-                        type: type
+                        type: type,
+                        status: status
                     },
                     include: {
                         model: Mess,

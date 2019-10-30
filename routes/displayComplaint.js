@@ -6,18 +6,18 @@ const displayComplaintController = require('../controllers/displayComplaint');
 
 const router = express.Router();
 
-router.get('/getAllComplaints', displayComplaintController.displayComplaint);
+router.post('/getAllComplaints', displayComplaintController.displayComplaint);
 
 // STUDENT
 
-router.get('/getStudentComplaints', displayComplaintController.getStudentComplaints);
+router.post('/getStudentComplaints', displayComplaintController.getStudentComplaints);
 
 // ADMIN
 
-router.get('/getAdminComplaints', displayComplaintController.getAdminComplaints);
+router.post('/getAdminComplaints', displayComplaintController.getAdminComplaints);
 
-router.get('/getComplaintByCategoryAdmin', displayComplaintController.getComplaintByCategoryAdmin);
+router.post('/getComplaintByCategoryAdmin', displayComplaintController.getComplaintByCategoryAdmin);
 
-router.get('/getComplaintByCategoryStudent', displayComplaintController.getComplaintByCategoryStudent);
+router.post('/getComplaintByCategoryStudent', displayComplaintController.getComplaintByCategoryStudent);
 
 module.exports = router;

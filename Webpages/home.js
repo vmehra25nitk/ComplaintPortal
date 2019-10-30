@@ -733,14 +733,16 @@ function loadComplaints(status)
   var type = document.querySelector('input[name="'+status+'Cat"]:checked').value;
   const category = document.getElementById(status+'Select').value;
   
-  const fromDate = document.getElementById(status+'FromDate').value;  
-  const toDate = document.getElementById(status+'ToDate').value;  
+  var fromDate = document.getElementById(status+'FromDate').value;  
+  var toDate = document.getElementById(status+'ToDate').value;  
 
   if(toDate==""|| fromDate=="" || (fromDate)> (toDate))
   document.getElementById(status+'Warning').innerHTML = 'Please select correct dates';
   else
   document.getElementById(status+'Warning').innerHTML = '';
- 
+  fromDate = new Date(fromDate+'T00:00:00');
+  toDate = new Date(toDate+'T23:59:59');
+
   type = type.substring(0,3);
   console.log(type);
   const obj = {
@@ -753,15 +755,15 @@ function loadComplaints(status)
  
                
   console.log(obj);
-  const url = 'http://localhost:3000/testing';
+  const url = 'http://localhost:3000/getComplaintByCategoryStudent';
   $.post(url,obj,function(data,status)
   {
     console.log(data);
     
-      for(var i=0;i<data.length;i++)
-      {
-        loadFees('feedTable',data[i]);
-      }
+      // for(var i=0;i<data.length;i++)
+      // {
+      //   loadFees('feedTable',data[i]);
+      // }
     
   });
 
