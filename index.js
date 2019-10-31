@@ -13,7 +13,7 @@ const app = express();
 
 require('dotenv').config();
 
-const studentRoutes = require('./routes/student');
+//const studentRoutes = require('./routes/student');
 const complaintRoutes = require('./routes/complaint');
 const authStudentRoutes = require('./routes/authStudent');
 
@@ -50,7 +50,7 @@ app.use(function(req, res, next) {
   });
 
 
-app.use(studentRoutes);
+//app.use(studentRoutes);
 app.use(complaintRoutes);
 app.use(authStudentRoutes);
 app.use(labRoutes);

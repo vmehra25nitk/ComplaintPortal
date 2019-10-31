@@ -90,24 +90,24 @@
 
   <div class="w3-row-padding w3-margin-bottom" style="margin-right: 1.5cm;">
     <div class="w3-quarter" onclick="openBlock(''); ">
-      <div class="w3-container w3-red w3-padding-16">
+      <div class="w3-container w3-blue w3-padding-16">
         <div class="w3-left"><i class="fa fa-comment w3-xxxlarge"></i></div>
         <div class="w3-clear"></div>
         <h4>File Complaint</h4>
       </div>
     </div>
     <div class="w3-quarter" onclick="openBlock('Pending');restrictFutureDate('pending');">
-      <div class="w3-container w3-blue w3-padding-16">
-        <div class="w3-left"><i class="fa fa-eye w3-xxxlarge"></i></div>
+      <div class="w3-container w3-orange w3-padding-16">
+        <div class="w3-left"><i class="fa fa-eye w3-xxxlarge w3-text-white"></i></div>
         <div class="w3-right">
         </div>
         <div class="w3-clear"></div>
-        <h4>Pending Complaints</h4>
+        <h4 class="w3-text-white">Pending Complaints</h4>
       </div>
     </div>
     <div class="w3-quarter" onclick="openBlock('Solved');restrictFutureDate('solved');" >
       <div class="w3-container w3-teal w3-padding-16">
-        <div class="w3-left"><i class="fa fa-share-alt w3-xxxlarge"></i></div>
+        <div class="w3-left"><i class="fa fa-check w3-xxxlarge"></i></div>
         <div class="w3-right">
         </div>
         <div class="w3-clear"></div>
@@ -115,8 +115,8 @@
       </div>
     </div>
     <div class="w3-quarter" onclick="openBlock('Rejected'); ;restrictFutureDate('rejected');"">
-      <div class="w3-container w3-orange w3-text-white w3-padding-16">
-        <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
+      <div class="w3-container w3-red w3-text-white w3-padding-16">
+        <div class="w3-left"><i class="fas fa-times-circle w3-xxxlarge"></i></div>
         <div class="w3-right">
         </div>
         <div class="w3-clear"></div>
@@ -172,16 +172,16 @@
         <span onclick="document.getElementById('Complaints').style.display='none'"
           class="w3-button w3-display-topright" style="border-top-right-radius: 15px;">x</span>
         <button id="HostelBtn" class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Hostel','tablink','myLink');"><i
-            class="fas fa-campground"></i> Hostel</button>
-        <button id="FeesBtn" class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Fees','tablink','myLink');"><i class="fa fa-bed"></i>
+            class="fas fa-hotel"></i> Hostel</button>
+        <button id="FeesBtn" class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Fees','tablink','myLink');"><i class="fas fa-rupee-sign"></i>
           Fees</button>
-        <button id="MessBtn" class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Mess','tablink','myLink');"><i class="fa fa-car"></i>
+        <button id="MessBtn" class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Mess','tablink','myLink');"><i class="fas fa-utensils"></i>
           Mess</button>
-        <button id="FacultyBtn" class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Faculty','tablink','myLink');"><i class="fa fa-car"></i>
+        <button id="FacultyBtn" class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Faculty','tablink','myLink');"><i class="fas fa-chalkboard-teacher"></i>
           Faculty</button>
-        <button id="LabBtn" class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Lab','tablink','myLink');"><i class="fa fa-car"></i>
+        <button id="LabBtn" class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Lab','tablink','myLink');"><i class="fas fa-flask"></i>
           Lab</button>
-        <button id="LibraryBtn" class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Library','tablink','myLink');"><i class="fa fa-car"></i>
+        <button id="LibraryBtn" class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Library','tablink','myLink');"><i class="fas fa-book"></i>
           Library</button>
       </div>
 
