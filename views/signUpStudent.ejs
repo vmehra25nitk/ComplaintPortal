@@ -52,7 +52,7 @@
             <!-- Login Form -->
             <br>
             <form name="signUpForm" method="POST" action="/studentSignUp">
-                <input type="text" id="sid" class="fadeIn second" name="sid" placeholder="Student Id" required autocomplete="off">
+                <input type="text" pattern='[1-9][0-9]{5}' id="sid" class="fadeIn second" name="sid" placeholder="Student Id" required autocomplete="off">
                 <input type="text" id="firstName" class="fadeIn second" name="firstName" placeholder="First Name"
                     required>
                 <input type="text" id="lastName" class="fadeIn second" name="lastName" placeholder="Last Name" required>

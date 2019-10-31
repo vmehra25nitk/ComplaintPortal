@@ -20,4 +20,6 @@ router.post('/getComplaintByCategoryAdmin', displayComplaintController.getCompla
 
 router.post('/getComplaintByCategoryStudent', displayComplaintController.getComplaintByCategoryStudent);
 
+router.post('/getAllStatistics', displayComplaintController.getStatistics);
+
 module.exports = router;

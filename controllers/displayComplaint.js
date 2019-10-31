@@ -833,3 +833,37 @@ exports.getComplaintByCategoryAdmin = (req, res) => {
         }
     }
 }
+
+exports.getStatistics = (req, res) => {
+    var result = [];
+    Complaint.findAll({
+        where: {
+            status: 'rejected'
+        }
+    })
+    .then(complaintRejected => {
+        result.push(complaintRejected.length);
+        Complaint.findAll({
+            where: {
+                status: 'pending'
+            }
+        })
+        .then(complaintPending => {
+            result.push(complaintPending.length);
+            Complaint.findAll({
+                where: {
+                    status: 'solved'
+                }
+            })
+            .then(complaintSolved => {
+                result.push(complaintSolved.length);
+                console.log(result);
+                var sum = result[0] + result[1] + result[2];
+                var p1 = result[0] / sum * 100.0;   result[0] = p1;
+                var p2 = result[1] / sum * 100.0;   result[1] = p2;
+                var p3 = result[2] / sum * 100.0;   result[2] = p3;
+                res.send(result);
+            })
+        })
+    })
+}
