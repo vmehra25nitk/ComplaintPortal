@@ -114,6 +114,10 @@ function loadHostel(tabname, obj){
   }
   var collapseme = 'coll'+obj.cid;
 
+  var solvedBy = obj.solvedBy;
+ if(solvedBy=='')
+ solvedBy='No one Assigned';
+
   const tabl = document.getElementById(tabname);
 
   var dispRow = document.createElement("tr");
@@ -156,13 +160,20 @@ function loadHostel(tabname, obj){
                           +"<td >"
                            +" <div id='"+collapseme+"'  class='collapse'>"+obj.hostel.type+"</div>"
                         +"</tr>"
-                        +"<tr>"
+                         +"<tr>"
                           +"  <td style='padding-right: 155px; padding-left: 115px;'>"
                             +"    <div id='"+collapseme+"' style='text-align: right;' class='collapse fas fa-pen  w3-large'> Description </div>"
                           +"<td >"
                             +"<div id='"+collapseme+"'  class='collapse'>"+obj.description+"</div>"
                        +" </tr>"
+                       +"<tr>"
+                          +"  <td style='padding-right: 155px; padding-left: 115px;'>"
+                            +"    <div id='"+collapseme+"' style='text-align: right;' class='collapse fas fa-pen  w3-large'> Solved By </div>"
+                          +"<td >"
+                            +"<div id='"+collapseme+"'  class='collapse'>"+solvedBy+"</div>"
+                       +" </tr>"
                       +"</table> "
+
                       +"  </td>"
 
 tabl.appendChild(dispRow);
@@ -201,6 +212,9 @@ function loadFees(tabname,obj)
   
   var collapseme = 'coll'+obj.cid;
 
+  var solvedBy = obj.solvedBy;
+ if(solvedBy=='')
+ solvedBy='No one Assigned';
 
   const tabl = document.getElementById(tabname);
 
@@ -228,13 +242,19 @@ function loadFees(tabname,obj)
 
  dispRow.innerHTML =  "<td colspan='5'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
-                        +"<tr>"
-                          +"  <td style='padding-right: 160px; padding-left: 115px;'>"
-                            +"    <div id='"+collapseme+"' style='text-align: right;' class='collapse fas fa-pen  w3-large'> Description </div>"
-                          +"<td >"
-                            +"<div id='"+collapseme+"'  class='collapse'>"+obj.description+"</div>"
-                       +" </tr>"
-                      +"</table> "
+                      +"<tr>"
+                      +"  <td style='padding-right: 155px; padding-left: 115px;'>"
+                        +"    <div id='"+collapseme+"' style='text-align: right;' class='collapse fas fa-pen  w3-large'> Description </div>"
+                      +"<td >"
+                        +"<div id='"+collapseme+"'  class='collapse'>"+obj.description+"</div>"
+                   +" </tr>"
+                   +"<tr>"
+                      +"  <td style='padding-right: 155px; padding-left: 115px;'>"
+                        +"    <div id='"+collapseme+"' style='text-align: right;' class='collapse fas fa-pen  w3-large'> Solved By </div>"
+                      +"<td >"
+                        +"<div id='"+collapseme+"'  class='collapse'>"+solvedBy+"</div>"
+                   +" </tr>"
+                  +"</table> "
                       +"  </td>"
 
 tabl.appendChild(dispRow);
@@ -291,6 +311,7 @@ function loadMess(tabname,obj)
                       + "<td><i class='fas fa-pen'> "+obj.description.substring(0,9)+"...."+"</i></td>"
                       +"<td>"+status+" </td>"
                       +"<td>"+obj.cid+"</td>";
+  //if(obj.status=='pending' && )
                           
  tabl.appendChild(dispRow);
 
@@ -298,6 +319,9 @@ function loadMess(tabname,obj)
 
  dispRow.setAttribute('style',"background-color: #f1f1f1;");
  dispRow.setAttribute('class',"w3-text-blue-grey")
+ var solvedBy = obj.solvedBy;
+ if(solvedBy=='')
+ solvedBy='No one Assigned';
 
  dispRow.innerHTML =   "<td colspan='5'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
@@ -320,6 +344,12 @@ function loadMess(tabname,obj)
                             +"    <div id='"+collapseme+"' style='text-align: right;' class='collapse fas fa-pen  w3-large'> Description </div>"
                           +"<td >"
                             +"<div id='"+collapseme+"'  class='collapse'>"+obj.description+"</div>"
+                       +" </tr>"
+                       +"<tr>"
+                          +"  <td style='padding-right: 155px; padding-left: 115px;'>"
+                            +"    <div id='"+collapseme+"' style='text-align: right;' class='collapse fas fa-pen  w3-large'> Solved By </div>"
+                          +"<td >"
+                            +"<div id='"+collapseme+"'  class='collapse'>"+solvedBy+"</div>"
                        +" </tr>"
                       +"</table> "
                       +"  </td>"
@@ -363,6 +393,9 @@ function loadFaculty(tabname,obj)
   }
   var collapseme = 'coll'+obj.cid;
 
+  var solvedBy = obj.solvedBy;
+ if(solvedBy=='')
+ solvedBy='No one Assigned';
 
   const tabl = document.getElementById(tabname);
 
@@ -405,13 +438,20 @@ function loadFaculty(tabname,obj)
                           +"<td >"
                            +" <div id='"+collapseme+"'  class='collapse'>"+obj.faculty.department+"</div>"
                         +"</tr>"
-                        +"<tr>"
+                         +"<tr>"
                           +"  <td style='padding-right: 155px; padding-left: 115px;'>"
                             +"    <div id='"+collapseme+"' style='text-align: right;' class='collapse fas fa-pen  w3-large'> Description </div>"
                           +"<td >"
                             +"<div id='"+collapseme+"'  class='collapse'>"+obj.description+"</div>"
                        +" </tr>"
+                       +"<tr>"
+                          +"  <td style='padding-right: 155px; padding-left: 115px;'>"
+                            +"    <div id='"+collapseme+"' style='text-align: right;' class='collapse fas fa-pen  w3-large'> Solved By </div>"
+                          +"<td >"
+                            +"<div id='"+collapseme+"'  class='collapse'>"+solvedBy+"</div>"
+                       +" </tr>"
                       +"</table> "
+
                       +"  </td>"
 
 
@@ -452,6 +492,9 @@ function loadLab(tabname,obj)
   }
   var collapseme = 'coll'+obj.cid;
   
+  var solvedBy = obj.solvedBy;
+ if(solvedBy=='')
+ solvedBy='No one Assigned';
 
   const tabl = document.getElementById(tabname);
 
@@ -494,13 +537,20 @@ function loadLab(tabname,obj)
                           +"<td >"
                            +" <div id='"+collapseme+"'  class='collapse'>"+obj.lab.department+"</div>"
                         +"</tr>"
-                        +"<tr>"
+                         +"<tr>"
                           +"  <td style='padding-right: 155px; padding-left: 115px;'>"
                             +"    <div id='"+collapseme+"' style='text-align: right;' class='collapse fas fa-pen  w3-large'> Description </div>"
                           +"<td >"
                             +"<div id='"+collapseme+"'  class='collapse'>"+obj.description+"</div>"
                        +" </tr>"
+                       +"<tr>"
+                          +"  <td style='padding-right: 155px; padding-left: 115px;'>"
+                            +"    <div id='"+collapseme+"' style='text-align: right;' class='collapse fas fa-pen  w3-large'> Solved By </div>"
+                          +"<td >"
+                            +"<div id='"+collapseme+"'  class='collapse'>"+solvedBy+"</div>"
+                       +" </tr>"
                       +"</table> "
+
                       +"  </td>"
 
 
@@ -539,6 +589,9 @@ function loadLib(tabname,obj)
   }
   var collapseme = 'coll'+obj.cid;
 
+  var solvedBy = obj.solvedBy;
+ if(solvedBy=='')
+ solvedBy='No one Assigned';
 
   const tabl = document.getElementById(tabname);
 
@@ -575,13 +628,20 @@ function loadLib(tabname,obj)
                           +"<td >"
                            +" <div id='"+collapseme+"'  class='collapse'>"+obj.library.type+"</div>"
                         +"</tr>"
-                        +"<tr>"
+                         +"<tr>"
                           +"  <td style='padding-right: 155px; padding-left: 115px;'>"
                             +"    <div id='"+collapseme+"' style='text-align: right;' class='collapse fas fa-pen  w3-large'> Description </div>"
                           +"<td >"
                             +"<div id='"+collapseme+"'  class='collapse'>"+obj.description+"</div>"
                        +" </tr>"
+                       +"<tr>"
+                          +"  <td style='padding-right: 155px; padding-left: 115px;'>"
+                            +"    <div id='"+collapseme+"' style='text-align: right;' class='collapse fas fa-pen  w3-large'> Solved By </div>"
+                          +"<td >"
+                            +"<div id='"+collapseme+"'  class='collapse'>"+solvedBy+"</div>"
+                       +" </tr>"
                       +"</table> "
+
                       +"  </td>"
 
 
@@ -648,7 +708,7 @@ function loadAll(data,status)
     data[i].startDate = data[i].startDate.substring(0,10);
   switch(data[i].category)
   {
-    case 'hostel':
+     case 'hostel':
         //console.log(data.category);
       loadHostel(status,data[i]);
     break;
@@ -739,13 +799,13 @@ function getStatistics()
      console.log(status1); 
       console.log(data);
 
-      document.getElementById('barRejected').innerHTML= ""+Math.round(data[0]);
+      document.getElementById('barRejected').innerHTML= ""+Math.round(data[0])+'%';
       document.getElementById('barRejected').style.width= data[0]+'%';
 
-      document.getElementById('barPending').innerHTML= ""+Math.round(data[1]);
+      document.getElementById('barPending').innerHTML= ""+Math.round(data[1])+'%' ;
       document.getElementById('barPending').style.width= data[1]+'%';
 
-      document.getElementById('barSolved').innerHTML= ""+Math.round(data[2]);
+      document.getElementById('barSolved').innerHTML= ""+Math.round(data[2])+'%';
       document.getElementById('barSolved').style.width= data[2]+'%';
     }
   );

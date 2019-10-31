@@ -303,6 +303,7 @@ function loadHostel(tabname, obj){
                       + "<td><i class='fas fa-pen'> "+obj.description.substring(0,9)+"...."+"</i></td>"
                       +"<td>"+status+" </td>"
                       +"<td>"+obj.cid+"</td>"
+                      +"<td>"+obj.studentSid+"</td>"
                       + "<td><button class='dropbtn'  id='"+obj.cid+"Btn"+"'  style='padding: 3px'>Make Changes</button></td>";
                           
  tabl.appendChild(dispRow);
@@ -313,7 +314,7 @@ function loadHostel(tabname, obj){
  dispRow.setAttribute('style',"background-color: #f1f1f1;");
  dispRow.setAttribute('class','w3-text-blue-grey')
 
- dispRow.innerHTML =  "<td colspan='6'>"
+ dispRow.innerHTML =  "<td colspan='7'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
                         +"<tr>"
                         +"  <td style='padding-right: 155px; padding-left: 115px;'>"
@@ -390,7 +391,8 @@ function loadFees(tabname,obj)
                       + "<td><i class='fas fa-pen'> "+obj.description.substring(0,9)+"...."+"</i></td>"
                       +"<td>"+status+" </td>"
                       +"<td>"+obj.cid+"</td>"
-                      + "<td><button  class='dropbtn'  id='"+obj.cid+"Btn"+"'  style='padding: 3px'>Make Changes</button></td>";
+                      +"<td>"+obj.studentSid+"</td>"
+                      + "<td><button class='dropbtn'  id='"+obj.cid+"Btn"+"'  style='padding: 3px'>Make Changes</button></td>";
                           
  tabl.appendChild(dispRow);
 
@@ -401,7 +403,7 @@ function loadFees(tabname,obj)
  dispRow.setAttribute('style',"background-color: #f1f1f1;");
  dispRow.setAttribute('class','w3-text-blue-grey')
 
- dispRow.innerHTML =  "<td colspan='6'>"
+ dispRow.innerHTML =  "<td colspan='7'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
                         +"<tr>"
                           +"  <td style='padding-right: 160px; padding-left: 115px;'>"
@@ -464,6 +466,7 @@ function loadMess(tabname,obj)
                       + "<td><i class='fas fa-pen'> "+obj.description.substring(0,9)+"...."+"</i></td>"
                       +"<td>"+status+" </td>"
                       +"<td>"+obj.cid+"</td>"
+                      +"<td>"+obj.studentSid+"</td>"
                       + "<td><button class='dropbtn'  id='"+obj.cid+"Btn"+"'  style='padding: 3px'>Make Changes</button></td>";
                           
  tabl.appendChild(dispRow);
@@ -473,7 +476,7 @@ function loadMess(tabname,obj)
  dispRow.setAttribute('style',"background-color: #f1f1f1;");
  dispRow.setAttribute('class',"w3-text-blue-grey")
 
- dispRow.innerHTML =   "<td colspan='6'>"
+ dispRow.innerHTML =   "<td colspan='7'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
                         +"<tr>"
                         +"  <td style='padding-right: 155px; padding-left: 115px;'>"
@@ -554,6 +557,7 @@ function loadFaculty(tabname,obj)
                       + "<td><i class='fas fa-pen'> "+obj.description.substring(0,9)+"...."+"</i></td>"
                       +"<td>"+status+" </td>"
                       +"<td>"+obj.cid+"</td>"
+                      +"<td>"+obj.studentSid+"</td>"
                       + "<td><button class='dropbtn'  id='"+obj.cid+"Btn"+"'  style='padding: 3px'>Make Changes</button></td>";
                           
  tabl.appendChild(dispRow);
@@ -563,7 +567,7 @@ function loadFaculty(tabname,obj)
  dispRow.setAttribute('style',"background-color:#f1f1f1;");// color:#2e005e; ");
  dispRow.setAttribute('class',"w3-text-blue-grey");
 //  e
- dispRow.innerHTML =   "<td colspan='6'>"
+ dispRow.innerHTML =   "<td colspan='7'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
                         +"<tr>"
                         +"  <td style='padding-right: 100px; padding-left: 115px;'>"
@@ -644,6 +648,7 @@ function loadLab(tabname,obj)
                       + "<td><i class='fas fa-pen'> "+obj.description.substring(0,9)+"...."+"</i></td>"
                       +"<td>"+status+" </td>"
                       +"<td>"+obj.cid+"</td>"
+                      +"<td>"+obj.studentSid+"</td>"
                       + "<td><button class='dropbtn'  id='"+obj.cid+"Btn"+"'  style='padding: 3px'>Make Changes</button></td>";
                           
  tabl.appendChild(dispRow);
@@ -653,7 +658,7 @@ function loadLab(tabname,obj)
  dispRow.setAttribute('style',"background-color:#f1f1f1;");// color:#783612; ");
  dispRow.setAttribute('class',"w3-text-blue-grey");
 //  e
- dispRow.innerHTML =   "<td colspan='6'>"
+ dispRow.innerHTML =   "<td colspan='7'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
                         +"<tr>"
                         +"  <td style='padding-right: 155px; padding-left: 115px;'>"
@@ -733,6 +738,7 @@ function loadLib(tabname,obj)
                       + "<td><i class='fas fa-pen'> "+obj.description.substring(0,9)+"...."+"</i></td>"
                       +"<td>"+status+" </td>"
                       +"<td>"+obj.cid+"</td>"
+                      +"<td>"+obj.studentSid+"</td>"
                       + "<td><button class='dropbtn'  id='"+obj.cid+"Btn"+"'  style='padding: 3px'>Make Changes</button></td>";
                           
  tabl.appendChild(dispRow);
@@ -742,7 +748,7 @@ function loadLib(tabname,obj)
  //dispRow.setAttribute('style',"background-color: #f1f1f1; color:#8c6d81;");
    dispRow.setAttribute('class','w3-text-blue-grey');
 
- dispRow.innerHTML =   "<td colspan='6'>"
+ dispRow.innerHTML =   "<td colspan='7'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
                         +"<tr>"
                           +"  <td style='padding-right: 155px; padding-left: 115px;'>"
@@ -814,7 +820,7 @@ function loadAll(data,status)
   document.getElementById('adminNumRes').innerHTML= data.length+" results found";
   if(data.length==0)
   return;
-  document.getElementById(status).innerHTML="<tr><td><b>Category</b></td><td><b>Registered On</b></td><td><b>Description</b></td><td colspan='1'><b>Status</b></td><td colspan='2'><b>Complaint ID</b></td><tr>";
+  document.getElementById(status).innerHTML="<tr><td><b>Category</b></td><td><b>Registered On</b></td><td><b>Description</b></td><td><b>Status</b></td><td><b>Complaint ID</b></td><td><b>Student ID</b></td><td></td> <tr>";
   for(var i=0; i<data.length;i++)
   {
     data[i].startDate = data[i].startDate.substring(0,10);
