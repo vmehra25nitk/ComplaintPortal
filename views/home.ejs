@@ -129,8 +129,8 @@
   <div class="w3-panel w3-threequarter">
     <div class="w3-row-padding" style="margin:0 -16px">
 
-      <div>
-        <h5 onclick="getData()">Feeds</h5>
+      <div class="w3-padding-16  w3-white" style="padding-left: 16px; padding-right: 16px; border-radius:8px" >
+        <h5 onclick="getData()">Some New General Complaints</h5>
         <table id='feedTable' class='w3-table  w3-striped w3-white' >
            
 
@@ -329,12 +329,12 @@
       <div id="Faculty" class="w3-container w3-white w3-padding-16 myLink" style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
         <!-- Complaint general or personal -->
         <div style="display: flex;">
-          <label style="padding-right: 1cm;" class="apsy-container">
+          <!-- <label style="padding-right: 1cm;" class="apsy-container">
             <input class="w3-radio" type="radio" name="general" value="general" checked>
-            <span class="checkmark"></span>General</label>
+            <span class="checkmark"></span>General</label> -->
 
           <label class="apsy-container">
-            <input class="w3-radio" type="radio" name="general" value="personal">
+            <input class="w3-radio" type="radio" name="general" value="personal" checked>
             <span class="checkmark"></span>Personal</label>
         </div>
 
@@ -528,17 +528,11 @@
             </div>
           </div>
             
-            <div>
+            
             <p class="w3-text-red" id="pendingWarning"></p>
-            <table id='pendingTable' class= 'w3-table  w3-striped w3-white' >
-              <tr>
-                <td>Category</td>
-                <td>Registered On</td>
-                <td>Description</td>
-                <td colspan="1">Status</td>
-               </tr>
-               <tr><table class="w3-table"></table></tr>
-    
+            <div class=" w3-light-grey" style="padding-left: 16px; padding-right: 16px; border-radius:8px" >
+            <table id='pendingTable' class= 'w3-table  w3-striped w3-light-grey' >
+              
             </table>
           </div>
         
@@ -607,17 +601,11 @@
               <button id="solvedSubmit" onclick="loadComplaints('solved');" class="dropbtn"><i class="fa fa-search"></i></button>
             </div>
           </div>
-            
-            <div>
+          
             <p class="w3-text-red" id="solvedWarning"></p>
-            <table id='solvedTable' class= 'w3-table  w3-striped w3-white' >
-              <tr>
-                <td>Category</td>
-                <td>Registered On</td>
-                <td>Description</td>
-                <td colspan="1">Status</td>
-               </tr>
-               <tr><table class="w3-table"></table></tr>
+            <div class=" w3-light-grey" style="padding-left: 16px; padding-right: 16px; border-radius:8px" >
+            <table id='solvedTable' class= 'w3-table  w3-striped w3-light-grey' >
+              
     
             </table>
           </div>
@@ -687,16 +675,11 @@
               </div>
             </div>
               
-              <div>
+             
               <p class="w3-text-red" id="rejectedWarning"></p>
-              <table id='rejectedTable' class= 'w3-table  w3-striped w3-white' >
-                <tr>
-                  <td>Category</td>
-                  <td>Registered On</td>
-                  <td>Description</td>
-                  <td colspan="1">Status</td>
-                 </tr>
-                 <tr><table class="w3-table"></table></tr>
+               <div class=" w3-light-grey" style="padding-left: 16px; padding-right: 16px; border-radius:8px" > 
+              <table id='rejectedTable' class= 'w3-table  w3-striped w3-light-grey' >
+                
       
               </table>
             </div>

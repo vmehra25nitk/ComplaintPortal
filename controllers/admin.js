@@ -63,8 +63,9 @@ exports.makeChanges = (req,res)=>{
         {where : {
             cid : cid
         }}
-    ).then(res=>{
+    ).then(result=>{
         console.log('Updated Successfully');
+        //res.redirect('/adminHomePage');
     }).catch(err=>{
         console.log(err);
     });

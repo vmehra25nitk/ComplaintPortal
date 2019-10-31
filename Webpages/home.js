@@ -101,11 +101,16 @@ function loadHostel(tabname, obj){
   var status = obj.status;
   if(status == "pending")
   {
-    status = "<i class='fas fa-clock' class='w3-blue-grey'> </i>"
+    status = "<i class='fas fa-clock' class='w3-orange'> </i>"
   }
   if(status == "solved")
   {
-    status = "<i class='fas fa-check-circle' class='w3-blue-grey'> </i>"
+    status = "<i class='fas fa-check-circle' class='w3-teal'> </i>"
+  }
+
+  if(status=="rejected")
+  {
+    status = "<i class='fas fa-times-circle' class='w3-red'> </i>"
   }
   var collapseme = 'coll'+obj.cid;
 
@@ -181,12 +186,18 @@ function loadFees(tabname,obj)
   var status = obj.status;
   if(status == "pending")
   {
-    status = "<i class='fas fa-clock' class='w3-blue-grey'> </i>"
+    status = "<i class='fas fa-clock' class='w3-orange'> </i>"
   }
   if(status == "solved")
   {
-    status = "<i class='fas fa-check-circle' class='w3-blue-grey'> </i>"
+    status = "<i class='fas fa-check-circle' class='w3-teal'> </i>"
   }
+
+  if(status=="rejected")
+  {
+    status = "<i class='fas fa-times-circle' class='w3-red'> </i>"
+  }
+  
   var collapseme = 'coll'+obj.cid;
 
 
@@ -246,12 +257,19 @@ function loadMess(tabname,obj)
   var status = obj.status;
   if(status == "pending")
   {
-    status = "<i class='fas fa-clock' class='w3-blue-grey'> </i>"
+    status = "<i class='fas fa-clock' class='w3-orange'> </i>"
   }
   if(status == "solved")
   {
-    status = "<i class='fas fa-check-circle' class='w3-blue-grey'> </i>"
+    status = "<i class='fas fa-check-circle' class='w3-teal'> </i>"
   }
+
+  if(status=="rejected")
+  {
+    status = "<i class='fas fa-times-circle' class='w3-red'> </i>"
+  }
+
+
   var collapseme = 'coll'+obj.cid;
 
 
@@ -326,13 +344,19 @@ function loadFaculty(tabname,obj)
     // }
 
   var status = obj.status;
+  
   if(status == "pending")
   {
-  status = "<i class='fas fa-clock' class='w3-blue-grey'> </i>"
+    status = "<i class='fas fa-clock' class='w3-orange'> </i>"
   }
   if(status == "solved")
   {
-  status = "<i class='fas fa-check-circle' class='w3-blue-grey'> </i>"
+    status = "<i class='fas fa-check-circle' class='w3-teal'> </i>"
+  }
+
+  if(status=="rejected")
+  {
+    status = "<i class='fas fa-times-circle' class='w3-red'> </i>"
   }
   var collapseme = 'coll'+obj.cid;
 
@@ -411,11 +435,16 @@ function loadLab(tabname,obj)
   var status = obj.status;
   if(status == "pending")
   {
-  status = "<i class='fas fa-clock' class='w3-blue-grey'> </i>"
+    status = "<i class='fas fa-clock' class='w3-orange'> </i>"
   }
   if(status == "solved")
   {
-  status = "<i class='fas fa-check-circle' class='w3-blue-grey'> </i>"
+    status = "<i class='fas fa-check-circle' class='w3-teal'> </i>"
+  }
+
+  if(status=="rejected")
+  {
+    status = "<i class='fas fa-times-circle' class='w3-red'> </i>"
   }
   var collapseme = 'coll'+obj.cid;
   
@@ -492,11 +521,16 @@ function loadLib(tabname,obj)
   var status = obj.status;
   if(status == "pending")
   {
-  status = "<i class='fas fa-clock' class='w3-blue-grey'> </i>"
+    status = "<i class='fas fa-clock' class='w3-orange'> </i>"
   }
   if(status == "solved")
   {
-  status = "<i class='fas fa-check-circle' class='w3-blue-grey'> </i>"
+    status = "<i class='fas fa-check-circle' class='w3-teal'> </i>"
+  }
+
+  if(status=="rejected")
+  {
+    status = "<i class='fas fa-times-circle' class='w3-red'> </i>"
   }
   var collapseme = 'coll'+obj.cid;
 
@@ -597,7 +631,7 @@ function loadAll(data,status)
   //console.log("I am Here");
   status = status+'Table';
   
-  document.getElementById(status).innerHTML="<tr> <td>Category</td><td>Registered On</td> <td>Description</td><td colspan='1'>Status</td> </tr> <tr></tr>";
+  document.getElementById(status).innerHTML="<td><b>Category</b></td><td><b>Registered On</b></td><td><b>Description</b></td><td colspan='2'><b>Status</b></td></tr><tr><table class='w3-table'></table></tr>";
   for(var i=0; i<data.length;i++)
   {
     data[i].startDate = data[i].startDate.substring(0,10);
