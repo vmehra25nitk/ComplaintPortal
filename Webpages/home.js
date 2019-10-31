@@ -1,30 +1,9 @@
-  //Already present script
 
-  // Get the Sidebar
-  var mySidebar = document.getElementById("mySidebar");
 
-  // Get the DIV with overlay effect
-  var overlayBg = document.getElementById("myOverlay");
-  
-  // Toggle between showing and hiding the sidebar, and add overlay effect
-  function w3_open() {
-    if (mySidebar.style.display === 'block') {
-      mySidebar.style.display = 'none';
-      overlayBg.style.display = "none";
-    } else {
-      mySidebar.style.display = 'block';
-      overlayBg.style.display = "block";
-    }
+  window.onload = function(){
+    fillFeed();
+    getStatistics();
   }
-  
-  // Close the sidebar with the close button
-  function w3_close() {
-    mySidebar.style.display = "none";
-    overlayBg.style.display = "none";
-  }
-  
-  //Already present script over
-
 
 
 //Open the file boxes
@@ -95,166 +74,9 @@ function whatChecked(that,othName)
 }
 //Dropdown Over
 
-//Submit Complaint
-
-
-function compSubmit(type)
-{
-  switch(type)
-  {
-    case 'hostel' :
-    submitHostel();break;
-    case 'fees' :
-    submitFees();break;
-    case 'mess' :
-    submitMess();break;
-    case 'fac' :
-    submitFac();break;
-    case 'lab' :
-    submitLab();break;
-    case 'library' :
-    submitLibrary();break;
-  }
-
-  function submitHostel()
-  {
-    
-    const category = document.querySelector('input[name="hostelCat"]:checked').value;
-    
-    const relatedTo = document.getElementById('hostelSelect').value;
-
-    var otherRel = "";
-
-    if(relatedTo== 'other')
-    otherRel = ":"+document.getElementsByName('hostelOther')[0].value;
-
-    const description = document.getElementById('hostelDesc').value;
-
-
-    const toBeSent = {
-                      category: category,
-                      type : relatedTo+otherRel,
-                      desc : description
-                    }
-
-    alert(toBeSent.category+" "+toBeSent.type +" "+toBeSent.desc);
-  }
-
-  function submitFees()
-  {
-    
-    const category = document.querySelector('input[name="feesCat"]:checked').value;
-    
-
-    const description = document.getElementById('feesDesc').value;
-
-
-    const toBeSent = {
-                      category: category,
-                      desc : description
-                    }
-
-    alert(toBeSent.category+" "+toBeSent.desc);
-  }
-
-
-  function submitMess()
-  {
-    
-    const category = document.querySelector('input[name="messCat"]:checked').value;
-    
-    const relatedTo = document.getElementById('messSelect').value;
-
-    var otherRel = "";
-    if(relatedTo== 'other')
-    otherRel = ":"+document.getElementsByName('messOther')[0].value;
-
-    const description = document.getElementById('messDesc').value;
-
-
-    const toBeSent = {
-                      category: category,
-                      type : relatedTo+otherRel,
-                      desc : description
-                    }
-
-    alert(toBeSent.category+" "+toBeSent.type +" "+toBeSent.desc);
-  }
-
-  function submitFac()
-  {
-    
-    const category = document.querySelector('input[name="facCat"]:checked').value;
-    
-    const dept = document.getElementById('facSelect').value;
-    
-    const name = document.getElementsByName('facName')[0].value;
-    
-    const description = document.getElementById('facDesc').value;
-
-
-    const toBeSent = {
-                      category: category,
-                      dept : dept,
-                      name : name,
-                      desc : description
-                     }
-
-    
-    alert(toBeSent.category+" "+toBeSent.dept +" "+toBeSent.name+" "+toBeSent.desc);
-  }
-
-  function submitLab()
-  {
-    
-    const category = document.querySelector('input[name="labCat"]:checked').value;
-    
-    const dept = document.getElementById('labSelect').value;
-
-    const name = document.getElementsByName('labName')[0].value;
-   
-    const description = document.getElementById('labDesc').value;
-
-
-    const toBeSent = {
-                      category: category,
-                      dept: dept,
-                      name : name,
-                      desc : description
-                    }
-
-    alert(toBeSent.category+" "+toBeSent.dept +" "+toBeSent.name+" "+toBeSent.desc);
-  }
-
-  function submitLibrary()
-  {
-    
-    const category = document.querySelector('input[name="libCat"]:checked').value;
-    
-    const relatedTo = document.getElementById('libSelect').value;
-
-    var otherRel = "";
-
-    if(relatedTo== 'other')
-    otherRel = ":"+document.getElementsByName('libOther')[0].value;
-
-    const description = document.getElementById('libDesc').value;
-
-
-    const toBeSent = {    
-                      category: category,
-                      type : relatedTo+otherRel,
-                      desc : description
-                    }
-
-    alert(toBeSent.category+" "+toBeSent.type +" "+toBeSent.desc);
-  }
-  
 
 
 
-}
-//Submit Complaint Over
 
 
 
@@ -726,6 +548,7 @@ function loadLib(tabname,obj)
 tabl.appendChild(dispRow);
 
 }
+//Feed Table Over
 
 // Loading Complaints
 function loadComplaints(status)
@@ -762,11 +585,6 @@ function loadComplaints(status)
     console.log(data);
     
     loadAll(data,status);
-      // for(var i=0;i<data.length;i++)
-      // {
-      //   loadFees('feedTable',data[i]);
-      // }
-    
   });
 
 
@@ -776,7 +594,7 @@ function loadComplaints(status)
 
 function loadAll(data,status)
 {
-  console.log("I am Here");
+  //console.log("I am Here");
   status = status+'Table';
   
   document.getElementById(status).innerHTML="<tr> <td>Category</td><td>Registered On</td> <td>Description</td><td colspan='1'>Status</td> </tr> <tr></tr>";
@@ -810,25 +628,81 @@ function loadAll(data,status)
 }
 
 
-//Loading Complaints Over
+//Already present script
 
-function getData()
-{
-  const httx = new XMLHttpRequest();
-  const url = "http://localhost:3000/readFaculty";
-  httx.open('GET',url,false);
-  httx.send();
+  // Get the Sidebar
+  var mySidebar = document.getElementById("mySidebar");
+
+  // Get the DIV with overlay effect
+  var overlayBg = document.getElementById("myOverlay");
   
-  httx.onreadystatechange = ()=>{
-   
-   console.log((httx.response));
-   if (httx.readyState == 4 && httx .status == 200)
-    loadFaculty('feedTable',JSON.parse(httx.response)[0]);
+  // Toggle between showing and hiding the sidebar, and add overlay effect
+  function w3_open() {
+    if (mySidebar.style.display === 'block') {
+      mySidebar.style.display = 'none';
+      overlayBg.style.display = "none";
+    } else {
+      mySidebar.style.display = 'block';
+      overlayBg.style.display = "block";
+    }
   }
+  
+  // Close the sidebar with the close button
+  function w3_close() {
+    mySidebar.style.display = "none";
+    overlayBg.style.display = "none";
+  }
+  
+  //Already present script over
+
+  //Filling The Feed
+
+  function compare( a, b ) {
+    if ( a.startDate < b.startDate ){
+      return -1;
+    }
+    if ( a.startDate > b.startDate ){
+      return 1;
+    }
+    return 0;
+  }
+
+
+  function fillFeed()
+  {
+    
+  const url = 'http://localhost:3000/readAllComplaint';
+  $.get(url,function(data,status1)
+  {
+    //console.log(data);
+   // data.sort(compare);
+    var l = data.length;
+    if(l>10)
+    l=10;
+    //console.log(l);
+    loadAll(data.slice(0,l),'feed');
+  });
+  
 }
 
-// $('#"+collapseme+"').on('hidden.bs.collapse',function() {
-//   alert('HelloWOrld');});
+function getStatistics()
+{
+  console.log('getStatistics');
+  const url = 'http://localhost:3000/getAllStatistics';
+  $.get(url,function(data,status1)
+    {
+     console.log(status1); 
+      console.log(data);
 
-  // <tr for='"+collapseme+"' data-toggle='collapse' href='#"+collapseme+"' aria-expanded='true'
-  //aria-controls='"+collapseme+"' class='collapsed w3-large w3-text-blue'>
+      document.getElementById('barRejected').innerHTML= ""+Math.round(data[0]);
+      document.getElementById('barRejected').style.width= data[0]+'%';
+
+      document.getElementById('barPending').innerHTML= ""+Math.round(data[1]);
+      document.getElementById('barPending').style.width= data[1]+'%';
+
+      document.getElementById('barSolved').innerHTML= ""+Math.round(data[2]);
+      document.getElementById('barSolved').style.width= data[2]+'%';
+    }
+  );
+
+}
