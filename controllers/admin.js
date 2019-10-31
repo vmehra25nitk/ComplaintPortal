@@ -65,8 +65,10 @@ exports.makeChanges = (req,res)=>{
         }}
     ).then(result=>{
         console.log('Updated Successfully');
+        res.send('Change Made Successfully');
         //res.redirect('/adminHomePage');
     }).catch(err=>{
+        res.send('Error');
         console.log(err);
     });
 }

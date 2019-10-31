@@ -101,16 +101,16 @@ function loadHostel(tabname, obj){
   var status = obj.status;
   if(status == "pending")
   {
-    status = "<i class='fas fa-clock' class='w3-orange'> </i>"
+    status = "<i class='fas fa-clock w3-text-orange'> </i>"
   }
   if(status == "solved")
   {
-    status = "<i class='fas fa-check-circle' class='w3-teal'> </i>"
+    status = "<i  class='fas fa-check-circle w3-text-teal'> </i>"
   }
 
   if(status=="rejected")
   {
-    status = "<i class='fas fa-times-circle' class='w3-red'> </i>"
+    status = "<i class='fas fa-times-circle w3-text-red'> </i>"
   }
   var collapseme = 'coll'+obj.cid;
 
@@ -130,7 +130,8 @@ function loadHostel(tabname, obj){
   dispRow.innerHTML = "<td><i class='fas fa-hotel w3-large'> Hostel </i></td>"
                       + "<td><i class='far fa-calendar-plus'> <b> "+obj.startDate+"</b></i></td>"
                       + "<td><i class='fas fa-pen'> "+obj.description.substring(0,9)+"...."+"</i></td>"
-                      +"<td>"+status+" </td>";
+                      +"<td>"+status+" </td>"
+                      +"<td>"+obj.cid+"</td>";
                           
  tabl.appendChild(dispRow);
 
@@ -139,7 +140,7 @@ function loadHostel(tabname, obj){
  dispRow.setAttribute('style',"background-color: #f1f1f1;");
  dispRow.setAttribute('class','w3-text-blue-grey')
 
- dispRow.innerHTML =  "<td colspan='4'>"
+ dispRow.innerHTML =  "<td colspan='5'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
                         +"<tr>"
                         +"  <td style='padding-right: 155px; padding-left: 115px;'>"
@@ -186,16 +187,16 @@ function loadFees(tabname,obj)
   var status = obj.status;
   if(status == "pending")
   {
-    status = "<i class='fas fa-clock' class='w3-orange'> </i>"
+    status = "<i class='fas fa-clock w3-text-orange'> </i>"
   }
   if(status == "solved")
   {
-    status = "<i class='fas fa-check-circle' class='w3-teal'> </i>"
+    status = "<i  class='fas fa-check-circle w3-text-teal'> </i>"
   }
 
   if(status=="rejected")
   {
-    status = "<i class='fas fa-times-circle' class='w3-red'> </i>"
+    status = "<i class='fas fa-times-circle w3-text-red'> </i>"
   }
   
   var collapseme = 'coll'+obj.cid;
@@ -215,7 +216,8 @@ function loadFees(tabname,obj)
   dispRow.innerHTML = "<td><i class='fas fa-rupee-sign w3-large'> Fees </i></td>"
                       + "<td><i class='far fa-calendar-plus'> <b> "+obj.startDate+"</b></i></td>"
                       + "<td><i class='fas fa-pen'> "+obj.description.substring(0,9)+"...."+"</i></td>"
-                      +"<td>"+status+" </td>";
+                      +"<td>"+status+" </td>"
+                      +"<td>"+obj.cid+"</td>";
                           
  tabl.appendChild(dispRow);
 
@@ -224,7 +226,7 @@ function loadFees(tabname,obj)
  dispRow.setAttribute('style',"background-color: #f1f1f1;");
  dispRow.setAttribute('class','w3-text-blue-grey')
 
- dispRow.innerHTML =  "<td colspan='4'>"
+ dispRow.innerHTML =  "<td colspan='5'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
                         +"<tr>"
                           +"  <td style='padding-right: 160px; padding-left: 115px;'>"
@@ -257,16 +259,16 @@ function loadMess(tabname,obj)
   var status = obj.status;
   if(status == "pending")
   {
-    status = "<i class='fas fa-clock' class='w3-orange'> </i>"
+    status = "<i class='fas fa-clock w3-text-orange'> </i>"
   }
   if(status == "solved")
   {
-    status = "<i class='fas fa-check-circle' class='w3-teal'> </i>"
+    status = "<i  class='fas fa-check-circle w3-text-teal'> </i>"
   }
 
   if(status=="rejected")
   {
-    status = "<i class='fas fa-times-circle' class='w3-red'> </i>"
+    status = "<i class='fas fa-times-circle w3-text-red'> </i>"
   }
 
 
@@ -287,7 +289,8 @@ function loadMess(tabname,obj)
   dispRow.innerHTML = "<td><i class='fas fa-utensils w3-large'>  Mess </i></td>"
                        + "<td><i class='far fa-calendar-plus'> <b> "+obj.startDate+"</b></i></td>"
                       + "<td><i class='fas fa-pen'> "+obj.description.substring(0,9)+"...."+"</i></td>"
-                      +"<td>"+status+" </td>";
+                      +"<td>"+status+" </td>"
+                      +"<td>"+obj.cid+"</td>";
                           
  tabl.appendChild(dispRow);
 
@@ -296,7 +299,7 @@ function loadMess(tabname,obj)
  dispRow.setAttribute('style',"background-color: #f1f1f1;");
  dispRow.setAttribute('class',"w3-text-blue-grey")
 
- dispRow.innerHTML =   "<td colspan='4'>"
+ dispRow.innerHTML =   "<td colspan='5'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
                         +"<tr>"
                         +"  <td style='padding-right: 155px; padding-left: 115px;'>"
@@ -347,16 +350,16 @@ function loadFaculty(tabname,obj)
   
   if(status == "pending")
   {
-    status = "<i class='fas fa-clock' class='w3-orange'> </i>"
+    status = "<i class='fas fa-clock w3-text-orange'> </i>"
   }
   if(status == "solved")
   {
-    status = "<i class='fas fa-check-circle' class='w3-teal'> </i>"
+    status = "<i  class='fas fa-check-circle w3-text-teal'> </i>"
   }
 
   if(status=="rejected")
   {
-    status = "<i class='fas fa-times-circle' class='w3-red'> </i>"
+    status = "<i class='fas fa-times-circle w3-text-red'> </i>"
   }
   var collapseme = 'coll'+obj.cid;
 
@@ -376,7 +379,8 @@ function loadFaculty(tabname,obj)
   dispRow.innerHTML = "<td><i class='fas fa-chalkboard-teacher w3-large'>  Faculty </i></td>"
                        + "<td><i class='far fa-calendar-plus'> <b> "+obj.startDate+"</b></i></td>"
                       + "<td><i class='fas fa-pen'> "+obj.description.substring(0,9)+"...."+"</i></td>"
-                      +"<td>"+status+" </td>";
+                      +"<td>"+status+" </td>"
+                      +"<td>"+obj.cid+"</td>";
                           
  tabl.appendChild(dispRow);
 
@@ -385,7 +389,7 @@ function loadFaculty(tabname,obj)
  dispRow.setAttribute('style',"background-color:#f1f1f1;");// color:#2e005e; ");
  dispRow.setAttribute('class',"w3-text-blue-grey");
 //  e
- dispRow.innerHTML =   "<td colspan='4'>"
+ dispRow.innerHTML =   "<td colspan='5'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
                         +"<tr>"
                         +"  <td style='padding-right: 100px; padding-left: 115px;'>"
@@ -435,16 +439,16 @@ function loadLab(tabname,obj)
   var status = obj.status;
   if(status == "pending")
   {
-    status = "<i class='fas fa-clock' class='w3-orange'> </i>"
+    status = "<i class='fas fa-clock w3-text-orange'> </i>"
   }
   if(status == "solved")
   {
-    status = "<i class='fas fa-check-circle' class='w3-teal'> </i>"
+    status = "<i  class='fas fa-check-circle w3-text-teal'> </i>"
   }
 
   if(status=="rejected")
   {
-    status = "<i class='fas fa-times-circle' class='w3-red'> </i>"
+    status = "<i class='fas fa-times-circle w3-text-red'> </i>"
   }
   var collapseme = 'coll'+obj.cid;
   
@@ -464,7 +468,8 @@ function loadLab(tabname,obj)
   dispRow.innerHTML = "<td><i class='fas fa-flask w3-large'>  Lab </i></td>"
                        + "<td><i class='far fa-calendar-plus'> <b> "+obj.startDate+"</b></i></td>"
                       + "<td><i class='fas fa-pen'> "+obj.description.substring(0,9)+"...."+"</i></td>"
-                      +"<td>"+status+" </td>";
+                      +"<td>"+status+" </td>"
+                      +"<td>"+obj.cid+"</td>";
                           
  tabl.appendChild(dispRow);
 
@@ -473,7 +478,7 @@ function loadLab(tabname,obj)
  dispRow.setAttribute('style',"background-color:#f1f1f1;");// color:#783612; ");
  dispRow.setAttribute('class',"w3-text-blue-grey");
 //  e
- dispRow.innerHTML =   "<td colspan='4'>"
+ dispRow.innerHTML =   "<td colspan='5'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
                         +"<tr>"
                         +"  <td style='padding-right: 155px; padding-left: 115px;'>"
@@ -521,16 +526,16 @@ function loadLib(tabname,obj)
   var status = obj.status;
   if(status == "pending")
   {
-    status = "<i class='fas fa-clock' class='w3-orange'> </i>"
+    status = "<i class='fas fa-clock w3-text-orange'> </i>"
   }
   if(status == "solved")
   {
-    status = "<i class='fas fa-check-circle' class='w3-teal'> </i>"
+    status = "<i  class='fas fa-check-circle w3-text-teal'> </i>"
   }
 
   if(status=="rejected")
   {
-    status = "<i class='fas fa-times-circle' class='w3-red'> </i>"
+    status = "<i class='fas fa-times-circle w3-text-red'> </i>"
   }
   var collapseme = 'coll'+obj.cid;
 
@@ -551,7 +556,8 @@ function loadLib(tabname,obj)
   dispRow.innerHTML = "<td><i class='fas fa-utensils w3-large'>  Library </i></td>"
                        + "<td><i class='far fa-calendar-plus'> <b> "+obj.startDate+"</b></i></td>"
                       + "<td><i class='fas fa-pen'> "+obj.description.substring(0,9)+"...."+"</i></td>"
-                      +"<td>"+status+" </td>";
+                      +"<td>"+status+" </td>"
+                      +"<td>"+obj.cid+"</td>";
                           
  tabl.appendChild(dispRow);
 
@@ -560,7 +566,7 @@ function loadLib(tabname,obj)
  //dispRow.setAttribute('style',"background-color: #f1f1f1; color:#8c6d81;");
    dispRow.setAttribute('class','w3-text-blue-grey');
 
- dispRow.innerHTML =   "<td colspan='4'>"
+ dispRow.innerHTML =   "<td colspan='5'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
                         +"<tr>"
                           +"  <td style='padding-right: 155px; padding-left: 115px;'>"
@@ -629,9 +635,14 @@ function loadComplaints(status)
 function loadAll(data,status)
 {
   //console.log("I am Here");
-  status = status+'Table';
   
-  document.getElementById(status).innerHTML="<td><b>Category</b></td><td><b>Registered On</b></td><td><b>Description</b></td><td colspan='2'><b>Status</b></td></tr><tr><table class='w3-table'></table></tr>";
+  document.getElementById(status+'Table').innerHTML="";
+  if(status!='feed')
+  document.getElementById(status+'NumRes').innerHTML= data.length+" results found";
+  if(data.length==0)
+  return;
+  status = status+'Table';
+  document.getElementById(status).innerHTML="<tr><td><b>Category</b></td><td><b>Registered On</b></td><td><b>Description</b></td><td ><b>Status</b></td><td ><b>Complaint ID</b></td><tr>";
   for(var i=0; i<data.length;i++)
   {
     data[i].startDate = data[i].startDate.substring(0,10);

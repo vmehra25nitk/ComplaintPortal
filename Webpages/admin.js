@@ -1,3 +1,10 @@
+  
+  window.onload = function()
+  {
+    restrictFutureDate('admin');
+  }
+  
+  
   //Already present script
 
   // Get the Sidebar
@@ -265,16 +272,16 @@ function loadHostel(tabname, obj){
   var status = obj.status;
   if(status == "pending")
   {
-    status = "<i class='fas fa-clock' class='w3-orange'> </i>"
+    status = "<i class='fas fa-clock w3-text-orange'> </i>"
   }
   if(status == "solved")
   {
-    status = "<i class='fas fa-check-circle' class='w3-teal'> </i>"
+    status = "<i  class='fas fa-check-circle w3-text-teal'> </i>"
   }
 
   if(status=="rejected")
   {
-    status = "<i class='fas fa-times-circle' class='w3-red'> </i>"
+    status = "<i class='fas fa-times-circle w3-text-red'> </i>"
   }
   var collapseme = 'coll'+obj.cid;
 
@@ -295,6 +302,7 @@ function loadHostel(tabname, obj){
                       + "<td><i class='far fa-calendar-plus'> <b> "+obj.startDate+"</b></i></td>"
                       + "<td><i class='fas fa-pen'> "+obj.description.substring(0,9)+"...."+"</i></td>"
                       +"<td>"+status+" </td>"
+                      +"<td>"+obj.cid+"</td>"
                       + "<td><button class='dropbtn'  id='"+obj.cid+"Btn"+"'  style='padding: 3px'>Make Changes</button></td>";
                           
  tabl.appendChild(dispRow);
@@ -305,7 +313,7 @@ function loadHostel(tabname, obj){
  dispRow.setAttribute('style',"background-color: #f1f1f1;");
  dispRow.setAttribute('class','w3-text-blue-grey')
 
- dispRow.innerHTML =  "<td colspan='5'>"
+ dispRow.innerHTML =  "<td colspan='6'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
                         +"<tr>"
                         +"  <td style='padding-right: 155px; padding-left: 115px;'>"
@@ -352,16 +360,16 @@ function loadFees(tabname,obj)
   var status = obj.status;
   if(status == "pending")
   {
-    status = "<i class='fas fa-clock' class='w3-orange'> </i>"
+    status = "<i class='fas fa-clock w3-text-orange'> </i>"
   }
   if(status == "solved")
   {
-    status = "<i class='fas fa-check-circle' class='w3-teal'> </i>"
+    status = "<i  class='fas fa-check-circle w3-text-teal'> </i>"
   }
 
   if(status=="rejected")
   {
-    status = "<i class='fas fa-times-circle' class='w3-red'> </i>"
+    status = "<i class='fas fa-times-circle w3-text-red'> </i>"
   }
   var collapseme = 'coll'+obj.cid;
 
@@ -381,6 +389,7 @@ function loadFees(tabname,obj)
                       + "<td><i class='far fa-calendar-plus'> <b> "+obj.startDate+"</b></i></td>"
                       + "<td><i class='fas fa-pen'> "+obj.description.substring(0,9)+"...."+"</i></td>"
                       +"<td>"+status+" </td>"
+                      +"<td>"+obj.cid+"</td>"
                       + "<td><button  class='dropbtn'  id='"+obj.cid+"Btn"+"'  style='padding: 3px'>Make Changes</button></td>";
                           
  tabl.appendChild(dispRow);
@@ -392,7 +401,7 @@ function loadFees(tabname,obj)
  dispRow.setAttribute('style',"background-color: #f1f1f1;");
  dispRow.setAttribute('class','w3-text-blue-grey')
 
- dispRow.innerHTML =  "<td colspan='5'>"
+ dispRow.innerHTML =  "<td colspan='6'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
                         +"<tr>"
                           +"  <td style='padding-right: 160px; padding-left: 115px;'>"
@@ -425,16 +434,16 @@ function loadMess(tabname,obj)
   var status = obj.status;
   if(status == "pending")
   {
-    status = "<i class='fas fa-clock' class='w3-orange'> </i>"
+    status = "<i class='fas fa-clock w3-text-orange'> </i>"
   }
   if(status == "solved")
   {
-    status = "<i class='fas fa-check-circle' class='w3-teal'> </i>"
+    status = "<i  class='fas fa-check-circle w3-text-teal'> </i>"
   }
 
   if(status=="rejected")
   {
-    status = "<i class='fas fa-times-circle' class='w3-red'> </i>"
+    status = "<i class='fas fa-times-circle w3-text-red'> </i>"
   }
   var collapseme = 'coll'+obj.cid;
 
@@ -454,6 +463,7 @@ function loadMess(tabname,obj)
                        + "<td><i class='far fa-calendar-plus'> <b> "+obj.startDate+"</b></i></td>"
                       + "<td><i class='fas fa-pen'> "+obj.description.substring(0,9)+"...."+"</i></td>"
                       +"<td>"+status+" </td>"
+                      +"<td>"+obj.cid+"</td>"
                       + "<td><button class='dropbtn'  id='"+obj.cid+"Btn"+"'  style='padding: 3px'>Make Changes</button></td>";
                           
  tabl.appendChild(dispRow);
@@ -463,7 +473,7 @@ function loadMess(tabname,obj)
  dispRow.setAttribute('style',"background-color: #f1f1f1;");
  dispRow.setAttribute('class',"w3-text-blue-grey")
 
- dispRow.innerHTML =   "<td colspan='5'>"
+ dispRow.innerHTML =   "<td colspan='6'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
                         +"<tr>"
                         +"  <td style='padding-right: 155px; padding-left: 115px;'>"
@@ -513,16 +523,16 @@ function loadFaculty(tabname,obj)
   var status = obj.status;
   if(status == "pending")
   {
-    status = "<i class='fas fa-clock' class='w3-orange'> </i>"
+    status = "<i class='fas fa-clock w3-text-orange'> </i>"
   }
   if(status == "solved")
   {
-    status = "<i class='fas fa-check-circle' class='w3-teal'> </i>"
+    status = "<i  class='fas fa-check-circle w3-text-teal'> </i>"
   }
 
   if(status=="rejected")
   {
-    status = "<i class='fas fa-times-circle' class='w3-red'> </i>"
+    status = "<i class='fas fa-times-circle w3-text-red'> </i>"
   }
   var collapseme = 'coll'+obj.cid;
 
@@ -543,6 +553,7 @@ function loadFaculty(tabname,obj)
                        + "<td><i class='far fa-calendar-plus'> <b> "+obj.startDate+"</b></i></td>"
                       + "<td><i class='fas fa-pen'> "+obj.description.substring(0,9)+"...."+"</i></td>"
                       +"<td>"+status+" </td>"
+                      +"<td>"+obj.cid+"</td>"
                       + "<td><button class='dropbtn'  id='"+obj.cid+"Btn"+"'  style='padding: 3px'>Make Changes</button></td>";
                           
  tabl.appendChild(dispRow);
@@ -552,7 +563,7 @@ function loadFaculty(tabname,obj)
  dispRow.setAttribute('style',"background-color:#f1f1f1;");// color:#2e005e; ");
  dispRow.setAttribute('class',"w3-text-blue-grey");
 //  e
- dispRow.innerHTML =   "<td colspan='5'>"
+ dispRow.innerHTML =   "<td colspan='6'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
                         +"<tr>"
                         +"  <td style='padding-right: 100px; padding-left: 115px;'>"
@@ -602,16 +613,16 @@ function loadLab(tabname,obj)
   var status = obj.status;
   if(status == "pending")
   {
-    status = "<i class='fas fa-clock' class='w3-orange'> </i>"
+    status = "<i class='fas fa-clock w3-text-orange'> </i>"
   }
   if(status == "solved")
   {
-    status = "<i class='fas fa-check-circle' class='w3-teal'> </i>"
+    status = "<i  class='fas fa-check-circle w3-text-teal'> </i>"
   }
 
   if(status=="rejected")
   {
-    status = "<i class='fas fa-times-circle' class='w3-red'> </i>"
+    status = "<i class='fas fa-times-circle w3-text-red'> </i>"
   }
   var collapseme = 'coll'+obj.cid;
   
@@ -632,6 +643,7 @@ function loadLab(tabname,obj)
                        + "<td><i class='far fa-calendar-plus'> <b> "+obj.startDate+"</b></i></td>"
                       + "<td><i class='fas fa-pen'> "+obj.description.substring(0,9)+"...."+"</i></td>"
                       +"<td>"+status+" </td>"
+                      +"<td>"+obj.cid+"</td>"
                       + "<td><button class='dropbtn'  id='"+obj.cid+"Btn"+"'  style='padding: 3px'>Make Changes</button></td>";
                           
  tabl.appendChild(dispRow);
@@ -641,7 +653,7 @@ function loadLab(tabname,obj)
  dispRow.setAttribute('style',"background-color:#f1f1f1;");// color:#783612; ");
  dispRow.setAttribute('class',"w3-text-blue-grey");
 //  e
- dispRow.innerHTML =   "<td colspan='5'>"
+ dispRow.innerHTML =   "<td colspan='6'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
                         +"<tr>"
                         +"  <td style='padding-right: 155px; padding-left: 115px;'>"
@@ -689,16 +701,16 @@ function loadLib(tabname,obj)
   var status = obj.status;
   if(status == "pending")
   {
-    status = "<i class='fas fa-clock' class='w3-orange'> </i>"
+    status = "<i class='fas fa-clock w3-text-orange'> </i>"
   }
   if(status == "solved")
   {
-    status = "<i class='fas fa-check-circle' class='w3-teal'> </i>"
+    status = "<i  class='fas fa-check-circle w3-text-teal'> </i>"
   }
 
   if(status=="rejected")
   {
-    status = "<i class='fas fa-times-circle' class='w3-red'> </i>"
+    status = "<i class='fas fa-times-circle w3-text-red'> </i>"
   }
   var collapseme = 'coll'+obj.cid;
 
@@ -720,6 +732,7 @@ function loadLib(tabname,obj)
                        + "<td><i class='far fa-calendar-plus'> <b> "+obj.startDate+"</b></i></td>"
                       + "<td><i class='fas fa-pen'> "+obj.description.substring(0,9)+"...."+"</i></td>"
                       +"<td>"+status+" </td>"
+                      +"<td>"+obj.cid+"</td>"
                       + "<td><button class='dropbtn'  id='"+obj.cid+"Btn"+"'  style='padding: 3px'>Make Changes</button></td>";
                           
  tabl.appendChild(dispRow);
@@ -729,7 +742,7 @@ function loadLib(tabname,obj)
  //dispRow.setAttribute('style',"background-color: #f1f1f1; color:#8c6d81;");
    dispRow.setAttribute('class','w3-text-blue-grey');
 
- dispRow.innerHTML =   "<td colspan='5'>"
+ dispRow.innerHTML =   "<td colspan='6'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
                         +"<tr>"
                           +"  <td style='padding-right: 155px; padding-left: 115px;'>"
@@ -797,8 +810,11 @@ function loadAll(data,status)
 {
   console.log("I am Here");
   status = status+'Table';
-  
-  document.getElementById(status).innerHTML="<tr> <td>Category</td><td>Registered On</td> <td>Description</td><td colspan='1'>Status</td> </tr> <tr></tr>";
+  document.getElementById(status).innerHTML="";
+  document.getElementById('adminNumRes').innerHTML= data.length+" results found";
+  if(data.length==0)
+  return;
+  document.getElementById(status).innerHTML="<tr><td><b>Category</b></td><td><b>Registered On</b></td><td><b>Description</b></td><td colspan='1'><b>Status</b></td><td colspan='2'><b>Complaint ID</b></td><tr>";
   for(var i=0; i<data.length;i++)
   {
     data[i].startDate = data[i].startDate.substring(0,10);
@@ -862,7 +878,6 @@ function clickMakeChanges(obj)
         console.log("Just Before Post");
         $.post(url,obj,(data,status1)=>
         {
-
           console.log(status1 +"  "+typeof status1);
           document.getElementById('AdminComplaints').style.display='none';
           loadComplaints('admin');

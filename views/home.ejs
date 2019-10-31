@@ -43,7 +43,7 @@
         class="fa fa-bars"></i>  Menu</button>
     <span class="w3-bar-item w3-right">
       <form action="/signOutStudent" method="POST">
-        <button type="submit">Logout</button>
+        <button type="submit" class="dropbtn fas fa-sign-out-alt"> Logout</button>
       </form>
     </span>
   </div>
@@ -84,11 +84,11 @@
 <div class="w3-main" style="margin-left:300px;margin-top:43px;">
 
   <!-- Header -->
-  <header class="w3-container" style="padding-top:22px">
+  <header class="w3-container" style="padding-top:22px;">
     <h5><b><i class="fa fa-dashboard"></i> My Dashboard</b></h5>
   </header>
 
-  <div class="w3-row-padding w3-margin-bottom">
+  <div class="w3-row-padding w3-margin-bottom" style="margin-right: 1.5cm;">
     <div class="w3-quarter" onclick="openBlock(''); ">
       <div class="w3-container w3-red w3-padding-16">
         <div class="w3-left"><i class="fa fa-comment w3-xxxlarge"></i></div>
@@ -96,7 +96,7 @@
         <h4>File Complaint</h4>
       </div>
     </div>
-    <div class="w3-quarter" onclick="openBlock('Pending');" > <!--restrictFutureDate('pending');"> -->
+    <div class="w3-quarter" onclick="openBlock('Pending');restrictFutureDate('pending');">
       <div class="w3-container w3-blue w3-padding-16">
         <div class="w3-left"><i class="fa fa-eye w3-xxxlarge"></i></div>
         <div class="w3-right">
@@ -105,7 +105,7 @@
         <h4>Pending Complaints</h4>
       </div>
     </div>
-    <div class="w3-quarter" onclick="openBlock('Solved');"> <!--restrictFutureDate('solved');" >-->
+    <div class="w3-quarter" onclick="openBlock('Solved');restrictFutureDate('solved');" >
       <div class="w3-container w3-teal w3-padding-16">
         <div class="w3-left"><i class="fa fa-share-alt w3-xxxlarge"></i></div>
         <div class="w3-right">
@@ -114,7 +114,7 @@
         <h4>Solved Complaints</h4>
       </div>
     </div>
-    <div class="w3-quarter" onclick="openBlock('Rejected');">
+    <div class="w3-quarter" onclick="openBlock('Rejected'); ;restrictFutureDate('rejected');"">
       <div class="w3-container w3-orange w3-text-white w3-padding-16">
         <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
         <div class="w3-right">
@@ -126,7 +126,7 @@
   </div>
 
   <!-- General News Table -->
-  <div class="w3-panel w3-threequarter">
+  <div class="w3-panel w3-threequarter" style="margin-right: 1.5cm;">
     <div class="w3-row-padding" style="margin:0 -16px">
 
       <div class="w3-padding-16  w3-white" style="padding-left: 16px; padding-right: 16px; border-radius:8px" >
@@ -141,7 +141,7 @@
 
   <!-- General News Table End -->
   <hr>
-  <div class="w3-container">
+  <div class="w3-container" style="margin-right: 1.5cm;">
     <h5>General Stats</h5>
     <p>Rejected</p>
     <div class="w3-grey">
@@ -531,6 +531,7 @@
             
             <p class="w3-text-red" id="pendingWarning"></p>
             <div class=" w3-light-grey" style="padding-left: 16px; padding-right: 16px; border-radius:8px" >
+              <p><i id="pendingNumRes"></i></p>
             <table id='pendingTable' class= 'w3-table  w3-striped w3-light-grey' >
               
             </table>
@@ -604,6 +605,7 @@
           
             <p class="w3-text-red" id="solvedWarning"></p>
             <div class=" w3-light-grey" style="padding-left: 16px; padding-right: 16px; border-radius:8px" >
+              <p><i id="solvedNumRes"></i></p>
             <table id='solvedTable' class= 'w3-table  w3-striped w3-light-grey' >
               
     
@@ -678,6 +680,7 @@
              
               <p class="w3-text-red" id="rejectedWarning"></p>
                <div class=" w3-light-grey" style="padding-left: 16px; padding-right: 16px; border-radius:8px" > 
+                <p><i id="rejectedNumRes"></i></p>
               <table id='rejectedTable' class= 'w3-table  w3-striped w3-light-grey' >
                 
       
