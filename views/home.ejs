@@ -64,7 +64,7 @@
   </div>
   <div class="w3-bar-block">
     
-    <p  class="w3-bar-item w3-padding"><i class="fab fa-slack-hash fa-fw w3-large"></i> <b style="color: grey; font-size: 20px;"> <%= student.sid %> </b></p>
+    <p  class="w3-bar-item w3-padding"><i class="fab fa-slack-hash fa-fw w3-large"></i> <b id="StudentID" style="color: grey; font-size: 20px;"> <%= student.sid %> </b></p>
     <p  class="w3-bar-item  w3-padding"><i class="fas fa-graduation-cap fa-fw w3-large"></i> <b style="color: grey; font-size: 20px;"> <%= student.branch %></b></p>
     <p  class="w3-bar-item  w3-padding"><i class="fas fa-hotel fa-fw w3-large"></i> <b style="color: grey; font-size: 20px;"> <%= student.hostel %> </b></p>
     <p  class="w3-bar-item  w3-padding"><i class="fas fa-bed fa-fw w3-large"></i> <b style="color: grey; font-size: 20px;"><%= student.room %></b></p>
@@ -222,7 +222,7 @@
         <div>
           <p>Description</p>
           <textarea maxlength="200" form="hostelComplaintForm" name="description" id="hostelDesc" rows="4" cols="50" placeholder="Description should not exceed 200 characters"
-            style="border-radius: 5px;"></textarea>
+            style="border-radius: 5px;" required ></textarea>
         </div>
         <!-- Submit -->
         <button id="hostelSubmit" onclick="compSubmit('hostel')" class="dropbtn" type="submit">Submit</button>
@@ -252,7 +252,7 @@
         <div>
           <p>Description</p>
           <textarea name="description" form="feesComplaintForm" id="feesDesc" rows="4" cols="50" placeholder="Description should not exceed 200 characters"
-            style="border-radius: 5px;"></textarea>
+            style="border-radius: 5px;" required></textarea>
         </div>
 
         <!-- Submit -->
@@ -313,7 +313,7 @@
         <div>
           <p>Description</p>
           <textarea maxlength="200" form="messComplaintForm" name="description" id="messDesc" rows="4" cols="50" placeholder="Description should not exceed 200 characters"
-            style="border-radius: 5px;"></textarea>
+            style="border-radius: 5px;" required ></textarea>
         </div>
         <!-- Submit -->
         <button id="messSubmit" onclick="compSubmit('mess')" class="dropbtn" type="submit">Submit</button>
@@ -361,7 +361,7 @@
         <div>
           <p>Description</p>
           <textarea maxlength="200" name="description" form="facultyComplaintForm" id="facDesc" rows="4" cols="50" placeholder="Description should not exceed 200 characters"
-            style="border-radius: 5px;"></textarea>
+            style="border-radius: 5px;" required ></textarea>
         </div>
 
         <!-- Submit -->
@@ -409,7 +409,7 @@
         <div>
           <p>Description</p>
           <textarea maxlength="200" name="description" form="labComplaintForm" id="labDesc" rows="4" cols="50" placeholder="Description should not exceed 200 characters"
-            style="border-radius: 5px;"></textarea>
+            style="border-radius: 5px;" required ></textarea>
         </div>
 
         <!-- Submit -->
@@ -452,7 +452,7 @@
         <div>
           <p>Description</p>
           <textarea maxlength="200" name="description" form="libraryComplaintForm" id="libDesc" rows="4" cols="50" placeholder="Description should not exceed 200 characters"
-            style="border-radius: 5px;"></textarea>
+            style="border-radius: 5px;" required ></textarea>
         </div>
 
         <!-- Submit -->

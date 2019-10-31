@@ -1,8 +1,11 @@
 
+var sid
 
   window.onload = function(){
     fillFeed();
     getStatistics();
+    sid = (document.getElementById('StudentID').innerHTML).trim();
+    console.log(sid);
   }
 
 
@@ -112,7 +115,7 @@ function loadHostel(tabname, obj){
   {
     status = "<i class='fas fa-times-circle w3-text-red'> </i>"
   }
-  var collapseme = 'coll'+obj.cid;
+  var collapseme = 'coll'+obj.cid+tabname;
 
   var solvedBy = obj.solvedBy;
  if(solvedBy=='')
@@ -130,6 +133,10 @@ function loadHostel(tabname, obj){
   dispRow.setAttribute('aria-controls','"+collapseme+"');
   dispRow.setAttribute('class','collapsed w3-large w3-text-blue-grey');
   
+  if(obj.studentSid == sid)
+  dispRow.setAttribute('class','collapsed w3-large w3-text-indigo');
+  
+  
         
   dispRow.innerHTML = "<td><i class='fas fa-hotel w3-large'> Hostel </i></td>"
                       + "<td><i class='far fa-calendar-plus'> <b> "+obj.startDate+"</b></i></td>"
@@ -142,7 +149,10 @@ function loadHostel(tabname, obj){
  dispRow = document.createElement('tr');
 
  dispRow.setAttribute('style',"background-color: #f1f1f1;");
- dispRow.setAttribute('class','w3-text-blue-grey')
+ dispRow.setAttribute('class','w3-text-blue-grey');
+
+ if(obj.studentSid == sid)
+ dispRow.setAttribute('class','w3-large w3-text-indigo');
 
  dispRow.innerHTML =  "<td colspan='5'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
@@ -210,7 +220,7 @@ function loadFees(tabname,obj)
     status = "<i class='fas fa-times-circle w3-text-red'> </i>"
   }
   
-  var collapseme = 'coll'+obj.cid;
+  var collapseme = 'coll'+obj.cid+tabname;
 
   var solvedBy = obj.solvedBy;
  if(solvedBy=='')
@@ -227,6 +237,9 @@ function loadFees(tabname,obj)
   dispRow.setAttribute('aria-controls','"+collapseme+"');
   dispRow.setAttribute('class','collapsed w3-large w3-text-blue-grey');
   
+  if(obj.studentSid == sid)
+  dispRow.setAttribute('class','collapsed w3-large w3-text-indigo');
+  
   dispRow.innerHTML = "<td><i class='fas fa-rupee-sign w3-large'> Fees </i></td>"
                       + "<td><i class='far fa-calendar-plus'> <b> "+obj.startDate+"</b></i></td>"
                       + "<td><i class='fas fa-pen'> "+obj.description.substring(0,9)+"...."+"</i></td>"
@@ -238,7 +251,10 @@ function loadFees(tabname,obj)
  dispRow = document.createElement('tr');
 
  dispRow.setAttribute('style',"background-color: #f1f1f1;");
- dispRow.setAttribute('class','w3-text-blue-grey')
+ dispRow.setAttribute('class','w3-text-blue-grey');
+
+ if(obj.studentSid == sid)
+ dispRow.setAttribute('class','w3-large w3-text-indigo');
 
  dispRow.innerHTML =  "<td colspan='5'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
@@ -292,7 +308,7 @@ function loadMess(tabname,obj)
   }
 
 
-  var collapseme = 'coll'+obj.cid;
+  var collapseme = 'coll'+obj.cid+tabname;
 
 
   const tabl = document.getElementById(tabname);
@@ -305,6 +321,9 @@ function loadMess(tabname,obj)
   dispRow.setAttribute('aria-expanded','true');
   dispRow.setAttribute('aria-controls','"+collapseme+"');
   dispRow.setAttribute('class','collapsed w3-large w3-text-blue-grey');
+  
+  if(obj.studentSid == sid)
+  dispRow.setAttribute('class','collapsed w3-large w3-text-indigo');
   
   dispRow.innerHTML = "<td><i class='fas fa-utensils w3-large'>  Mess </i></td>"
                        + "<td><i class='far fa-calendar-plus'> <b> "+obj.startDate+"</b></i></td>"
@@ -319,6 +338,10 @@ function loadMess(tabname,obj)
 
  dispRow.setAttribute('style',"background-color: #f1f1f1;");
  dispRow.setAttribute('class',"w3-text-blue-grey")
+
+ if(obj.studentSid == sid)
+ dispRow.setAttribute('class','w3-large w3-text-indigo');
+
  var solvedBy = obj.solvedBy;
  if(solvedBy=='')
  solvedBy='No one Assigned';
@@ -391,7 +414,7 @@ function loadFaculty(tabname,obj)
   {
     status = "<i class='fas fa-times-circle w3-text-red'> </i>"
   }
-  var collapseme = 'coll'+obj.cid;
+  var collapseme = 'coll'+obj.cid+tabname;
 
   var solvedBy = obj.solvedBy;
  if(solvedBy=='')
@@ -407,6 +430,9 @@ function loadFaculty(tabname,obj)
   dispRow.setAttribute('aria-expanded','true');
   dispRow.setAttribute('aria-controls',collapseme);
   dispRow.setAttribute('class','collapsed w3-large w3-text-blue-grey');
+  
+  if(obj.studentSid == sid)
+  dispRow.setAttribute('class','collapsed w3-large w3-text-indigo');
   //dispRow.setAttribute('style','color:#2e005e');  
   
   dispRow.innerHTML = "<td><i class='fas fa-chalkboard-teacher w3-large'>  Faculty </i></td>"
@@ -421,6 +447,10 @@ function loadFaculty(tabname,obj)
 
  dispRow.setAttribute('style',"background-color:#f1f1f1;");// color:#2e005e; ");
  dispRow.setAttribute('class',"w3-text-blue-grey");
+
+ if(obj.studentSid == sid)
+ dispRow.setAttribute('class','w3-large w3-text-indigo');
+
 //  e
  dispRow.innerHTML =   "<td colspan='5'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
@@ -490,7 +520,7 @@ function loadLab(tabname,obj)
   {
     status = "<i class='fas fa-times-circle w3-text-red'> </i>"
   }
-  var collapseme = 'coll'+obj.cid;
+  var collapseme = 'coll'+obj.cid+tabname;
   
   var solvedBy = obj.solvedBy;
  if(solvedBy=='')
@@ -506,6 +536,9 @@ function loadLab(tabname,obj)
   dispRow.setAttribute('aria-expanded','true');
   dispRow.setAttribute('aria-controls',collapseme);
   dispRow.setAttribute('class','collapsed w3-large w3-text-blue-grey');
+  
+  if(obj.studentSid == sid)
+  dispRow.setAttribute('class','collapsed w3-large w3-text-indigo');
   //dispRow.setAttribute('style','color:#783612');  
   
   dispRow.innerHTML = "<td><i class='fas fa-flask w3-large'>  Lab </i></td>"
@@ -520,6 +553,10 @@ function loadLab(tabname,obj)
 
  dispRow.setAttribute('style',"background-color:#f1f1f1;");// color:#783612; ");
  dispRow.setAttribute('class',"w3-text-blue-grey");
+
+ if(obj.studentSid == sid)
+ dispRow.setAttribute('class','w3-large w3-text-indigo');
+
 //  e
  dispRow.innerHTML =   "<td colspan='5'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"
@@ -587,7 +624,7 @@ function loadLib(tabname,obj)
   {
     status = "<i class='fas fa-times-circle w3-text-red'> </i>"
   }
-  var collapseme = 'coll'+obj.cid;
+  var collapseme = 'coll'+obj.cid+tabname;
 
   var solvedBy = obj.solvedBy;
  if(solvedBy=='')
@@ -603,10 +640,13 @@ function loadLib(tabname,obj)
   dispRow.setAttribute('aria-expanded','true'); 
   dispRow.setAttribute('aria-controls',collapseme);
   dispRow.setAttribute('class','collapsed w3-large w3-text-blue-grey');
+  
+  if(obj.studentSid == sid)
+  dispRow.setAttribute('class','collapsed w3-large w3-text-indigo');
   //dispRow.setAttribute('style','color:#8c6d81');  
 
   
-  dispRow.innerHTML = "<td><i class='fas fa-utensils w3-large'>  Library </i></td>"
+  dispRow.innerHTML = "<td><i class='fas fa-book w3-large'>  Library </i></td>"
                        + "<td><i class='far fa-calendar-plus'> <b> "+obj.startDate+"</b></i></td>"
                       + "<td><i class='fas fa-pen'> "+obj.description.substring(0,9)+"...."+"</i></td>"
                       +"<td>"+status+" </td>"
@@ -618,6 +658,10 @@ function loadLib(tabname,obj)
 
  //dispRow.setAttribute('style',"background-color: #f1f1f1; color:#8c6d81;");
    dispRow.setAttribute('class','w3-text-blue-grey');
+   if(obj.studentSid == sid){
+    
+    dispRow.setAttribute('class','w3-large w3-text-indigo');
+  }
 
  dispRow.innerHTML =   "<td colspan='5'>"
                       +"<table id='"+collapseme+"' style='border: none;' class='collapse'>"

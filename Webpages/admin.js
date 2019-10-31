@@ -283,7 +283,7 @@ function loadHostel(tabname, obj){
   {
     status = "<i class='fas fa-times-circle w3-text-red'> </i>"
   }
-  var collapseme = 'coll'+obj.cid;
+  var collapseme = 'coll'+obj.cid+tabname;
 
   const tabl = document.getElementById(tabname);
 
@@ -372,7 +372,7 @@ function loadFees(tabname,obj)
   {
     status = "<i class='fas fa-times-circle w3-text-red'> </i>"
   }
-  var collapseme = 'coll'+obj.cid;
+  var collapseme = 'coll'+obj.cid+tabname;
 
 
   const tabl = document.getElementById(tabname);
@@ -447,7 +447,7 @@ function loadMess(tabname,obj)
   {
     status = "<i class='fas fa-times-circle w3-text-red'> </i>"
   }
-  var collapseme = 'coll'+obj.cid;
+  var collapseme = 'coll'+obj.cid+tabname;
 
 
   const tabl = document.getElementById(tabname);
@@ -537,7 +537,7 @@ function loadFaculty(tabname,obj)
   {
     status = "<i class='fas fa-times-circle w3-text-red'> </i>"
   }
-  var collapseme = 'coll'+obj.cid;
+  var collapseme = 'coll'+obj.cid+tabname;
 
 
   const tabl = document.getElementById(tabname);
@@ -628,7 +628,7 @@ function loadLab(tabname,obj)
   {
     status = "<i class='fas fa-times-circle w3-text-red'> </i>"
   }
-  var collapseme = 'coll'+obj.cid;
+  var collapseme = 'coll'+obj.cid+tabname;
   
 
   const tabl = document.getElementById(tabname);
@@ -717,7 +717,7 @@ function loadLib(tabname,obj)
   {
     status = "<i class='fas fa-times-circle w3-text-red'> </i>"
   }
-  var collapseme = 'coll'+obj.cid;
+  var collapseme = 'coll'+obj.cid+tabname;
 
 
   const tabl = document.getElementById(tabname);
